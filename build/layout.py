@@ -43,10 +43,15 @@ def head(title, desc, depth=0, extra=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1b3a6b">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Orlando Water Pros">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -77,7 +82,7 @@ def header(active="", depth=0):
     <div class="topbar-note">{ICON['pin']}&nbsp;Serving Orange, Seminole, Osceola, Lake &amp; Volusia counties</div>
     <div class="topbar-links">
       <a href="{up}quote.html">Free quote</a>
-      <a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a>
+      <a href="mailto:{SITE['email']}">{SITE['email']}</a>
     </div>
   </div>
 </div>
@@ -113,7 +118,7 @@ def header(active="", depth=0):
     </nav>
 
     <div class="header-cta">
-      <a class="header-phone" href="tel:{SITE['phone_href']}">{ICON['phone']}<span class="lbl">{SITE['phone_display']}</span></a>
+      <a class="header-phone" href="mailto:{SITE['email']}">{ICON['mail']}<span class="lbl">{SITE['email']}</span></a>
       <a class="btn btn-primary btn-sm" href="{up}quote.html">Get a Free Quote</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
     </div>
@@ -136,7 +141,7 @@ def cta_band(depth=0, heading=None, text=None):
       </div>
       <div class="btn-row">
         <a class="btn btn-primary" href="{up}quote.html">Get a Free Quote</a>
-        <a class="btn btn-ghost" href="tel:{SITE['phone_href']}">{ICON['phone']} Call Us</a>
+        <a class="btn btn-ghost" href="mailto:{SITE['email']}">{ICON['mail']} Email Us</a>
       </div>
     </div>
   </div>
@@ -168,7 +173,6 @@ def footer(depth=0):
         </a>
         <p>Water filtration and softening for homes across Orange, Seminole, Osceola, Lake and Volusia counties.</p>
         <p class="footer-contact">
-          <a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a><br>
           <a href="mailto:{SITE['email']}">{SITE['email']}</a>
         </p>
         <div class="socials">
@@ -211,6 +215,18 @@ def footer(depth=0):
   </div>
 </footer>
 
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{SITE['brand']}",
+  "description": "Water filtration and softening installation across Orange, Seminole, Osceola, Lake and Volusia counties in Central Florida.",
+  "url": "https://{SITE['domain']}/",
+  "email": "{SITE['email']}",
+  "areaServed": [{", ".join(f'{{"@type": "City", "name": "{c["name"]}"}}' for c in CITIES)}],
+  "priceRange": "$$"
+}}
+</script>
 <script src="{up}assets/js/main.js"></script>
 </body>
 </html>
@@ -267,9 +283,8 @@ def quote_form(depth=0):
 def contact_panel(depth=0):
     return f"""<div class="contact-panel">
   <h3>Prefer to talk it through?</h3>
-  <p style="color:#b9c9de;margin-bottom:22px">Call and you'll reach someone local who knows Central Florida water. Not a national call center.</p>
+  <p style="color:#b9c9de;margin-bottom:22px">Send us a message and you'll hear back from someone local who knows Central Florida water. Not a national call center.</p>
   <ul class="contact-list">
-    <li><span class="ci">{ICON['phone']}</span><div><strong>Phone</strong><a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a></div></li>
     <li><span class="ci">{ICON['mail']}</span><div><strong>Email</strong><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></li>
     <li><span class="ci">{ICON['pin']}</span><div><strong>Service area</strong><span>Orange, Seminole, Osceola, Lake &amp; Volusia counties</span></div></li>
     <li><span class="ci">{ICON['clock']}</span><div><strong>Hours</strong><span>{SITE['hours']}</span></div></li>

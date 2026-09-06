@@ -254,7 +254,7 @@ def build():
         <a class="btn btn-primary" href="quote.html">Get a Free Quote</a>
         <a class="btn btn-ghost" href="solutions.html">See Solutions</a>
       </div>
-      <p class="hero-note">Or call or text {SITE['phone_display']}. You'll reach someone local.</p>
+      <p class="hero-note">Prefer email? <a href="mailto:{SITE['email']}">{SITE['email']}</a></p>
     </div>
   </div>
 </section>
@@ -262,7 +262,7 @@ def build():
 <div class="badge-band">
   <div class="wrap">
     <div class="badge-row">
-      <div class="badge-item">{ICON['shield']} Lifetime Warranty</div>
+      <div class="badge-item">{ICON['shield']} Lifetime Warranty on Whole-Home Systems</div>
       <div class="badge-item">{ICON['badge']} NSF-Certified Systems</div>
       <div class="badge-item">{ICON['tag']} Price-Match Promise</div>
       <div class="badge-item">{ICON['clock']} Same-Week Install</div>

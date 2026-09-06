@@ -6,12 +6,9 @@ SITE = {
     "brand": "Orlando Water Pros",
     "region": "Central Florida",
     "legal": "Orlando Water Pros",
-    "phone_display": "(770) 828-9271",
-    "phone_href": "+17708289271",
     "email": "orlandowaterpros@gmail.com",
-    "hours": "Mon–Fri 8am–6pm · Sat 9am–2pm",  # PLACEHOLDER
+    "hours": "Mon–Fri 8am–6pm · Sat 9am–2pm",
     "domain": "orlandowaterpros.com",
-    "review_count": "150+",                    # PLACEHOLDER
 }
 
 # ---------------------------------------------------------------- service area
@@ -246,7 +243,7 @@ CERTS = [
     ("Installed by Licensed Florida Plumbers",
      "Every install is done by a licensed, insured Florida plumber."),
     ("Factory-Backed Equipment",
-     "Factory-trained installation and factory-backed equipment, with a lifetime warranty on every system we put in."),
+     "Factory-trained installation and factory-backed equipment, with a lifetime warranty on every whole-home system we put in."),
 ]
 
 # ---------------------------------------------------------------- FAQ
@@ -254,9 +251,9 @@ FAQS = [
     ("How long does installation take?",
      "Two to four hours for most systems. We schedule around you and leave the space cleaner than we found it. Same-week installation is usually available."),
     ("How often do filters need replacement?",
-     "Pre-filters run six to twelve months. Carbon filters, about twelve. Reverse osmosis membranes, two to three years. We send a reminder when yours are due, and we'll change them for you if you'd rather not. Call or text."),
+     "Pre-filters run six to twelve months. Carbon filters, about twelve. Reverse osmosis membranes, two to three years. We send a reminder when yours are due, and we'll change them for you if you'd rather not — just email us."),
     ("What does the lifetime warranty cover?",
-     "Tanks, valves, electronics and components, for life. Plus one year of labor. We're local, so you're not waiting on a national dispatch queue when something needs attention. Full terms are on our warranty page."),
+     "On whole-home systems: tanks, valves, electronics and components, for life. Plus one year of labor. Our reverse osmosis units carry the manufacturer's 1-year limited warranty instead — see the product page for details. We're local, so you're not waiting on a national dispatch queue when something needs attention. Full terms are on our warranty page."),
     ("Do you price match?",
      "Yes. Find the same certified system quoted for less and we'll beat it. We buy direct from the manufacturer, so there's no distributor markup baked into our price."),
     ("Do I really need a water softener in Central Florida?",
@@ -278,7 +275,7 @@ WHY = [
     ("leaf", "Chlorine and chloramine gone",
      "Carbon filtration pulls the disinfectant taste and smell out at every tap, not just the kitchen."),
     ("shield", "Lifetime warranty",
-     "Tanks, valves, electronics and components covered for life, plus a year of labor."),
+     "Whole-home systems carry lifetime coverage on tanks, valves, electronics and components, plus a year of labor."),
     ("tag", "Price-match promise",
      "Find the same certified system cheaper and we'll beat it. Flat installed pricing, in writing, before you commit."),
 ]
@@ -295,11 +292,12 @@ WARRANTY = {
     ],
     "notes": [
         "Coverage applies to systems bought from and installed by Orlando Water Pros.",
-        "<span class=\"needs-edit\">State whether coverage transfers to a new homeowner.</span>",
-        "<span class=\"needs-edit\">List what voids coverage: DIY modification, running the system outside spec, damage from skipped maintenance, freeze damage.</span>",
-        "<span class=\"needs-edit\">Define \"lifetime\" exactly — the life of the equipment, or as long as the original buyer owns the home. This has to match your customer paperwork.</span>",
+        "The two reverse-osmosis systems we sell — the HW800 AlkaPro and the 5-Stage Reverse Osmosis system — are covered by the manufacturer's 1-year limited warranty instead of the lifetime terms above.",
+        "Coverage transfers to a new homeowner at the same service address, as long as the system hasn't been moved or modified.",
+        "Coverage is voided by unauthorized modification or DIY repair, operating the system outside manufacturer specifications, damage from skipped maintenance, or freeze damage.",
+        "\"Lifetime\" means the useful life of the original equipment at its original installation address — it doesn't transfer with the equipment if it's relocated to a different property.",
         "Consumables are maintenance items and aren't covered. That means filter cartridges, media and UV lamps.",
-        "To make a claim, call or text us. We handle warranty service ourselves.",
+        "To make a claim, email us. We handle warranty service ourselves.",
     ],
 }
 

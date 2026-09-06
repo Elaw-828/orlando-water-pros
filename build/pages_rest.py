@@ -44,9 +44,6 @@ def solution_page(p):
     rows = [("Category", p["cat"])] + SPECS.get(p["slug"], [])
     if p["slug"] not in ("hw800-alkapro", "5-stage-reverse-osmosis"):
         rows.append(("Warranty", "Lifetime on tanks, valves, electronics and components; 1 year labor"))
-    rows.append(("Capacity options",
-                 '<span class="needs-edit">Add the grain capacity or flow rate you quote</span>'))
-    rows.append(("Footprint", '<span class="needs-edit">Add tank dimensions</span>'))
     spec_rows = "".join(f'<tr><th scope="row">{k}</th><td>{v}</td></tr>' for k, v in rows)
     return head(
         f"{p['name']} | Orlando Water Pros",
@@ -65,7 +62,7 @@ def solution_page(p):
       <p class="who-line"><strong>Best for:</strong> {p['who']}</p>
       <div class="btn-row mt-m">
         <a class="btn btn-primary" href="../quote.html">Get a Free Quote</a>
-        <a class="btn btn-outline" href="tel:{SITE['phone_href']}">{ICON['phone']} {SITE['phone_display']}</a>
+        <a class="btn btn-outline" href="mailto:{SITE['email']}">{ICON['mail']} Email Us</a>
       </div>
     </div>
   </div>
@@ -81,7 +78,7 @@ def solution_page(p):
 <section class="section">
   <div class="wrap">
     <div class="section-head center"><h2>Specifications</h2>
-    <p>Published manufacturer specifications. Add your own capacity and dimension figures where marked.</p></div>
+    <p>Published manufacturer specifications.</p></div>
     <div class="table-scroll">
       <table class="compare spec">
         <thead><tr><th scope="col">Specification</th><th scope="col">Details</th></tr></thead>
@@ -120,7 +117,7 @@ def about():
     )
     steps = [
         ("Tell us about your home",
-         "Call, text or send the form. We'll ask where your water comes from, how many people live there, and what you're noticing at the tap."),
+         "Send the form or email us. We'll ask where your water comes from, how many people live there, and what you're noticing at the tap."),
         ("A recommendation, and the reasoning",
          "We tell you which system fits and why, including when a cheaper one would serve you just as well."),
         ("A flat installed price in writing",
@@ -128,7 +125,7 @@ def about():
         ("Installation by a licensed Florida plumber",
          "Two to four hours for most systems. We leave the space cleaner than we found it."),
         ("Service afterward",
-         "We send filter reminders when they're due and handle warranty service ourselves. Call or text us directly."),
+         "We send filter reminders when they're due and handle warranty service ourselves. Just email us directly."),
     ]
     step_html = "".join(f"""<div class="card"><div class="card-body">
       <span class="card-tag">Step {n+1}</span><h3 style="font-size:1.08rem">{t}</h3><p>{d}</p>
@@ -170,7 +167,7 @@ def about():
 def quote_page():
     return head(
         "Get a Free Quote | Orlando Water Pros",
-        f"Request a free quote on water filtration or softening for your Central Florida home. Call {SITE['phone_display']}.",
+        "Request a free quote on water filtration or softening for your Central Florida home. Usually a same-business-day response.",
     ) + header("quote") + page_hero(
         "Get a free quote",
         "A flat installed price, in writing, before anything is ordered. Serving Orange, Seminole, Osceola, Lake and Volusia counties.",
@@ -203,7 +200,7 @@ def quote_page():
 def contact():
     return head(
         "Contact | Orlando Water Pros",
-        f"Contact Orlando Water Pros for water filtration and softening across Central Florida. Call {SITE['phone_display']}.",
+        "Contact Orlando Water Pros for water filtration and softening across Central Florida — request a free quote online.",
     ) + header("contact") + page_hero(
         "Get in touch",
         "Serving Orange, Seminole, Osceola, Lake and Volusia counties. Same-day response on weekdays.",
@@ -237,7 +234,7 @@ def areas_index():
         "We cover Orange, Seminole, Osceola, Lake and Volusia counties. Pick your city for local water conditions.",
         '<a href="index.html">Home</a> / Service Areas',
     ) + f"""<section class="section"><div class="wrap"><div class="grid g3">{cards}</div>
-  <p class="muted mt-l center">Not on the list? Call {SITE['phone_display']} — we cover more of Central Florida than we've listed here.</p>
+  <p class="muted mt-l center">Not on the list? <a href="quote.html">Send us a quick message</a> — we cover more of Central Florida than we've listed here.</p>
 </div></section>""" + cta_band() + footer()
 
 
@@ -284,7 +281,7 @@ def city_page(c):
         <p>The hardness figures here are typical published ranges for the area's supply. They're a starting point, not a measurement of your house. Water changes between neighborhoods depending on which well field or plant serves you, and on a private well it changes from one property to the next.</p>
         <div class="btn-row mt-m">
           <a class="btn btn-primary" href="../quote.html">Get a Free Quote in {c['name']}</a>
-          <a class="btn btn-outline" href="tel:{SITE['phone_href']}">{ICON['phone']} {SITE['phone_display']}</a>
+          <a class="btn btn-outline" href="mailto:{SITE['email']}">{ICON['mail']} Email Us</a>
         </div>
       </div>
       <div class="split-media"><div class="ph" data-label="Photo: an install in {c['name']}"></div></div>
@@ -377,7 +374,7 @@ def warranty_page():
     notes = "".join(f"<li>{n}</li>" for n in WARRANTY["notes"])
     return head(
         "Warranty | Orlando Water Pros",
-        "Lifetime warranty on tanks, valves, electronics and components, plus one year of labor.",
+        "Lifetime warranty on whole-home system tanks, valves, electronics and components, plus one year of labor.",
     ) + header("") + page_hero(
         "Warranty",
         WARRANTY["intro"],
@@ -404,9 +401,8 @@ def warranty_page():
     </div>
 
     <h2 class="mt-l">Making a claim</h2>
-    <p>Call or text {SITE['phone_display']}, or email <a href="mailto:{SITE['email']}">{SITE['email']}</a>.
-    Have your installation date handy. We handle warranty service directly rather than routing it through a
-    national dispatch queue.</p>
+    <p>Email <a href="mailto:{SITE['email']}">{SITE['email']}</a> with your installation date handy.
+    We handle warranty service directly rather than routing it through a national dispatch queue.</p>
   </div>
 </section>
 """ + cta_band() + footer()
@@ -415,15 +411,29 @@ def warranty_page():
 # ------------------------------------------------------------------ legal
 LEGAL = {
     "privacy": ("Privacy Policy", "How we handle information submitted through this site.", [
-        "This is a placeholder. Before launch, replace it with a privacy policy written for your business — ideally reviewed by an attorney.",
-        "At minimum it needs to cover: what information you collect through the quote form (name, phone, email, ZIP code and anything the customer tells you about their water), how you use it, how long you keep it, who you share it with (your CRM, scheduling software, any advertising platforms), and how someone can ask you to delete it.",
-        "If you run advertising pixels or analytics, disclose them. If you send marketing texts, your SMS consent language needs to match what's on the form and comply with TCPA requirements.",
-        "Florida's Digital Bill of Rights may apply depending on your revenue and data volume — worth checking with counsel.",
+        f"{SITE['brand']} (\"we,\" \"us\") operates this website. This policy explains what information we collect when you use it and how we handle that information.",
+        "<strong>Information we collect.</strong> When you submit our quote or contact form, we collect your first and last name, phone number, email address, ZIP code, best time to reach you, and anything you choose to tell us in the message field. We don't collect payment information through this site.",
+        "<strong>How we use it.</strong> We use this information to contact you about your quote, schedule service, and respond to questions you send us. We don't sell your information, and we don't share it with third parties except the tools we use to run our business — such as scheduling or email software — and only as needed to provide our service to you.",
+        "<strong>How long we keep it.</strong> We keep quote and contact information for as long as needed to follow up with you and, if you become a customer, for the life of your service relationship with us plus a reasonable period afterward for warranty and record-keeping purposes.",
+        "<strong>Your choices.</strong> You can ask us to delete the information you've submitted, or to stop contacting you, at any time by emailing us at "
+        f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>. We'll honor that request except where we need to keep limited records for legal or warranty purposes.",
+        "<strong>Cookies and analytics.</strong> This site does not use advertising cookies or tracking pixels. If that changes in the future, this policy will be updated to disclose it.",
+        "<strong>Contact.</strong> Questions about this policy can be sent to "
+        f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>.",
     ]),
     "terms": ("Terms of Service", "The terms that govern use of this website.", [
-        "This is a placeholder. Replace it with terms written for your business before launch.",
-        "Typically covered: acceptable use of the site, that information here is general and not a guarantee of results for any specific property, ownership of site content, limitation of liability, and which state's law governs.",
-        "Anything about the actual sale and installation — payment, scheduling, cancellation, what happens if the install uncovers unexpected plumbing work — belongs in your customer agreement, not here.",
+        f"By using this website, you agree to these terms. If you don't agree, please don't use the site.",
+        "<strong>Purpose of this site.</strong> This website provides general information about the water filtration and softening systems and services offered by "
+        f"{SITE['brand']}. Content on this site — including water hardness figures, product descriptions, and comparisons — is general information, not a guarantee of results for any specific property. An in-home or phone consultation is required to determine what your home actually needs.",
+        "<strong>No professional advice.</strong> Nothing on this site is engineering, plumbing, health, or legal advice. Always consult a licensed professional for advice specific to your property.",
+        "<strong>Ownership.</strong> The text, layout, and design of this site belong to "
+        f"{SITE['brand']}. Product names, images, and specifications belong to their respective manufacturers.",
+        "<strong>Limitation of liability.</strong> This site is provided \"as is.\" To the fullest extent permitted by law, "
+        f"{SITE['brand']} isn't liable for damages arising from your use of, or inability to use, this website.",
+        "<strong>The actual sale and installation.</strong> Pricing, scheduling, payment, cancellation, and installation terms are governed by the written quote and service agreement you receive directly from us — not by this website.",
+        "<strong>Governing law.</strong> These terms are governed by the laws of the State of Florida.",
+        "<strong>Contact.</strong> Questions about these terms can be sent to "
+        f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>.",
     ]),
 }
 
@@ -436,6 +446,6 @@ def legal_page(key):
     ) + header("") + page_hero(title, sub, '<a href="index.html">Home</a> / ' + title) + f"""
 <section class="section"><div class="wrap wrap-narrow">
   <div class="form-card article-body">{body}</div>
-  <p class="muted mt-m">Last updated: <span class="needs-edit">add a date</span></p>
+  <p class="muted mt-m">Last updated: September 6, 2026</p>
 </div></section>
 """ + footer()
