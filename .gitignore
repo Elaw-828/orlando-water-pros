@@ -1,0 +1,10 @@
+# Python bytecode from the page generator
+__pycache__/
+*.pyc
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Single-file preview bundle — regenerate with: cd build && python3 bundle_preview.py
+preview.html
