@@ -236,7 +236,7 @@ def build():
 
     return head(
         "Water Filtration & Softening in the Orlando Area | Orlando Water Pros",
-        "Whole-home water filtration and softening for Orlando and Central Florida. Softer showers, spot-free glassware, better laundry and chlorine removal. Free quotes, lifetime warranty.",
+        "Whole-home water filtration and softening for Orlando and Central Florida. Softer showers, spot-free glassware, better laundry and chlorine removal. Free quotes, licensed installation, warranty in writing.",
     ) + header("home") + f"""
 <section class="hero">
   {HERO_ART}
@@ -261,7 +261,7 @@ def build():
 <div class="badge-band">
   <div class="wrap">
     <div class="badge-row">
-      <div class="badge-item">{ICON['shield']} Lifetime Warranty on Whole-Home Systems</div>
+      <div class="badge-item">{ICON['shield']} Lifetime Limited Warranty</div>
       <div class="badge-item">{ICON['badge']} NSF-Certified Systems</div>
       <div class="badge-item">{ICON['tag']} Price-Match Promise</div>
       <div class="badge-item">{ICON['clock']} Same-Week Install</div>

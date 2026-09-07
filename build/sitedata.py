@@ -695,7 +695,7 @@ COMPARE_COLS = [
 
 COMPARE_ROWS = [
         ('FL licensed plumber install', 'yes', 'Varies', 'Varies', 'Varies', 'no:DIY'),
-        ('Lifetime warranty', 'yes', '1 year', '10 year', '1 year', 'no'),
+        ('Lifetime limited warranty', 'yes', '1 year', '10 year', '1 year', 'no'),
         ('No long-term contracts', 'yes', 'Multi-year typical', 'Multi-year typical', 'Multi-year typical', 'N/A'),
         ('Transparent pricing', 'yes', 'no', 'no', 'no', 'yes'),
         ('Same-week installation', 'yes', '2–3 weeks', '2–3 weeks', '2–3 weeks', 'DIY timeline')
@@ -719,14 +719,14 @@ CERTS = [
         ('Cation Exchange Water Softeners', 'Our softeners are certified under the NSF program for cation exchange water softeners, the category that covers ion-exchange performance.'),
         ('WQA Gold Seal', 'Water Quality Association Gold Seal certification, held on top of NSF certification. Two independent bodies, same equipment.'),
         ('Installed by Licensed Florida Plumbers', 'Every install is done by a licensed, insured Florida plumber.'),
-        ('Factory-Backed Equipment', 'Factory-trained installation and factory-backed equipment, with a lifetime warranty on every whole-home system we put in.')
+        ('Factory-Backed Equipment', 'Factory-trained installation and factory-backed equipment, with a written limited warranty on every whole-home system we put in.')
     ]
 
 # ---------------------------------------------------------------- FAQ
 FAQS = [
         ('How long does installation take?', 'Two to four hours for most systems. We schedule around you and leave the space cleaner than we found it. Same-week installation is usually available.'),
         ('How often do filters need replacement?', 'Reverse osmosis filters run twelve months and the membrane two to three years. A pre-sediment cartridge is every six months. We send a reminder when yours are due, and we will change them for you if you would rather not — give us a call and we will get you on the schedule.'),
-        ('What does the lifetime warranty cover?', "On whole-home systems: tanks, valves, electronics and components, for life. Plus one year of labor. Our reverse osmosis units carry the manufacturer's 1-year limited warranty instead — see the product page for details. We're local, so you're not waiting on a national dispatch queue when something needs attention. Full terms are on our warranty page."),
+        ('What does the warranty cover?', "It is tiered. Tanks and dry parts are covered for life. The control valve, circuit board and filtration media are covered for five years. Labor from the original installation is covered for one year. Reverse osmosis systems carry a one-year warranty. We are local, so you are not waiting on a national dispatch queue when something needs attention — full terms are on our warranty page."),
         ('Do you price match?', "Yes. Find the same certified system quoted for less and we'll beat it. We buy direct from the manufacturer, so there's no distributor markup baked into our price."),
         ('Do I really need a water softener in Central Florida?', "Probably. The Floridan Aquifer runs through limestone, so most of our service area tests between 10 and 18 grains per gallon. Anything over 7 is hard enough to start costing you appliances. Whether it's right for your address is a five-minute conversation."),
         ('Can you work on a private well?', "Yes. Wells are a big part of what we do in Lake, Volusia and rural Orange County. Well water usually needs iron and sulfur treatment ahead of softening. Get a certified lab panel for bacteria and nitrate first — we'll tell you where."),
@@ -739,28 +739,31 @@ WHY = [
         ('sparkle', 'Glassware without the spots', 'No white film, no cloudy glasses coming out of the dishwasher.'),
         ('laundry', 'Laundry that stays soft', 'Detergent finally does its job. Towels come out soft instead of stiff, and fabrics last longer.'),
         ('leaf', 'Chlorine and chloramine gone', 'Carbon filtration pulls the disinfectant taste and smell out at every tap, not just the kitchen.'),
-        ('shield', 'Lifetime warranty', 'Whole-home systems carry lifetime coverage on tanks, valves, electronics and components, plus a year of labor.'),
+        ('shield', 'A warranty in writing', 'Lifetime on tanks and dry parts, five years on the valve, board and media, one year of labor. The full terms are published, not buried.'),
         ('tag', 'Price-match promise', "Find the same certified system cheaper and we'll beat it. Flat installed pricing, in writing, before you commit.")
     ]
 
 # ---------------------------------------------------------------- warranty
 WARRANTY = {
-        'intro': 'Every whole-home system we install carries a lifetime warranty on equipment, plus one year of labor.',
-        'covered': [
-            ('Tanks', 'Mineral and brine tanks, covered for life against defects in materials and workmanship.'),
-            ('Valves', 'Control valves and bypass valves, covered for life.'),
-            ('Electronics', 'Control heads, timers and electronic components, covered for life.'),
-            ('Components', 'All remaining system components, covered for life against defects.'),
-            ('Labor', 'Labor on warranty repairs, covered for one year from the installation date.')
-        ],
-        'notes': [
-            'Coverage applies to systems bought from and installed by Orlando Water Pros.',
-            "The two reverse-osmosis systems we sell — the HW800 AlkaPro and the 5-Stage Reverse Osmosis system — are covered by the manufacturer's 1-year limited warranty instead of the lifetime terms above.",
-            "Coverage transfers to a new homeowner at the same service address, as long as the system hasn't been moved or modified.",
-            'Coverage is voided by unauthorized modification or DIY repair, operating the system outside manufacturer specifications, damage from skipped maintenance, or freeze damage.',
-            '"Lifetime" means the useful life of the original equipment at its original installation address — it doesn\'t transfer with the equipment if it\'s relocated to a different property.',
-            "Consumables are maintenance items and aren't covered. That means filter cartridges and media — see the service intervals below.",
-            'To make a claim, give us a call. We handle warranty service ourselves.'
-        ]
-    }
-
+    'intro': 'Every whole-home system we install carries a tiered limited warranty — lifetime on tanks and dry parts, five years on the control valve, circuit board and filtration media, and one year on labor.',
+    'covered': [
+        ('Storage & media tanks', 'Covered for life against defects in materials and workmanship.'),
+        ('System dry parts', 'Mechanical and non-consumable components that do not come into direct contact with water — covered for life.'),
+        ('Ceramic discs', 'The ceramic discs inside the rotary control valve — covered for life.'),
+        ('Control valve', 'Five years against defects in materials and workmanship.'),
+        ('Circuit board', 'System electronics and control board — five years.'),
+        ('Filtration media', 'Softening resin, carbon and other filtration media — five years.'),
+        ('Reverse osmosis systems', 'The HW800 AlkaPro and the 5-Stage Reverse Osmosis system — one year.'),
+        ('Labor', 'Labor arising from the original installation — one year from the date of purchase.')
+    ],
+    'notes': [
+        'Coverage applies to the original purchaser of a system bought from and installed by Orlando Water Pros.',
+        'Coverage is valid only where the system is installed, operated and maintained according to the manufacturer\u2019s guidelines.',
+        'Excluded: damage from improper installation, misuse, abuse, neglect, accidents, unauthorized modification or repair, acts of nature, and environmental factors such as flooding, freezing, or contaminant levels beyond what the system is specified to handle.',
+        'Also excluded: damage from water conditions that foul filters, resin or membranes. This is exactly why we size a system to your actual water rather than guessing at it.',
+        'Replacement parts are covered only for the remainder of the original warranty period. A repair does not extend or reset that period, and replacement parts must be fitted by an approved technician.',
+        'Labor to replace a component under the manufacturer warranty is not included.',
+        'This warranty is the exclusive remedy and is provided in place of all other warranties, express or implied, including any implied warranty of merchantability or fitness for a particular purpose. Total liability is limited to the original purchase price of the system; incidental, consequential and indirect damages are not covered.',
+        'To make a claim, give us a call. You will need proof of purchase and your installation documentation; manufacturer claims also require a return authorization number, which we obtain on your behalf.'
+    ]
+}

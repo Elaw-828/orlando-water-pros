@@ -46,7 +46,7 @@ def solution_page(p):
     )
     rows = [("Category", p["cat"])] + SPECS.get(p["slug"], [])
     if p["slug"] not in ("hw800-alkapro", "5-stage-reverse-osmosis"):
-        rows.append(("Warranty", "Lifetime on tanks, valves, electronics and components; 1 year labor"))
+        rows.append(("Warranty", "Lifetime on tanks and dry parts; 5 years valve, board and media; 1 year labor"))
     spec_rows = "".join(f'<tr><th scope="row">{k}</th><td>{v}</td></tr>' for k, v in rows)
     return head(
         f"{p['name']} | Orlando Water Pros",
@@ -138,7 +138,7 @@ def about():
         "Locally owned water filtration and softening for Orlando and Central Florida. How we quote, install and service.",
     ) + header("about") + page_hero(
         "About Orlando Water Pros",
-        "Water filtration and softening for Central Florida homes. Installed by licensed Florida plumbers, backed by a lifetime warranty.",
+        "Water filtration and softening for Central Florida homes. Installed by licensed Florida plumbers, backed by a written limited warranty.",
         '<a href="index.html">Home</a> / About',
     ) + f"""
 
@@ -305,7 +305,7 @@ def city_page(c):
     )
     return head(
         f"Water Softening & Filtration in {c['name']}, FL | Orlando Water Pros",
-        f"Water filtration and softening in {c['name']}, {c['county']}. Typical hardness {c['hard']} grains per gallon. Free quotes, lifetime warranty.",
+        f"Water filtration and softening in {c['name']}, {c['county']}. Typical hardness {c['hard']} grains per gallon. Free quotes, licensed installation.",
         depth=1,
     ) + header("areas", depth=1) + page_hero(
         f"Water filtration &amp; softening in {c['name']}, FL",
@@ -378,7 +378,7 @@ def warranty_page():
     notes = "".join(f"<li>{n}</li>" for n in WARRANTY["notes"])
     return head(
         "Warranty | Orlando Water Pros",
-        "Lifetime warranty on whole-home system tanks, valves, electronics and components, plus one year of labor.",
+        "Lifetime coverage on tanks and dry parts, five years on the control valve, board and media, one year of labor.",
     ) + header("") + page_hero(
         "Warranty",
         WARRANTY["intro"],
