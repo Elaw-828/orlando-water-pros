@@ -377,7 +377,7 @@ PRODUCTS = [
             'tag': 'Most Popular',
             'img': 'complete-home-system.webp',
             'photo': 'Complete home system with tankless RO',
-            'short': 'Whole-home softening and carbon filtration paired with the HW800 AlkaPro tankless RO. One installation covers every tap in the house.',
+            'short': 'Whole-home softening and carbon filtration paired with the HW800 AlkaPro tankless RO — treated water at every tap, plus reverse osmosis at the kitchen sink.',
             'who': 'City-water homes that want one system to handle hardness, chlorine and drinking water together.',
             'bullets': [
                 '48,000-grain softening capacity in a single mixed-resin tank',
@@ -581,7 +581,7 @@ PRODUCTS = [
             'who': 'Homes on well water, older infrastructure, or any system worth protecting.',
             'bullets': [
                 '20 inch by 4.5 inch cartridge housing',
-                '15 GPM flow rate — no restriction on household pressure',
+                '15 GPM flow rate',
                 '10,000 gallon cartridge life',
                 'Removes sand, silt, rust and particulates at the main line',
                 'Protects softening resin, carbon beds and RO membranes from fouling',
