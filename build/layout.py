@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Page chrome: <head>, top bar, header/nav, footer, and small components."""
 
-from sitedata import SITE, CITIES, PRODUCTS, RESOURCES
+from sitedata import SITE, CITIES, PRODUCTS
 
 # ---------------------------------------------------------------- inline icons
 ICON = {
@@ -77,15 +77,12 @@ def header(active="", depth=0):
     city_items = "".join(
         f'<a href="{up}service-areas/{c["slug"]}.html">{c["name"]}</a>' for c in CITIES
     )
-    res_items = "".join(
-        f'<a href="{up}resources/{r["slug"]}.html">{r["title"]}</a>' for r in RESOURCES
-    )
     return f"""<div class="topbar">
   <div class="wrap">
     <div class="topbar-note">{ICON['pin']}&nbsp;Serving Orange, Seminole, Osceola, Lake &amp; Volusia counties</div>
     <div class="topbar-links">
       <a href="{up}quote.html">Free quote</a>
-      <a href="mailto:{SITE['email']}">{SITE['email']}</a>
+      <a href="tel:{SITE['phone_href']}">{ICON['phone']}&nbsp;{SITE['phone_display']}</a>
     </div>
   </div>
 </div>
@@ -106,19 +103,12 @@ def header(active="", depth=0):
           <a href="{up}service-areas.html"><strong>All areas →</strong></a>
         </div>
       </div>
-      <div class="has-menu">
-        <button type="button" aria-expanded="false">Resources {ICON['chev']}</button>
-        <div class="menu">
-          {res_items}
-          <a href="{up}resources.html"><strong>All articles →</strong></a>
-        </div>
-      </div>
       {_nav_link("About", "about.html", active, "about", up)}
       {_nav_link("Contact", "contact.html", active, "contact", up)}
     </nav>
 
     <div class="header-cta">
-      <a class="header-phone" href="mailto:{SITE['email']}">{ICON['mail']}<span class="lbl">{SITE['email']}</span></a>
+      <a class="header-phone" href="tel:{SITE['phone_href']}">{ICON['phone']}<span class="lbl">{SITE['phone_display']}</span></a>
       <a class="btn btn-primary btn-sm" href="{up}quote.html">Get a Free Quote</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"><span></span></button>
     </div>
@@ -141,7 +131,7 @@ def cta_band(depth=0, heading=None, text=None):
       </div>
       <div class="btn-row">
         <a class="btn btn-primary" href="{up}quote.html">Get a Free Quote</a>
-        <a class="btn btn-ghost" href="mailto:{SITE['email']}">{ICON['mail']} Email Us</a>
+        <a class="btn btn-ghost" href="tel:{SITE['phone_href']}">{ICON['phone']} {SITE['phone_display']}</a>
       </div>
     </div>
   </div>
@@ -157,9 +147,6 @@ def footer(depth=0):
     top_cities = "".join(
         f'<li><a href="{up}service-areas/{c["slug"]}.html">{c["name"]}</a></li>' for c in CITIES[:7]
     )
-    top_res = "".join(
-        f'<li><a href="{up}resources/{r["slug"]}.html">{r["title"]}</a></li>' for r in RESOURCES[:5]
-    )
     return f"""<footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -170,6 +157,7 @@ def footer(depth=0):
         </a>
         <p>Water filtration and softening for homes across Orange, Seminole, Osceola, Lake and Volusia counties.</p>
         <p class="footer-contact">
+          <a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a><br>
           <a href="mailto:{SITE['email']}">{SITE['email']}</a>
         </p>
         <div class="socials">
@@ -185,10 +173,6 @@ def footer(depth=0):
       <div>
         <h4>Service Areas</h4>
         <ul>{top_cities}<li><a href="{up}service-areas.html">All areas</a></li></ul>
-      </div>
-      <div>
-        <h4>Resources</h4>
-        <ul>{top_res}<li><a href="{up}resources.html">All articles</a></li></ul>
       </div>
       <div>
         <h4>Company</h4>
@@ -245,7 +229,7 @@ def quote_form(depth=0):
     """First/last name, phone, email, zip, best time to call, optional message."""
     return """<form class="form-card" data-quote-form>
   <h3>Get your free quote</h3>
-  <p class="muted" style="margin-bottom:20px">Tell us how to reach you and we'll come back with a price. Usually the same business day.</p>
+  <p class="muted" style="margin-bottom:20px">Tell us how to reach you and we'll call you back with a price. Usually the same business day.</p>
   <div class="field-row">
     <div class="field"><label for="fn">First name</label><input id="fn" name="first_name" autocomplete="given-name" required></div>
     <div class="field"><label for="ln">Last name</label><input id="ln" name="last_name" autocomplete="family-name" required></div>
@@ -280,8 +264,9 @@ def quote_form(depth=0):
 def contact_panel(depth=0):
     return f"""<div class="contact-panel">
   <h3>Prefer to talk it through?</h3>
-  <p style="color:#b9c9de;margin-bottom:22px">Send us a message and you'll hear back from someone local who knows Central Florida water. Not a national call center.</p>
+  <p style="color:#b9c9de;margin-bottom:22px">Call and you'll reach someone local who knows Central Florida water. Not a national call center.</p>
   <ul class="contact-list">
+    <li><span class="ci">{ICON['phone']}</span><div><strong>Call us</strong><a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a></div></li>
     <li><span class="ci">{ICON['mail']}</span><div><strong>Email</strong><a href="mailto:{SITE['email']}">{SITE['email']}</a></div></li>
     <li><span class="ci">{ICON['pin']}</span><div><strong>Service area</strong><span>Orange, Seminole, Osceola, Lake &amp; Volusia counties</span></div></li>
     <li><span class="ci">{ICON['clock']}</span><div><strong>Hours</strong><span>{SITE['hours']}</span></div></li>

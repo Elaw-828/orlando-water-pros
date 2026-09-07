@@ -856,3 +856,69 @@ a.chip:hover { border-color: var(--aqua-500); color: var(--aqua-600); }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- EWG tap water band (city pages) ---------- */
+.ewg-band {
+  background: var(--navy-900);
+  color: #c8d6e8;
+  padding: clamp(52px, 6.5vw, 88px) 0;
+}
+.ewg-tag {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: #ff8b8b;
+  background: rgba(255, 107, 107, .13);
+  border: 1px solid rgba(255, 107, 107, .30);
+  padding: 6px 13px; border-radius: 999px;
+  margin-bottom: 18px;
+}
+.ewg-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 26px; flex-wrap: wrap; margin-bottom: 30px;
+}
+.ewg-head h2 { color: #fff; margin-bottom: .4em; }
+.ewg-head p { color: #a9bdd8; max-width: 60ch; margin: 0; font-size: 1.02rem; }
+.ewg-head strong { color: #fff; }
+.ewg-btn {
+  display: inline-flex; align-items: center; gap: .5em; flex: 0 0 auto;
+  font-family: var(--font-head); font-weight: 700; font-size: .92rem;
+  color: #eaf2fb;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 10px; padding: 13px 20px;
+  white-space: nowrap;
+}
+.ewg-btn:hover { background: rgba(255,255,255,.10); color: #fff; border-color: rgba(255,255,255,.5); }
+.ewg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.ewg-card {
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.ewg-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.ewg-kind {
+  font-size: .68rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: #ff9d9d; background: rgba(255,107,107,.12);
+  border: 1px solid rgba(255,107,107,.26);
+  padding: 4px 9px; border-radius: 999px;
+}
+.ewg-mult { font-family: var(--font-head); font-weight: 800; font-size: 1.32rem; color: #ff7b7b; }
+.ewg-card h3 { color: #fff; font-size: 1.02rem; margin: 0 0 14px; }
+.ewg-figs {
+  display: flex; gap: 26px; flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.10); padding-top: 13px;
+}
+.ewg-figs .k { display: block; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: #7f97b8; margin-bottom: 3px; }
+.ewg-figs .v { font-family: var(--font-head); font-weight: 700; font-size: .96rem; color: #fff; }
+.ewg-figs .v.ok { color: #4ee0a8; }
+.ewg-note { margin-top: 24px; font-size: .84rem; color: #7f97b8; max-width: 88ch; }
+
+/* ---------- service & maintenance table ---------- */
+table.compare.maint td.num-cell {
+  font-family: var(--font-head); font-weight: 700; color: var(--aqua-600); white-space: nowrap;
+}
+table.compare.maint tbody th { vertical-align: top; }
+
+@media (max-width: 1080px) { .ewg-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px)  { .ewg-grid { grid-template-columns: 1fr; } .ewg-btn { width: 100%; justify-content: center; } }

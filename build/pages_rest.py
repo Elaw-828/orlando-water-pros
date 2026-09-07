@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """Interior pages: solutions, about, contact, quote, service areas, resources, legal."""
 
-from sitedata import (SITE, CITIES, PRODUCTS, PRODUCT_CATS, RESOURCES,
-                      FAQS, CERTS, WHY, WARRANTY, SPECS)
+from sitedata import (SITE, CITIES, PRODUCTS, PRODUCT_CATS, FAQS, CERTS,
+                      WHY, WARRANTY, SPECS, MAINTENANCE)
 from layout import (head, header, footer, cta_band, quote_form, contact_panel,
                     page_hero, ICON)
 from pages_home import product_card, product_media
@@ -27,7 +27,10 @@ def solutions_index():
         "Our Solutions",
         "Whole-home treatment, well water systems, drinking water and add-ons. Which one you need depends on what's coming into your house.",
         '<a href="index.html">Home</a> / Our Solutions',
-    ) + f"""<section class="section"><div class="wrap">{''.join(blocks)}</div></section>""" + cta_band() + footer()
+    ) + f"""<section class="section"><div class="wrap">{''.join(blocks)}</div></section>""" + cta_band(
+        heading="Not sure which system is right for you?",
+        text="We'll recommend the exact system your home needs — no pressure, no obligation.",
+    ) + footer()
 
 
 def solution_page(p):
@@ -62,7 +65,7 @@ def solution_page(p):
       <p class="who-line"><strong>Best for:</strong> {p['who']}</p>
       <div class="btn-row mt-m">
         <a class="btn btn-primary" href="../quote.html">Get a Free Quote</a>
-        <a class="btn btn-outline" href="mailto:{SITE['email']}">{ICON['mail']} Email Us</a>
+        <a class="btn btn-outline" href="tel:{SITE['phone_href']}">{ICON['phone']} {SITE['phone_display']}</a>
       </div>
     </div>
   </div>
@@ -117,7 +120,7 @@ def about():
     )
     steps = [
         ("Tell us about your home",
-         "Send the form or email us. We'll ask where your water comes from, how many people live there, and what you're noticing at the tap."),
+         "Give us a call, or send the form and we'll call you. We'll ask where your water comes from, how many people live there, and what you're noticing at the tap."),
         ("A recommendation, and the reasoning",
          "We tell you which system fits and why, including when a cheaper one would serve you just as well."),
         ("A flat installed price in writing",
@@ -125,7 +128,7 @@ def about():
         ("Installation by a licensed Florida plumber",
          "Two to four hours for most systems. We leave the space cleaner than we found it."),
         ("Service afterward",
-         "We send filter reminders when they're due and handle warranty service ourselves. Just email us directly."),
+         "We send filter reminders when they're due and handle warranty service ourselves. One call, straight to us."),
     ]
     step_html = "".join(f"""<div class="card"><div class="card-body">
       <span class="card-tag">Step {n+1}</span><h3 style="font-size:1.08rem">{t}</h3><p>{d}</p>
@@ -169,7 +172,7 @@ def about():
 def quote_page():
     return head(
         "Get a Free Quote | Orlando Water Pros",
-        "Request a free quote on water filtration or softening for your Central Florida home. Usually a same-business-day response.",
+        f"Request a free quote on water filtration or softening for your Central Florida home. Call {SITE['phone_display']} or send the form.",
     ) + header("quote") + page_hero(
         "Get a free quote",
         "A flat installed price, in writing, before anything is ordered. Serving Orange, Seminole, Osceola, Lake and Volusia counties.",
@@ -202,7 +205,7 @@ def quote_page():
 def contact():
     return head(
         "Contact | Orlando Water Pros",
-        "Contact Orlando Water Pros for water filtration and softening across Central Florida — request a free quote online.",
+        f"Contact Orlando Water Pros for water filtration and softening across Central Florida. Call {SITE['phone_display']} for a free quote.",
     ) + header("contact") + page_hero(
         "Get in touch",
         "Serving Orange, Seminole, Osceola, Lake and Volusia counties. Same-day response on weekdays.",
@@ -236,8 +239,54 @@ def areas_index():
         "We cover Orange, Seminole, Osceola, Lake and Volusia counties. Pick your city for local water conditions.",
         '<a href="index.html">Home</a> / Service Areas',
     ) + f"""<section class="section"><div class="wrap"><div class="grid g3">{cards}</div>
-  <p class="muted mt-l center">Not on the list? <a href="quote.html">Send us a quick message</a> — we cover more of Central Florida than we've listed here.</p>
+  <p class="muted mt-l center">Not on the list? Call {SITE['phone_display']} — we cover more of Central Florida than we've listed here.</p>
 </div></section>""" + cta_band() + footer()
+
+
+def _ewg_kind(name, effect):
+    if "PF" in name and ("PFHxS" in name or "PFOS" in name or "PFOA" in name):
+        return "Forever chemical"
+    if "cancer" in (effect or ""):
+        return "Cancer risk"
+    if "thyroid" in (effect or ""):
+        return "Thyroid"
+    return "Contaminant"
+
+
+def ewg_section(c, depth=1):
+    """Real figures from the EWG Tap Water Database for the utility serving this
+    city. Framed carefully: these utilities meet federal law — EWG's guidelines
+    are stricter than the legal limits, and the page says so."""
+    e = c["ewg"]
+    cards = "".join(f"""<div class="ewg-card">
+      <div class="ewg-card-top"><span class="ewg-kind">{_ewg_kind(n, eff)}</span><span class="ewg-mult">{times}</span></div>
+      <h3>{n}</h3>
+      <div class="ewg-figs">
+        <div><span class="k">Detected</span><span class="v">{det}</span></div>
+        <div><span class="k">EWG guideline</span><span class="v ok">{guide}</span></div>
+      </div>
+    </div>""" for n, det, guide, times, eff in e["top"])
+    return f"""
+<section class="ewg-band">
+  <div class="wrap">
+    <span class="ewg-tag">EWG Tap Water Database</span>
+    <div class="ewg-head">
+      <div>
+        <h2>What&rsquo;s in {c['name']}&rsquo;s tap water?</h2>
+        <p>{e['utility']} water meets all federal legal standards &mdash; but the Environmental Working Group
+        found <strong>{e['over']} contaminants</strong> above its own health guidelines, out of
+        {e['total']} detected.</p>
+      </div>
+      <a class="ewg-btn" href="{e['url']}" target="_blank" rel="noopener">View full EWG report {ICON['arrow']}</a>
+    </div>
+    <div class="ewg-grid">{cards}</div>
+    <p class="ewg-note">Figures published by the Environmental Working Group for {e['utility']}.
+    EWG&rsquo;s health guidelines are set well below federal legal limits, so a result above a guideline
+    is not a violation &mdash; it is a stricter benchmark. Follow the link for the full dataset and
+    EWG&rsquo;s methodology.</p>
+  </div>
+</section>
+"""
 
 
 def city_page(c):
@@ -283,13 +332,14 @@ def city_page(c):
         <p>The hardness figures here are typical published ranges for the area's supply. They're a starting point, not a measurement of your house. Water changes between neighborhoods depending on which well field or plant serves you, and on a private well it changes from one property to the next.</p>
         <div class="btn-row mt-m">
           <a class="btn btn-primary" href="../quote.html">Get a Free Quote in {c['name']}</a>
-          <a class="btn btn-outline" href="mailto:{SITE['email']}">{ICON['mail']} Email Us</a>
+          <a class="btn btn-outline" href="tel:{SITE['phone_href']}">{ICON['phone']} {SITE['phone_display']}</a>
         </div>
       </div>
       <div class="split-media"><div class="ph" data-label="Photo: an install in {c['name']}"></div></div>
     </div>
   </div>
 </section>
+""" + ewg_section(c) + f"""
 
 <section class="section section-alt">
   <div class="wrap">
@@ -315,61 +365,13 @@ def city_page(c):
 """ + cta_band(depth=1) + footer(depth=1)
 
 
-# ------------------------------------------------------------------ resources
-def resources_index():
-    cards = "".join(f"""<a class="card" href="resources/{r['slug']}.html">
-  <div class="ph ph-wide" data-label="Article image"></div>
-  <div class="card-body"><h3 style="font-size:1.1rem">{r['title']}</h3><p>{r['blurb']}</p>
-  <div class="card-foot"><span class="card-price">Read article</span>{ICON['arrow']}</div></div>
-</a>""" for r in RESOURCES)
-    return head(
-        "Water Resources | Orlando Water Pros",
-        "Plain-English guides to hard water, well water iron and sulfur, chloramine and softener sizing in Central Florida.",
-    ) + header("resources") + page_hero(
-        "Water, explained",
-        "No sales pitch. Just what's in Central Florida water, why it's there, and what fixes it.",
-        '<a href="index.html">Home</a> / Resources',
-    ) + f"""<section class="section"><div class="wrap"><div class="grid g3">{cards}</div></div></section>""" + cta_band() + footer()
-
-
-def article_page(r):
-    body = "".join(f"<p>{para}</p>" for para in r["body"])
-    others = [x for x in RESOURCES if x["slug"] != r["slug"]][:3]
-    rel = "".join(
-        f'<a class="card" href="{x["slug"]}.html"><div class="card-body">'
-        f'<h3 style="font-size:1.02rem">{x["title"]}</h3><p>{x["blurb"]}</p></div></a>'
-        for x in others
-    )
-    return head(
-        f"{r['title']} | Orlando Water Pros",
-        r["blurb"], depth=1,
-    ) + header("resources", depth=1) + page_hero(
-        r["title"], r["blurb"],
-        '<a href="../index.html">Home</a> / <a href="../resources.html">Resources</a> / ' + r["title"],
-    ) + f"""
-<section class="section">
-  <div class="wrap wrap-narrow">
-    <div class="ph ph-wide" data-label="Article header image" style="border-radius:var(--radius-l);margin-bottom:34px"></div>
-    <div class="article-body">{body}</div>
-    <div class="cta-band mt-l">
-      <div><h2 style="font-size:1.35rem">Ready for a price?</h2>
-      <p>A flat installed price on the system your home needs, in writing.</p></div>
-      <a class="btn btn-primary" href="../quote.html">Get a Free Quote</a>
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt">
-  <div class="wrap">
-    <div class="section-head center"><h2>More reading</h2></div>
-    <div class="grid g3">{rel}</div>
-  </div>
-</section>
-""" + footer(depth=1)
-
-
 # ------------------------------------------------------------------ warranty
 def warranty_page():
+    rows_m = "".join(
+        f'<tr><th scope="row">{item}<span class="row-sub">{applies}</span></th>'
+        f'<td>{interval}</td><td class="num-cell">{price or "Quoted on the call"}</td></tr>'
+        for item, interval, price, applies in MAINTENANCE
+    )
     rows = "".join(
         f'<tr><th scope="row">{k}</th><td>{v}</td></tr>' for k, v in WARRANTY["covered"]
     )
@@ -395,9 +397,20 @@ def warranty_page():
     <h2 class="mt-l">Terms and conditions</h2>
     <ul class="term-list">{notes}</ul>
 
+    <h2 class="mt-l">Service and replacement</h2>
+    <p>Typical intervals, with what we charge. Timing varies with your water quality and how much
+    you use, so treat these as averages rather than a schedule.</p>
+    <div class="table-scroll mt-m">
+      <table class="compare spec maint">
+        <thead><tr><th scope="col">Item</th><th scope="col">Typical interval</th><th scope="col">Cost</th></tr></thead>
+        <tbody>{rows_m}</tbody>
+      </table>
+    </div>
+
     <h2 class="mt-l">Making a claim</h2>
-    <p>Email <a href="mailto:{SITE['email']}">{SITE['email']}</a> with your installation date handy.
-    We handle warranty service directly rather than routing it through a national dispatch queue.</p>
+    <p>Call <a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a> with your installation date handy,
+    or email <a href="mailto:{SITE['email']}">{SITE['email']}</a>. We handle warranty service directly rather
+    than routing it through a national dispatch queue.</p>
   </div>
 </section>
 """ + cta_band() + footer()

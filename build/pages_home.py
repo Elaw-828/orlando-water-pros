@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Home page."""
 
-from sitedata import (SITE, CITIES, PRODUCTS, RESOURCES, FAQS, CERTS, WHY,
+from sitedata import (SITE, CITIES, PRODUCTS, FAQS, CERTS, WHY,
                       COMPARE_COLS, COMPARE_ROWS)
 from layout import head, header, footer, cta_band, quote_form, contact_panel, ICON
 
@@ -253,7 +253,7 @@ def build():
         <a class="btn btn-primary" href="quote.html">Get a Free Quote</a>
         <a class="btn btn-ghost" href="solutions.html">See Solutions</a>
       </div>
-      <p class="hero-note">Prefer email? <a href="mailto:{SITE['email']}">{SITE['email']}</a></p>
+      <p class="hero-note">Or call {SITE['phone_display']} — you'll reach someone local.</p>
     </div>
   </div>
 </section>
