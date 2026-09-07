@@ -36,26 +36,34 @@ def collect():
 
 
 def inline_images(pages):
-    """Collect assets/img/* as data URIs once, and point pages at them by name."""
+    """Collect assets/img/** as data URIs once, and point pages at them by
+    relative name. Only images a page actually references are embedded, so
+    export-only files (large PNG logo exports) stay out of the bundle."""
     import base64
     import mimetypes
     img_dir = os.path.join(ROOT, "assets", "img")
     uris = {}
     if not os.path.isdir(img_dir):
         return uris
-    for name in sorted(os.listdir(img_dir)):
-        path = os.path.join(img_dir, name)
-        if not os.path.isfile(path):
-            continue
-        mime = mimetypes.guess_type(name)[0] or "application/octet-stream"
-        with open(path, "rb") as fh:
-            uris[name] = f"data:{mime};base64," + base64.b64encode(fh.read()).decode()
+    for dirpath, _dirnames, filenames in os.walk(img_dir):
+        for fn in sorted(filenames):
+            path = os.path.join(dirpath, fn)
+            name = os.path.relpath(path, img_dir).replace(os.sep, "/")
+            mime = mimetypes.guess_type(fn)[0] or "application/octet-stream"
+            if name.endswith(".svg"):
+                mime = "image/svg+xml"
+            with open(path, "rb") as fh:
+                uris[name] = f"data:{mime};base64," + base64.b64encode(fh.read()).decode()
+
+    used = set()
     for page in pages.values():
         for name in uris:
             for prefix in ("../", ""):
-                page["h"] = page["h"].replace(
-                    f'src="{prefix}assets/img/{name}"', f'data-img="{name}"')
-    return uris
+                token = f'src="{prefix}assets/img/{name}"'
+                if token in page["h"]:
+                    page["h"] = page["h"].replace(token, f'data-img="{name}"')
+                    used.add(name)
+    return {k: v for k, v in uris.items() if k in used}
 
 
 def main():

@@ -52,6 +52,9 @@ def head(title, desc, depth=0, extra=""):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
+<link rel="icon" href="{up}assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{up}assets/img/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{up}assets/img/logo/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -89,12 +92,9 @@ def header(active="", depth=0):
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="{up}index.html">
-      <span class="brand-mark" aria-hidden="true">{ICON['drop'].replace('<svg', '<svg stroke="#fff"')}</span>
-      <span class="brand-text">
-        <span class="brand-name">Orlando Water Pros</span>
-        <span class="brand-sub">Filtration &amp; Softening</span>
-      </span>
+    <a class="brand" href="{up}index.html" aria-label="Orlando Water Pros — home">
+      <img class="brand-logo" src="{up}assets/img/logo/horizontal.svg"
+           alt="Orlando Water Pros" width="483" height="176">
     </a>
 
     <nav class="nav" id="primary-nav" aria-label="Main">
@@ -164,12 +164,9 @@ def footer(depth=0):
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="{up}index.html">
-          <span class="brand-mark" aria-hidden="true">{ICON['drop'].replace('<svg', '<svg stroke="#fff"')}</span>
-          <span class="brand-text">
-            <span class="brand-name">Orlando Water Pros</span>
-            <span class="brand-sub">Filtration &amp; Softening</span>
-          </span>
+        <a class="brand" href="{up}index.html" aria-label="Orlando Water Pros — home">
+          <img class="brand-logo brand-logo-footer" src="{up}assets/img/logo/horizontal-dark.svg"
+               alt="Orlando Water Pros" width="483" height="176">
         </a>
         <p>Water filtration and softening for homes across Orange, Seminole, Osceola, Lake and Volusia counties.</p>
         <p class="footer-contact">

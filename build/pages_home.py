@@ -83,30 +83,30 @@ DAMAGE_ART = {
                  '<path d="M9.4 5V2.9M14.6 5V2.9"/>'
                  '<circle cx="12" cy="11" r="1.7"/>'
                  '<path d="M6.4 16.4h11.2v2.1a2.5 2.5 0 0 1-2.5 2.5H8.9a2.5 2.5 0 0 1-2.5-2.5z" '
-                 'fill="var(--amber-500)" stroke="none"/>'),
+                 'fill="var(--aqua-500)" stroke="none"/>'),
   # washing machine: square body, large drum
   "washer": _art('<rect x="3.9" y="3" width="16.2" height="18" rx="3"/>'
                  '<circle cx="12" cy="14" r="4.7"/>'
                  '<circle cx="7.4" cy="6.4" r="1.05" fill="currentColor" stroke="none"/>'
-                 '<path d="M12 9.3a4.7 4.7 0 0 1 4.7 4.7" stroke="var(--amber-500)" stroke-width="2.3"/>'),
+                 '<path d="M12 9.3a4.7 4.7 0 0 1 4.7 4.7" stroke="var(--aqua-500)" stroke-width="2.3"/>'),
   # tapered tumbler with spots on the glass
   "glass":  _art('<path d="M6.9 3.4h10.2l-1.45 16.3a1.9 1.9 0 0 1-1.9 1.7h-3.5a1.9 1.9 0 0 1-1.9-1.7z"/>'
-                 '<circle cx="10.6" cy="8.5" r="1.25" fill="var(--amber-500)" stroke="none"/>'
-                 '<circle cx="13.7" cy="12" r="1.05" fill="var(--amber-500)" stroke="none"/>'
-                 '<circle cx="11" cy="15.6" r="0.9" fill="var(--amber-500)" stroke="none"/>'),
+                 '<circle cx="10.6" cy="8.5" r="1.25" fill="var(--aqua-500)" stroke="none"/>'
+                 '<circle cx="13.7" cy="12" r="1.05" fill="var(--aqua-500)" stroke="none"/>'
+                 '<circle cx="11" cy="15.6" r="0.9" fill="var(--aqua-500)" stroke="none"/>'),
   # pump dispenser: spout arm makes the silhouette unmistakable
   "bottle": _art('<path d="M13.2 3.1h2.9v2.4h-2.6"/>'
                  '<path d="M11 5.5h2.2v2.1H11z"/>'
                  '<rect x="7.3" y="7.6" width="9.4" height="13.4" rx="2.5"/>'
                  '<path d="M7.3 14.4h9.4v4.1a2.5 2.5 0 0 1-2.5 2.5H9.8a2.5 2.5 0 0 1-2.5-2.5z" '
-                 'fill="var(--amber-500)" stroke="none"/>'),
+                 'fill="var(--aqua-500)" stroke="none"/>'),
   # droplet leaving a rust ring behind
   "rust":   _art('<path d="M12 2.9s3.9 4.4 3.9 7.3a3.9 3.9 0 0 1-7.8 0c0-2.9 3.9-7.3 3.9-7.3z"/>'
-                 '<ellipse cx="12" cy="19.3" rx="6.1" ry="2.3" fill="var(--amber-500)" stroke="none"/>'),
+                 '<ellipse cx="12" cy="19.3" rx="6.1" ry="2.3" fill="var(--aqua-500)" stroke="none"/>'),
   # odor rising off the water line
   "odor":   _art('<path d="M3.4 19.4c2.1-1.5 4-.3 6.1 0 2.2.3 4.2-1.2 6.3-.6 1.8.5 3.5 1.2 5.2.5"/>'
                  '<path d="M7.9 13.9c0-2.5 2.5-2.5 2.5-5M13.6 12.6c0-2.5 2.5-2.5 2.5-5" '
-                 'stroke="var(--amber-500)" stroke-width="2.1"/>'),
+                 'stroke="var(--aqua-500)" stroke-width="2.1"/>'),
 }
 
 # The damage that costs money but never announces itself.
@@ -173,9 +173,8 @@ def compare_table():
     <tbody>{rows}</tbody>
   </table>
 </div>
-<p class="table-note"><strong>Before publishing:</strong> every cell making a specific factual claim about a named
-company must be substantiated and kept on file. "Varies by dealer" is used where terms genuinely differ between
-franchise locations — replace it only with terms you can document.</p>"""
+<p class="table-note">Our own terms are shown in full. Competitor terms vary by dealer and location, so
+we list them as "varies" rather than guess — confirm current terms directly with any company you're considering.</p>"""
 
 
 def water_table():
@@ -245,7 +244,7 @@ def build():
   <div class="hero-scrim"></div>
   <div class="wrap">
     <div class="hero-inner">
-      <span class="eyebrow" style="color:var(--amber-500)">Orlando &amp; Central Florida</span>
+      <span class="eyebrow" style="color:var(--aqua-500)">Orlando &amp; Central Florida</span>
       <h1>Water Filtration &amp; Softening in the Orlando Area</h1>
       <p class="hero-sub">Central Florida water is hard. Your house is paying for it.</p>
       <p class="hero-lede">Homes across Orange, Seminole, Osceola, Lake and Volusia counties test between 10 and 18 grains per gallon. That's scale in your water heater, film on your shower door, and laundry that never comes out soft. We fix it, usually in a single afternoon.</p>

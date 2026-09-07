@@ -149,7 +149,9 @@ def about():
 
 <section class="section">
   <div class="wrap">
-    <div class="section-head center"><span class="eyebrow">Credentials</span><h2>Certified equipment, licensed installation</h2></div>
+    <div class="section-head center">
+      <img class="seal" src="assets/img/logo/badge.svg" alt="" width="512" height="512" loading="lazy">
+      <span class="eyebrow">Credentials</span><h2>Certified equipment, licensed installation</h2></div>
     <div class="cert-grid">{certs}</div>
   </div>
 </section>
@@ -392,13 +394,6 @@ def warranty_page():
 
     <h2 class="mt-l">Terms and conditions</h2>
     <ul class="term-list">{notes}</ul>
-
-    <div class="notice mt-l">
-      <strong>Before publishing:</strong> this page states the coverage as described to us, but the highlighted
-      items still need your exact terms. Whatever appears here must match your customer paperwork and what your
-      salespeople say — an advertised warranty that doesn't match the written one is a consumer protection problem,
-      and "lifetime" in particular has to be defined. Have an attorney review this page.
-    </div>
 
     <h2 class="mt-l">Making a claim</h2>
     <p>Email <a href="mailto:{SITE['email']}">{SITE['email']}</a> with your installation date handy.
