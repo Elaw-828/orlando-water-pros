@@ -4,7 +4,7 @@
 from sitedata import (SITE, CITIES, PRODUCTS, PRODUCT_CATS, FAQS, CERTS,
                       WHY, WARRANTY, SPECS, MAINTENANCE)
 from layout import (head, header, footer, cta_band, quote_form, contact_panel,
-                    page_hero, ICON, asset)
+                    page_hero, ICON)
 from pages_home import product_card, product_media
 
 
@@ -120,7 +120,9 @@ def about():
     )
     steps = [
         ("Tell us about your home",
-         "Give us a call, or send the form and we'll call you. We'll ask where your water comes from, how many people live there, and what you're noticing at the tap."),
+         ("Give us a call, or send the form and we'll call you." if SITE.get("show_forms", True)
+          else "Give us a call.")
+         + " We'll ask where your water comes from, how many people live there, and what you're noticing at the tap."),
         ("A recommendation, and the reasoning",
          "We tell you which system fits and why, including when a cheaper one would serve you just as well."),
         ("A flat installed price in writing",
@@ -153,7 +155,7 @@ def about():
 <section class="section">
   <div class="wrap">
     <div class="section-head center">
-      <img class="seal" src="{asset('assets/img/logo/badge.svg')}" alt="" width="220" height="220" loading="lazy">
+      <img class="seal" src="assets/img/logo/badge.svg" alt="" width="512" height="512" loading="lazy">
       <span class="eyebrow">Credentials</span><h2>Certified equipment, licensed installation</h2></div>
     <div class="cert-grid">{certs}</div>
   </div>
@@ -172,7 +174,8 @@ def about():
 def quote_page():
     return head(
         "Get a Free Quote | Orlando Water Pros",
-        f"Request a free quote on water filtration or softening for your Central Florida home. Call {SITE['phone_display']} or send the form.",
+        f"Request a free quote on water filtration or softening for your Central Florida home. Call {SITE['phone_display']}."
+        + (" Or send the form." if SITE.get("show_forms", True) else ""),
     ) + header("quote") + page_hero(
         "Get a free quote",
         "A flat installed price, in writing, before anything is ordered. Serving Orange, Seminole, Osceola, Lake and Volusia counties.",
@@ -189,8 +192,8 @@ def quote_page():
   <div class="wrap wrap-narrow">
     <div class="section-head center"><h2>What happens next</h2></div>
     <div class="grid g3">
-      <div class="card"><div class="card-body"><span class="card-tag">1</span><h3 style="font-size:1.02rem">We call you back</h3>
-      <p>At the time you picked. Usually the same business day.</p></div></div>
+      <div class="card"><div class="card-body"><span class="card-tag">1</span><h3 style="font-size:1.02rem">{"We call you back" if SITE.get("show_forms", True) else "We pick up"}</h3>
+      <p>{"At the time you picked. Usually the same business day." if SITE.get("show_forms", True) else "You reach someone local, not a queue. Same business day if we miss you."}</p></div></div>
       <div class="card"><div class="card-body"><span class="card-tag">2</span><h3 style="font-size:1.02rem">We talk through your water</h3>
       <p>Where it comes from, who's using it, and what you're noticing.</p></div></div>
       <div class="card"><div class="card-body"><span class="card-tag">3</span><h3 style="font-size:1.02rem">You get a price in writing</h3>

@@ -56,7 +56,8 @@ HERO_ART = """<svg class="hero-art" viewBox="0 0 1440 700" preserveAspectRatio="
 
 STEPS = [
     ("Tell us about your home",
-     "Call, text, or send the form. We'll ask where your water comes from, how many people live there, and what you're noticing at the tap. Two minutes."),
+     ("Call, text, or send the form." if SITE.get("show_forms", True) else "Give us a call.")
+     + " We'll ask where your water comes from, how many people live there, and what you're noticing at the tap. Two minutes."),
     ("Get your price in writing",
      "One flat installed price, before anything is ordered. Our price-match promise stands behind it. No in-home pressure close, ever."),
     ("We install it",

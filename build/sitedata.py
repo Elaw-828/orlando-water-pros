@@ -16,7 +16,12 @@ SITE = {
         # Temporary, installed for GHL's A2P 10DLC verification.
         # Set chat_widget to False and rebuild to remove it from every page.
         'chat_widget': True,
-        'chat_widget_id': '6aa4cb10316a723a13d93bef'
+        'chat_widget_id': '6aa4cb10316a723a13d93bef',
+
+        # Quote/contact forms are held back while the widget is up, so the
+        # widget is the only capture path during verification. These two flip
+        # together: widget off -> show_forms back to True.
+        'show_forms': False
     }
 
 # ---------------------------------------------------------------- service area

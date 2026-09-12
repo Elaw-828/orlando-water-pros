@@ -239,7 +239,22 @@ def page_hero(title, sub, crumbs_html=""):
 
 
 def quote_form(depth=0):
-    """First/last name, phone, email, zip, best time to call, optional message."""
+    """The quote form — or, while SITE["show_forms"] is False, a call-first
+    panel in its place. Held back during A2P verification so the chat widget
+    is the only capture path; flip show_forms back to True to restore it."""
+    if not SITE.get("show_forms", True):
+        chat_line = ('<p class="form-note">Or start a chat using the button in the '
+                     'corner of this page.</p>') if SITE.get("chat_widget") else ""
+        return f"""<div class="form-card">
+  <h3>Get your free quote</h3>
+  <p class="muted" style="margin-bottom:22px">The fastest way to get a price is a quick call. You'll reach
+  someone local who knows Central Florida water &mdash; not a national call center.</p>
+  <a class="btn btn-primary btn-block" href="tel:{SITE['phone_href']}">{ICON['phone']} Call {SITE['phone_display']}</a>
+  <p class="muted" style="margin:18px 0 0;font-size:.9rem">Prefer email? Write to
+  <a href="mailto:{SITE['email']}">{SITE['email']}</a> and we'll come back to you the same business day.</p>
+  {chat_line}
+</div>
+"""
     return """<form class="form-card" data-quote-form>
   <h3>Get your free quote</h3>
   <p class="muted" style="margin-bottom:20px">Tell us how to reach you and we'll call you back with a price. Usually the same business day.</p>
