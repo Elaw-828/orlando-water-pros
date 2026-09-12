@@ -6,7 +6,7 @@ SITE = {
         'brand': 'Orlando Water Pros',
         'region': 'Central Florida',
         'legal': 'Orlando Water Pros',
-        'email': 'orlandowaterpros@gmail.com',
+        'email': 'hello@orlandowaterpros.com',
         'hours': 'Mon–Fri 8am–6pm · Sat 9am–2pm',
         'domain': 'orlandowaterpros.com',
         'phone_display': '(689) 210-3180',
