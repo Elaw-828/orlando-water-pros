@@ -10,7 +10,13 @@ SITE = {
         'hours': 'Mon–Fri 8am–6pm · Sat 9am–2pm',
         'domain': 'orlandowaterpros.com',
         'phone_display': '(407) 555-0142',
-        'phone_href': '+14075550142'
+        'phone_href': '+14075550142',
+
+        # --- GoHighLevel chat widget -------------------------------------
+        # Temporary, installed for GHL's A2P 10DLC verification.
+        # Set chat_widget to False and rebuild to remove it from every page.
+        'chat_widget': True,
+        'chat_widget_id': '6aa4cb10316a723a13d93bef'
     }
 
 # ---------------------------------------------------------------- service area
