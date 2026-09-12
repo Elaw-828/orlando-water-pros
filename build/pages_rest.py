@@ -4,7 +4,7 @@
 from sitedata import (SITE, CITIES, PRODUCTS, PRODUCT_CATS, FAQS, CERTS,
                       WHY, WARRANTY, SPECS, MAINTENANCE)
 from layout import (head, header, footer, cta_band, quote_form, contact_panel,
-                    page_hero, ICON)
+                    page_hero, ICON, asset)
 from pages_home import product_card, product_media
 
 
@@ -153,7 +153,7 @@ def about():
 <section class="section">
   <div class="wrap">
     <div class="section-head center">
-      <img class="seal" src="assets/img/logo/badge.svg" alt="" width="512" height="512" loading="lazy">
+      <img class="seal" src="{asset('assets/img/logo/badge.svg')}" alt="" width="220" height="220" loading="lazy">
       <span class="eyebrow">Credentials</span><h2>Certified equipment, licensed installation</h2></div>
     <div class="cert-grid">{certs}</div>
   </div>

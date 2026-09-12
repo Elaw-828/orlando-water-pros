@@ -3,6 +3,32 @@
 
 from sitedata import SITE, CITIES, PRODUCTS
 
+# ---------------------------------------------------------------- asset urls
+import hashlib as _hashlib, os as _os
+
+_ASSET_ROOT = _os.path.abspath(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".."))
+_ASSET_HASH_CACHE = {}
+
+
+def asset(path, up=""):
+    """Asset URL carrying a short hash of the file's contents.
+
+    The hash changes whenever the file does, so a replaced logo is never served
+    from a stale browser cache. Falls back to the plain path if the file is
+    missing, so the build never breaks on a renamed asset.
+    """
+    h = _ASSET_HASH_CACHE.get(path)
+    if h is None:
+        full = _os.path.join(_ASSET_ROOT, *path.split("/"))
+        try:
+            with open(full, "rb") as fh:
+                h = _hashlib.md5(fh.read()).hexdigest()[:8]
+        except OSError:
+            h = ""
+        _ASSET_HASH_CACHE[path] = h
+    return "{}{}?v={}".format(up, path, h) if h else "{}{}".format(up, path)
+
+
 # ---------------------------------------------------------------- inline icons
 ICON = {
     "drop": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7s6.2 6.6 6.2 11a6.2 6.2 0 1 1-12.4 0c0-4.4 6.2-11 6.2-11z"/></svg>',
@@ -52,9 +78,9 @@ def head(title, desc, depth=0, extra=""):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
-<link rel="icon" href="{up}assets/img/logo/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="{up}assets/img/logo/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="{up}assets/img/logo/favicon-180.png">
+<link rel="icon" href="{asset('assets/img/logo/favicon.svg', up)}" type="image/svg+xml">
+<link rel="icon" href="{asset('assets/img/logo/favicon-32.png', up)}" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{asset('assets/img/logo/favicon-180.png', up)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -90,7 +116,7 @@ def header(active="", depth=0):
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{up}index.html" aria-label="Orlando Water Pros — home">
-      <img class="brand-logo" src="{up}assets/img/logo/horizontal.svg"
+      <img class="brand-logo" src="{asset('assets/img/logo/horizontal.svg', up)}"
            alt="Orlando Water Pros" width="483" height="176">
     </a>
 
@@ -152,7 +178,7 @@ def footer(depth=0):
     <div class="footer-grid">
       <div class="footer-brand">
         <a class="brand" href="{up}index.html" aria-label="Orlando Water Pros — home">
-          <img class="brand-logo brand-logo-footer" src="{up}assets/img/logo/horizontal-dark.svg"
+          <img class="brand-logo brand-logo-footer" src="{asset('assets/img/logo/horizontal-dark.svg', up)}"
                alt="Orlando Water Pros" width="483" height="176">
         </a>
         <p>Water filtration and softening for homes across Orange, Seminole, Osceola, Lake and Volusia counties.</p>
