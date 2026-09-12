@@ -1,0 +1,3 @@
+# The Python page generator isn't needed to serve the site
+build/
+preview.html

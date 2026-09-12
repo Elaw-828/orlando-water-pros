@@ -8,3 +8,6 @@ Thumbs.db
 
 # Single-file preview bundle — regenerate with: cd build && python3 bundle_preview.py
 preview.html
+
+# Scratch deliverables dropped into the project folder
+Claude outputs/
