@@ -9,8 +9,8 @@ SITE = {
         'email': 'orlandowaterpros@gmail.com',
         'hours': 'Mon–Fri 8am–6pm · Sat 9am–2pm',
         'domain': 'orlandowaterpros.com',
-        'phone_display': '(407) 555-0142',
-        'phone_href': '+14075550142',
+        'phone_display': '(689) 210-3180',
+        'phone_href': '+16892103180',
 
         # --- GoHighLevel chat widget -------------------------------------
         # Temporary, installed for GHL's A2P 10DLC verification.

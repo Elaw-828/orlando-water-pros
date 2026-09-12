@@ -146,6 +146,7 @@ p:last-child { margin-bottom: 0; }
 .topbar a:hover { color: var(--aqua-500); }
 .topbar-note { display: flex; align-items: center; gap: .5em; }
 .topbar-links { display: flex; align-items: center; gap: 18px; }
+.topbar-links a { display: inline-flex; align-items: center; white-space: nowrap; }
 
 /* ---------- header ---------- */
 .site-header {
