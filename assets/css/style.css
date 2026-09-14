@@ -607,6 +607,21 @@ table.compare .col-us { background: rgba(22,166,201,.06); }
 .check input { margin-top: 3px; flex: 0 0 auto; }
 .form-note { font-size: .8rem; color: var(--ink-mute); margin-top: 12px; text-align: center; }
 
+/* consent checkbox on the quote form + spam honeypot */
+.field-consent { margin-top: 4px; margin-bottom: 20px; }
+.field-consent .consent {
+  display: flex; gap: 10px; align-items: flex-start; margin-bottom: 0;
+  font-family: var(--font-body); font-size: .8rem; line-height: 1.5;
+  font-weight: 500; color: var(--ink-soft); cursor: pointer;
+}
+.field-consent .consent input[type="checkbox"] {
+  width: 16px; height: 16px; flex: 0 0 16px; margin-top: 2px; padding: 0;
+  accent-color: var(--aqua-500);
+}
+.field-consent .consent a { color: var(--navy-700); text-decoration: underline; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+button[data-form-submit][disabled] { opacity: .65; cursor: default; }
+
 .contact-panel { background: var(--navy-800); color: #cfdcee; border-radius: var(--radius-l); padding: clamp(24px, 3vw, 34px); }
 .contact-panel h3 { color: #fff; }
 .contact-list { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 18px; }

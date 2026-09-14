@@ -423,11 +423,15 @@ def warranty_page():
 LEGAL = {
     "privacy": ("Privacy Policy", "How we handle information submitted through this site.", [
         f"{SITE['brand']} (\"we,\" \"us\") operates this website. This policy explains what information we collect when you use it and how we handle that information.",
-        "<strong>Information we collect.</strong> When you submit our quote or contact form, we collect your first and last name, phone number, email address, ZIP code, best time to reach you, and anything you choose to tell us in the message field. We don't collect payment information through this site.",
-        "<strong>How we use it.</strong> We use this information to contact you about your quote, schedule service, and respond to questions you send us. We don't sell your information, and we don't share it with third parties except the tools we use to run our business — such as scheduling or email software — and only as needed to provide our service to you.",
+        "<strong>Information we collect.</strong> When you submit our quote or contact form, or start a chat on this site, we collect your first and last name, phone number, email address, ZIP code, best time to reach you, and anything you choose to tell us in the message field. We don't collect payment information through this site.",
+        "<strong>How we use it.</strong> We use this information to contact you about your quote, schedule service, and respond to questions you send us. We don't sell your information, and we don't share it with third parties except the tools we use to run our business — such as scheduling, chat, and email software — and only as needed to provide our service to you.",
+        "<strong>Text messages (SMS).</strong> If you give us your mobile number and check the consent box on our form or in our chat widget, you agree to receive text messages from "
+        f"{SITE['brand']} about your quote, your appointment, and — if you opted in separately for marketing — promotions and offers. Consent to receive marketing texts is not a condition of purchase. Message frequency varies. Message and data rates may apply. Reply STOP at any time to stop receiving messages, or HELP for help.",
+        "<strong>We do not share your mobile information.</strong> No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Information sharing to subcontractors in support services, such as customer service, is permitted. All other use case categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.",
         "<strong>How long we keep it.</strong> We keep quote and contact information for as long as needed to follow up with you and, if you become a customer, for the life of your service relationship with us plus a reasonable period afterward for warranty and record-keeping purposes.",
         "<strong>Your choices.</strong> You can ask us to delete the information you've submitted, or to stop contacting you, at any time by emailing us at "
-        f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>. We'll honor that request except where we need to keep limited records for legal or warranty purposes.",
+        f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>, or by calling "
+        f"<a href=\"tel:{SITE['phone_href']}\">{SITE['phone_display']}</a>. To stop text messages specifically, reply STOP to any message you receive from us. We'll honor that request except where we need to keep limited records for legal or warranty purposes.",
         "<strong>Cookies and analytics.</strong> This site does not use advertising cookies or tracking pixels. If that changes in the future, this policy will be updated to disclose it.",
         "<strong>Contact.</strong> Questions about this policy can be sent to "
         f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>.",
@@ -442,6 +446,8 @@ LEGAL = {
         "<strong>Limitation of liability.</strong> This site is provided \"as is.\" To the fullest extent permitted by law, "
         f"{SITE['brand']} isn't liable for damages arising from your use of, or inability to use, this website.",
         "<strong>The actual sale and installation.</strong> Pricing, scheduling, payment, cancellation, and installation terms are governed by the written quote and service agreement you receive directly from us — not by this website.",
+        "<strong>Text messaging program.</strong> By providing your mobile number and consenting, you agree to receive text messages from "
+        f"{SITE['brand']} at that number, including messages sent by an automated system. Two programs are offered: service messages about your quote, appointment, and installation; and, with a separate opt-in, marketing messages about promotions and offers. Consent to receive marketing messages is not a condition of any purchase. Message frequency varies. Message and data rates may apply. Reply STOP to cancel or HELP for help. Carriers are not liable for delayed or undelivered messages. Mobile opt-in data is never shared with third parties for marketing purposes — see our Privacy Policy.",
         "<strong>Governing law.</strong> These terms are governed by the laws of the State of Florida.",
         "<strong>Contact.</strong> Questions about these terms can be sent to "
         f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>.",
@@ -457,6 +463,6 @@ def legal_page(key):
     ) + header("") + page_hero(title, sub, '<a href="index.html">Home</a> / ' + title) + f"""
 <section class="section"><div class="wrap wrap-narrow">
   <div class="form-card article-body">{body}</div>
-  <p class="muted mt-m">Last updated: September 6, 2026</p>
+  <p class="muted mt-m">Last updated: September 14, 2026</p>
 </div></section>
 """ + footer()

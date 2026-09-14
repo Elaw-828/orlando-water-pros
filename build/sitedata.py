@@ -8,7 +8,10 @@ SITE = {
         'legal': 'Orlando Water Pros',
         'email': 'hello@orlandowaterpros.com',
         'hours': 'Mon–Fri 8am–6pm · Sat 9am–2pm',
-        'domain': 'orlandowaterpros.com',
+        # Canonical host. The site is served at www; the apex redirects to it.
+        # This must match the host that actually serves the pages, or every
+        # canonical/og:url tag points somewhere else.
+        'domain': 'www.orlandowaterpros.com',
         'phone_display': '(689) 210-3180',
         'phone_href': '+16892103180',
 
@@ -18,10 +21,21 @@ SITE = {
         'chat_widget': True,
         'chat_widget_id': '6aa4cb10316a723a13d93bef',
 
-        # Quote/contact forms are held back while the widget is up, so the
-        # widget is the only capture path during verification. These two flip
-        # together: widget off -> show_forms back to True.
-        'show_forms': False
+        # Quote/contact forms stay OFF while the GHL chat widget is up.
+        # A2P 10DLC: Everett attested to the carriers that the chat widget is
+        # the ONLY thing on the site collecting phone numbers for SMS opt-in.
+        # A visible quote form with a consent checkbox breaks that attestation.
+        # Flip this to True only when the widget comes down.
+        'show_forms': False,
+
+        # --- Where the quote form sends leads ----------------------------
+        # A GoHighLevel Inbound Webhook URL (Workflows -> new workflow ->
+        # trigger "Inbound Webhook" -> copy the URL). The form POSTs JSON
+        # with first_name, last_name, phone, email, zip, best_time, message,
+        # sms_consent, page and submitted_at.
+        # While this is empty the form falls back to opening the visitor's
+        # mail app pre-filled, so no lead is silently dropped.
+        'form_endpoint': ''
     }
 
 # ---------------------------------------------------------------- service area

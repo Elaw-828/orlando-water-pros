@@ -74,17 +74,75 @@
       if (next) next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); });
     });
 
-    /* ---- quote form (front-end only until a backend is wired up) ---- */
+    /* ---- quote form ----------------------------------------------------
+       POSTs JSON to the endpoint in data-endpoint (a GoHighLevel Inbound
+       Webhook URL, set via SITE["form_endpoint"] in build/sitedata.py).
+       With no endpoint set it falls back to opening the visitor's mail app
+       pre-filled, so a submission is never silently dropped.              */
     root.querySelectorAll("form[data-quote-form]").forEach(function (form) {
+      var out = form.querySelector("[data-form-msg]");
+      var btn = form.querySelector("[data-form-submit]");
+      var btnText = btn ? btn.textContent : "";
+      var endpoint = (form.getAttribute("data-endpoint") || "").trim();
+      var email = form.getAttribute("data-email") || "";
+      var phone = form.getAttribute("data-phone") || "";
+
+      function say(msg, tone) {
+        if (!out) return;
+        out.textContent = msg;
+        out.style.color = tone === "bad" ? "#c0392b" : (tone === "good" ? "#1d7a4c" : "");
+      }
+      function busy(on) {
+        if (!btn) return;
+        btn.disabled = on;
+        btn.textContent = on ? "Sending\u2026" : btnText;
+      }
+      function values() {
+        var d = {};
+        new FormData(form).forEach(function (v, k) { d[k] = v; });
+        d.page = location.pathname.replace(/^\//, "") || "index.html";
+        d.submitted_at = new Date().toISOString();
+        return d;
+      }
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
-        var out = form.querySelector("[data-form-msg]");
-        if (out) {
-          out.textContent =
-            "This form is not connected to an inbox yet. Hook it up to your form service " +
-            "(Formspree, Netlify Forms, HubSpot, etc.) before the site goes live.";
-          out.style.color = "#c0392b";
+        if (!form.reportValidity()) return;
+
+        var data = values();
+        if (data.company) return;          /* honeypot: silently drop bots */
+        delete data.company;
+
+        if (!endpoint) {
+          var body =
+            "Name: " + (data.first_name || "") + " " + (data.last_name || "") + "\n" +
+            "Phone: " + (data.phone || "") + "\n" +
+            "Email: " + (data.email || "") + "\n" +
+            "ZIP: " + (data.zip || "") + "\n" +
+            "Best time to call: " + (data.best_time || "") + "\n\n" +
+            (data.message || "");
+          say("Opening your email app so you can send this over \u2014 or just call " + phone + ".");
+          window.location.href = "mailto:" + email +
+            "?subject=" + encodeURIComponent("Quote request \u2014 " + (data.first_name || "") + " " + (data.last_name || "")) +
+            "&body=" + encodeURIComponent(body);
+          return;
         }
+
+        busy(true);
+        say("Sending\u2026");
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        }).then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          form.reset();
+          say("Thanks \u2014 we've got it. We'll call you back, usually the same business day.", "good");
+          if (btn) { btn.disabled = true; btn.textContent = "Sent"; }
+        }).catch(function () {
+          busy(false);
+          say("That didn't go through. Please call " + phone + " or email " + email + ".", "bad");
+        });
       });
     });
 

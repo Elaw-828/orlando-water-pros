@@ -255,7 +255,9 @@ def quote_form(depth=0):
   {chat_line}
 </div>
 """
-    return """<form class="form-card" data-quote-form>
+    return f"""<form class="form-card" data-quote-form
+      data-endpoint="{SITE.get('form_endpoint', '')}"
+      data-email="{SITE['email']}" data-phone="{SITE['phone_display']}">
   <h3>Get your free quote</h3>
   <p class="muted" style="margin-bottom:20px">Tell us how to reach you and we'll call you back with a price. Usually the same business day.</p>
   <div class="field-row">
@@ -267,7 +269,7 @@ def quote_form(depth=0):
     <div class="field"><label for="em">Email</label><input id="em" type="email" name="email" autocomplete="email" required></div>
   </div>
   <div class="field-row">
-    <div class="field"><label for="zp">ZIP code</label><input id="zp" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" required></div>
+    <div class="field"><label for="zp">ZIP code</label><input id="zp" name="zip" inputmode="numeric" pattern="[0-9]{{5}}" maxlength="5" autocomplete="postal-code" required></div>
     <div class="field">
       <label for="bt">Best time to call</label>
       <select id="bt" name="best_time">
@@ -283,8 +285,17 @@ def quote_form(depth=0):
     <label for="ms">Message <span class="opt">optional</span></label>
     <textarea id="ms" name="message" placeholder="Spotting on glassware, chlorine smell, stiff laundry, sulfur odor on a well&hellip;"></textarea>
   </div>
-  <button class="btn btn-primary btn-block" type="submit">Get My Free Quote</button>
-  <p class="form-note" data-form-msg>We usually respond the same business day.</p>
+  <div class="field field-consent">
+    <label class="consent">
+      <input type="checkbox" name="sms_consent" value="yes" required>
+      <span>I agree to be contacted by {SITE['brand']} about my quote by phone, text or email.
+      Message and data rates may apply. Reply STOP to opt out. See our
+      <a href="{"../" * depth}privacy.html">Privacy Policy</a>.</span>
+    </label>
+  </div>
+  <div class="hp" aria-hidden="true"><label>Leave this blank<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+  <button class="btn btn-primary btn-block" type="submit" data-form-submit>Get My Free Quote</button>
+  <p class="form-note" data-form-msg role="status" aria-live="polite">We usually respond the same business day.</p>
 </form>
 """
 
