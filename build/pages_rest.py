@@ -26,7 +26,7 @@ def solutions_index():
     ) + header("solutions") + page_hero(
         "Our Solutions",
         "Whole-home treatment, well water systems, drinking water and add-ons. Which one you need depends on what's coming into your house.",
-        '<a href="index.html">Home</a> / Our Solutions',
+        '<a href="./">Home</a> / Our Solutions',
     ) + f"""<section class="section"><div class="wrap">{''.join(blocks)}</div></section>""" + cta_band(
         heading="Not sure which system is right for you?",
         text="We'll recommend the exact system your home needs — no pressure, no obligation.",
@@ -53,7 +53,7 @@ def solution_page(p):
         p["short"], depth=1,
     ) + header("solutions", depth=1) + page_hero(
         p["name"], p["short"],
-        '<a href="../index.html">Home</a> / <a href="../solutions.html">Our Solutions</a> / ' + p["name"],
+        '<a href="../">Home</a> / <a href="../solutions.html">Our Solutions</a> / ' + p["name"],
     ) + f"""
 <section class="section">
   <div class="wrap split">
@@ -141,7 +141,7 @@ def about():
     ) + header("about") + page_hero(
         "About Orlando Water Pros",
         "Water filtration and softening for Central Florida homes. Installed by licensed Florida plumbers, backed by a written limited warranty.",
-        '<a href="index.html">Home</a> / About',
+        '<a href="./">Home</a> / About',
     ) + f"""
 
 <section class="section section-alt">
@@ -179,7 +179,7 @@ def quote_page():
     ) + header("quote") + page_hero(
         "Get a free quote",
         "A flat installed price, in writing, before anything is ordered. Serving Orange, Seminole, Osceola, Lake and Volusia counties.",
-        '<a href="index.html">Home</a> / Get a Free Quote',
+        '<a href="./">Home</a> / Get a Free Quote',
     ) + f"""
 <section class="section">
   <div class="wrap split" style="align-items:start">
@@ -212,7 +212,7 @@ def contact():
     ) + header("contact") + page_hero(
         "Get in touch",
         "Serving Orange, Seminole, Osceola, Lake and Volusia counties. Same-day response on weekdays.",
-        '<a href="index.html">Home</a> / Contact',
+        '<a href="./">Home</a> / Contact',
     ) + f"""
 <section class="section">
   <div class="wrap split" style="align-items:start">
@@ -240,7 +240,7 @@ def areas_index():
     ) + header("areas") + page_hero(
         "Where we work",
         "We cover Orange, Seminole, Osceola, Lake and Volusia counties. Pick your city for local water conditions.",
-        '<a href="index.html">Home</a> / Service Areas',
+        '<a href="./">Home</a> / Service Areas',
     ) + f"""<section class="section"><div class="wrap"><div class="grid g3">{cards}</div>
   <p class="muted mt-l center">Not on the list? Call {SITE['phone_display']} — we cover more of Central Florida than we've listed here.</p>
 </div></section>""" + cta_band() + footer()
@@ -313,7 +313,7 @@ def city_page(c):
     ) + header("areas", depth=1) + page_hero(
         f"Water filtration &amp; softening in {c['name']}, FL",
         f"{c['county']} · Typical hardness {c['hard']} grains per gallon · Supply: {c['supply']}",
-        '<a href="../index.html">Home</a> / <a href="../service-areas.html">Service Areas</a> / ' + c["name"],
+        '<a href="../">Home</a> / <a href="../service-areas.html">Service Areas</a> / ' + c["name"],
     ) + f"""
 <section class="section">
   <div class="wrap">
@@ -385,7 +385,7 @@ def warranty_page():
     ) + header("") + page_hero(
         "Warranty",
         WARRANTY["intro"],
-        '<a href="index.html">Home</a> / Warranty',
+        '<a href="./">Home</a> / Warranty',
     ) + f"""
 <section class="section">
   <div class="wrap wrap-narrow">
@@ -460,7 +460,7 @@ def legal_page(key):
     body = "".join(f"<p>{p}</p>" for p in paras)
     return head(
         f"{title} | Orlando Water Pros", sub,
-    ) + header("") + page_hero(title, sub, '<a href="index.html">Home</a> / ' + title) + f"""
+    ) + header("") + page_hero(title, sub, '<a href="./">Home</a> / ' + title) + f"""
 <section class="section"><div class="wrap wrap-narrow">
   <div class="form-card article-body">{body}</div>
   <p class="muted mt-m">Last updated: September 14, 2026</p>

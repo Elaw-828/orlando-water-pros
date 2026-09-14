@@ -102,7 +102,7 @@ def header(active="", depth=0):
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="{up}index.html" aria-label="Orlando Water Pros — home">
+    <a class="brand" href="{up or './'}" aria-label="Orlando Water Pros — home">
       <img class="brand-logo" src="{up}assets/img/logo/horizontal.svg"
            alt="Orlando Water Pros" width="483" height="176">
     </a>
@@ -164,7 +164,7 @@ def footer(depth=0):
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="{up}index.html" aria-label="Orlando Water Pros — home">
+        <a class="brand" href="{up or './'}" aria-label="Orlando Water Pros — home">
           <img class="brand-logo brand-logo-footer" src="{up}assets/img/logo/horizontal-dark.svg"
                alt="Orlando Water Pros" width="483" height="176">
         </a>
@@ -191,7 +191,7 @@ def footer(depth=0):
         <h4>Company</h4>
         <ul>
           <li><a href="{up}about.html">About us</a></li>
-          <li><a href="{up}index.html#faq">FAQ</a></li>
+          <li><a href="{up or './'}#faq">FAQ</a></li>
           <li><a href="{up}warranty.html">Warranty</a></li>
           <li><a href="{up}quote.html">Get a free quote</a></li>
           <li><a href="{up}contact.html">Contact</a></li>
