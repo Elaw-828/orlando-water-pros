@@ -130,19 +130,37 @@
 
         busy(true);
         say("Sending\u2026");
-        fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        }).then(function (r) {
-          if (!r.ok) throw new Error(r.status);
-          form.reset();
-          say("Thanks \u2014 we've got it. We'll call you back, usually the same business day.", "good");
-          if (btn) { btn.disabled = true; btn.textContent = "Sent"; }
-        }).catch(function () {
-          busy(false);
-          say("That didn't go through. Please call " + phone + " or email " + email + ".", "bad");
-        });
+
+        /* An application/json POST triggers a CORS preflight. If the endpoint
+           doesn't answer the preflight, the browser abandons the request and we
+           never hear why. text/plain is a "simple" request — same JSON body, no
+           preflight — so fall back to it once before giving up. */
+        function post(contentType) {
+          return fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": contentType },
+            body: JSON.stringify(data)
+          }).then(function (r) {
+            if (!r.ok) throw new Error("http " + r.status);
+            return r;
+          });
+        }
+
+        post("application/json")
+          .catch(function (err) {
+            // Only retry when the browser blocked it, not when GHL refused it.
+            if (/^http /.test(String(err.message))) throw err;
+            return post("text/plain;charset=UTF-8");
+          })
+          .then(function () {
+            form.reset();
+            say("Thanks \u2014 we've got it. We'll call you back, usually the same business day.", "good");
+            if (btn) { btn.disabled = true; btn.textContent = "Sent"; }
+          })
+          .catch(function () {
+            busy(false);
+            say("That didn't go through. Please call " + phone + " or email " + email + ".", "bad");
+          });
       });
     });
 

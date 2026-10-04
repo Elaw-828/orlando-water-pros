@@ -35,7 +35,7 @@ SITE = {
         # sms_consent, page and submitted_at.
         # While this is empty the form falls back to opening the visitor's
         # mail app pre-filled, so no lead is silently dropped.
-        'form_endpoint': ''
+        'form_endpoint': 'https://services.leadconnectorhq.com/hooks/f3sx3bB5dnapd0kKjANK/webhook-trigger/6a3ad9d3-8d9f-4158-b56b-f11429b34aa8'
     }
 
 # ---------------------------------------------------------------- service area
