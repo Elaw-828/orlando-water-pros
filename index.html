@@ -359,7 +359,7 @@ to property. Above 7 gpg is considered hard.</p>
     <div class="field"><label for="em">Email</label><input id="em" type="email" name="email" autocomplete="email" required></div>
   </div>
   <div class="field-row">
-    <div class="field"><label for="zp">ZIP code</label><input id="zp" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" required></div>
+    <div class="field"><label for="zp">ZIP code</label><input id="zp" name="zip" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" autocomplete="postal-code" required></div>
     <div class="field">
       <label for="bt">Best time to call</label>
       <select id="bt" name="best_time">
@@ -383,7 +383,7 @@ to property. Above 7 gpg is considered hard.</p>
       <a href="privacy.html">Privacy Policy</a>.</span>
     </label>
   </div>
-  <div class="hp" aria-hidden="true"><label>Leave this blank<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+  <div class="hp" aria-hidden="true"><input type="text" name="b_ref_7" tabindex="-1" autocomplete="off" aria-hidden="true"></div>
   <button class="btn btn-primary btn-block" type="submit" data-form-submit>Get My Free Quote</button>
   <p class="form-note" data-form-msg role="status" aria-live="polite">We usually respond the same business day.</p>
 </form>

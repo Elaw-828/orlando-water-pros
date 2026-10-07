@@ -121,8 +121,12 @@
         if (!form.reportValidity()) return;
 
         var data = values();
-        if (data.company) return;          /* honeypot: silently drop bots */
-        delete data.company;
+        /* Honeypot. It is NOT named after anything a password manager or browser
+           autofill recognises (a field called "company" gets filled for real people,
+           hidden or not) — and even if it trips we still send the lead, flagged, so a
+           customer is never silently dropped. Filter on spam_suspected in GHL. */
+        if (data.b_ref_7) data.spam_suspected = "yes";
+        delete data.b_ref_7;
 
         if (!endpoint) {
           var body =
