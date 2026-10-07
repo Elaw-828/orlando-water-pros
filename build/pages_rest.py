@@ -328,7 +328,7 @@ def city_page(c):
       <div class="stat"><div class="k">Common complaints</div>
         <ul class="symptom-list" style="margin-top:10px">{issues}</ul></div>
     </div>
-    <div class="split mt-l">
+    <div class="mt-l" style="max-width:70ch">
       <div>
         <h2>What {c['name']} homeowners are dealing with</h2>
         <p class="lede">{c['note']}</p>
@@ -338,7 +338,6 @@ def city_page(c):
           <a class="btn btn-outline" href="tel:{SITE['phone_href']}">{ICON['phone']} {SITE['phone_display']}</a>
         </div>
       </div>
-      <div class="split-media"><div class="ph" data-label="Photo: an install in {c['name']}"></div></div>
     </div>
   </div>
 </section>
