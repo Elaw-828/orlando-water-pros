@@ -18,7 +18,7 @@ SITE = {
         # --- GoHighLevel chat widget -------------------------------------
         # Temporary, installed for GHL's A2P 10DLC verification.
         # Set chat_widget to False and rebuild to remove it from every page.
-        'chat_widget': True,
+        'chat_widget': False,
         'chat_widget_id': '6aa4cb10316a723a13d93bef',
 
         # Quote/contact forms stay OFF while the GHL chat widget is up.
@@ -26,7 +26,7 @@ SITE = {
         # the ONLY thing on the site collecting phone numbers for SMS opt-in.
         # A visible quote form with a consent checkbox breaks that attestation.
         # Flip this to True only when the widget comes down.
-        'show_forms': False,
+        'show_forms': True,
 
         # --- Where the quote form sends leads ----------------------------
         # A GoHighLevel Inbound Webhook URL (Workflows -> new workflow ->

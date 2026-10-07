@@ -145,7 +145,7 @@
       <h2>Three steps, no surprises</h2>
       <p>Professional-grade equipment. A price you see before you commit. A licensed Florida plumber doing the work.</p>
     </div>
-    <div class="process"><div class="step"><div class="step-n">1</div><h3>Tell us about your home</h3><p>Give us a call. We'll ask where your water comes from, how many people live there, and what you're noticing at the tap. Two minutes.</p></div><div class="step"><div class="step-n">2</div><h3>Get your price in writing</h3><p>One flat installed price, before anything is ordered. Our price-match promise stands behind it. No in-home pressure close, ever.</p></div><div class="step"><div class="step-n">3</div><h3>We install it</h3><p>Two to four hours. A licensed Florida plumber does the work. We leave the space cleaner than we found it.</p></div></div>
+    <div class="process"><div class="step"><div class="step-n">1</div><h3>Tell us about your home</h3><p>Call, text, or send the form. We'll ask where your water comes from, how many people live there, and what you're noticing at the tap. Two minutes.</p></div><div class="step"><div class="step-n">2</div><h3>Get your price in writing</h3><p>One flat installed price, before anything is ordered. Our price-match promise stands behind it. No in-home pressure close, ever.</p></div><div class="step"><div class="step-n">3</div><h3>We install it</h3><p>Two to four hours. A licensed Florida plumber does the work. We leave the space cleaner than we found it.</p></div></div>
   </div>
 </section>
 
@@ -345,15 +345,48 @@ to property. Above 7 gpg is considered hard.</p>
       <p>Tell us about your home. We'll come back with a flat installed price in writing.</p>
     </div>
     <div class="split" style="align-items:start">
-      <div class="form-card">
+      <form class="form-card" data-quote-form
+      data-endpoint="https://services.leadconnectorhq.com/hooks/f3sx3bB5dnapd0kKjANK/webhook-trigger/6a3ad9d3-8d9f-4158-b56b-f11429b34aa8"
+      data-email="hello@orlandowaterpros.com" data-phone="(689) 210-3180">
   <h3>Get your free quote</h3>
-  <p class="muted" style="margin-bottom:22px">The fastest way to get a price is a quick call. You'll reach
-  someone local who knows Central Florida water &mdash; not a national call center.</p>
-  <a class="btn btn-primary btn-block" href="tel:+16892103180"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg> Call (689) 210-3180</a>
-  <p class="muted" style="margin:18px 0 0;font-size:.9rem">Prefer email? Write to
-  <a href="mailto:hello@orlandowaterpros.com">hello@orlandowaterpros.com</a> and we'll come back to you the same business day.</p>
-  <p class="form-note">Or start a chat using the button in the corner of this page.</p>
-</div>
+  <p class="muted" style="margin-bottom:20px">Tell us how to reach you and we'll call you back with a price. Usually the same business day.</p>
+  <div class="field-row">
+    <div class="field"><label for="fn">First name</label><input id="fn" name="first_name" autocomplete="given-name" required></div>
+    <div class="field"><label for="ln">Last name</label><input id="ln" name="last_name" autocomplete="family-name" required></div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label for="ph">Phone number</label><input id="ph" type="tel" name="phone" autocomplete="tel" required></div>
+    <div class="field"><label for="em">Email</label><input id="em" type="email" name="email" autocomplete="email" required></div>
+  </div>
+  <div class="field-row">
+    <div class="field"><label for="zp">ZIP code</label><input id="zp" name="zip" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" required></div>
+    <div class="field">
+      <label for="bt">Best time to call</label>
+      <select id="bt" name="best_time">
+        <option>Morning (8am–12pm)</option>
+        <option>Afternoon (12pm–4pm)</option>
+        <option>Evening (4pm–7pm)</option>
+        <option>Weekends</option>
+        <option>Anytime</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="ms">Message <span class="opt">optional</span></label>
+    <textarea id="ms" name="message" placeholder="Spotting on glassware, chlorine smell, stiff laundry, sulfur odor on a well&hellip;"></textarea>
+  </div>
+  <div class="field field-consent">
+    <label class="consent">
+      <input type="checkbox" name="sms_consent" value="yes" required>
+      <span>I agree to be contacted by Orlando Water Pros about my quote by phone, text or email.
+      Message and data rates may apply. Reply STOP to opt out. See our
+      <a href="privacy.html">Privacy Policy</a>.</span>
+    </label>
+  </div>
+  <div class="hp" aria-hidden="true"><label>Leave this blank<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+  <button class="btn btn-primary btn-block" type="submit" data-form-submit>Get My Free Quote</button>
+  <p class="form-note" data-form-msg role="status" aria-live="polite">We usually respond the same business day.</p>
+</form>
 
       <div class="contact-panel">
   <h3>Prefer to talk it through?</h3>
@@ -472,7 +505,5 @@ to property. Above 7 gpg is considered hard.</p>
 }
 </script>
 <script src="assets/js/main.js"></script>
-<!-- GoHighLevel chat widget (temporary, A2P verification). Disable via SITE["chat_widget"] in build/sitedata.py -->
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6aa4cb10316a723a13d93bef" data-source="WEB_USER"></script>
 </body>
 </html>
