@@ -691,7 +691,7 @@ COMPARE_COLS = [
     ]
 
 COMPARE_ROWS = [
-        ('FL licensed plumber install', 'yes', 'Varies', 'Varies', 'Varies', 'no:DIY'),
+        ('Installed by the company you hired', 'yes', 'Varies', 'Varies', 'Varies', 'no:DIY'),
         ('Lifetime limited warranty', 'yes', '1 year', '10 year', '1 year', 'no'),
         ('No long-term contracts', 'yes', 'Multi-year typical', 'Multi-year typical', 'Multi-year typical', 'N/A'),
         ('Transparent pricing', 'yes', 'no', 'no', 'no', 'yes'),
@@ -714,7 +714,7 @@ CERTS = [
         ('Drinking Water System Components', 'Our components are certified under the NSF Drinking Water System Components program, the standard covering everything your water actually touches.'),
         ('Cation Exchange Water Softeners', 'Our softeners are certified under the NSF program for cation exchange water softeners, the category that covers ion-exchange performance.'),
         ('WQA Gold Seal', 'Water Quality Association Gold Seal certification, held on top of NSF certification. Two independent bodies, same equipment.'),
-        ('Installed by Licensed Florida Plumbers', 'Every install is done by a licensed, insured Florida plumber.'),
+        ('Installed, Not Subcontracted', 'Every system we sell is installed by our own team \u2014 the same people who quoted it and who handle the warranty afterward.'),
         ('Factory-Backed Equipment', 'Factory-trained installation and factory-backed equipment, with a written limited warranty on every whole-home system we put in.')
     ]
 

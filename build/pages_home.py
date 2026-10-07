@@ -61,7 +61,7 @@ STEPS = [
     ("Get your price in writing",
      "One flat installed price, before anything is ordered. Our price-match promise stands behind it. No in-home pressure close, ever."),
     ("We install it",
-     "Two to four hours. A licensed Florida plumber does the work. We leave the space cleaner than we found it."),
+     "Two to four hours. We do the work ourselves \u2014 nothing is handed to a subcontractor. We leave the space cleaner than we found it."),
 ]
 
 # The four symptoms people recognize instantly — these sit in the hero.
@@ -237,7 +237,7 @@ def build():
 
     return head(
         "Water Filtration & Softening in the Orlando Area | Orlando Water Pros",
-        "Whole-home water filtration and softening for Orlando and Central Florida. Softer showers, spot-free glassware, better laundry and chlorine removal. Free quotes, licensed installation, warranty in writing.",
+        "Whole-home water filtration and softening for Orlando and Central Florida. Softer showers, spot-free glassware, better laundry and chlorine removal. Free quotes, professional installation, warranty in writing.",
     ) + header("home") + f"""
 <section class="hero">
   {HERO_ART}
@@ -275,7 +275,7 @@ def build():
     <div class="section-head center">
       <span class="eyebrow">How it works</span>
       <h2>Three steps, no surprises</h2>
-      <p>Professional-grade equipment. A price you see before you commit. A licensed Florida plumber doing the work.</p>
+      <p>Professional-grade equipment. A price you see before you commit. Installed by the people who quoted it.</p>
     </div>
     <div class="process">{steps}</div>
   </div>
@@ -330,7 +330,7 @@ def build():
   <div class="wrap">
     <div class="section-head center">
       <span class="eyebrow">Credentials</span>
-      <h2>Certified equipment, licensed installation</h2>
+      <h2>Certified equipment, professional installation</h2>
       <p>What our systems carry, and who puts them in your house.</p>
     </div>
     <div class="cert-grid">{certs}</div>

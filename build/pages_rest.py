@@ -127,8 +127,8 @@ def about():
          "We tell you which system fits and why, including when a cheaper one would serve you just as well."),
         ("A flat installed price in writing",
          "One number, before anything is ordered. If your plumbing adds cost, you hear it then. Not on install day."),
-        ("Installation by a licensed Florida plumber",
-         "Two to four hours for most systems. We leave the space cleaner than we found it."),
+        ("Installation by our own team",
+         "Two to four hours for most systems. Never subcontracted. We leave the space cleaner than we found it."),
         ("Service afterward",
          "We send filter reminders when they're due and handle warranty service ourselves. One call, straight to us."),
     ]
@@ -140,7 +140,7 @@ def about():
         "Locally owned water filtration and softening for Orlando and Central Florida. How we quote, install and service.",
     ) + header("about") + page_hero(
         "About Orlando Water Pros",
-        "Water filtration and softening for Central Florida homes. Installed by licensed Florida plumbers, backed by a written limited warranty.",
+        "Water filtration and softening for Central Florida homes. Installed by our own team, backed by a written limited warranty.",
         '<a href="./">Home</a> / About',
     ) + f"""
 
@@ -156,7 +156,7 @@ def about():
   <div class="wrap">
     <div class="section-head center">
       <img class="seal" src="assets/img/logo/badge.svg" alt="" width="512" height="512" loading="lazy">
-      <span class="eyebrow">Credentials</span><h2>Certified equipment, licensed installation</h2></div>
+      <span class="eyebrow">Credentials</span><h2>Certified equipment, professional installation</h2></div>
     <div class="cert-grid">{certs}</div>
   </div>
 </section>
@@ -308,7 +308,7 @@ def city_page(c):
     )
     return head(
         f"Water Softening & Filtration in {c['name']}, FL | Orlando Water Pros",
-        f"Water filtration and softening in {c['name']}, {c['county']}. Typical hardness {c['hard']} grains per gallon. Free quotes, licensed installation.",
+        f"Water filtration and softening in {c['name']}, {c['county']}. Typical hardness {c['hard']} grains per gallon. Free quotes, professional installation.",
         depth=1,
     ) + header("areas", depth=1) + page_hero(
         f"Water filtration &amp; softening in {c['name']}, FL",
