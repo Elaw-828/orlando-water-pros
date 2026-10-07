@@ -16,7 +16,8 @@ import pages_rest as R                                     # noqa: E402
 
 # pages from the previous (Honest Water) structure that no longer exist
 STALE = ["products.html", "gallery.html", "products", "solutions",
-         "resources.html", "resources"]
+         "resources.html", "resources",
+         "solutions/pre-sediment-filter.html"]
 
 DOMAIN = f"https://{SITE['domain']}"
 DEFAULT_OG_IMAGE = f"{DOMAIN}/assets/img/complete-home-system.webp"

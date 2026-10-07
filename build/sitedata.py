@@ -596,36 +596,15 @@ PRODUCTS = [
                 'This version stores its treated water in a pressurized tank, which is the trade-off against the tankless model: it needs cabinet space, and it costs less. The tank is a high-strength steel shell with a food-grade butyl bladder separating water from air, keeping the supply fresh and the pressure steady so the faucet delivers full flow every time.',
                 'Filters get changed annually. The membrane runs two to three years depending on what is coming into it — harder, higher-solids water works a membrane harder. We send a reminder when yours is due.'
             ]
-        },
-        {
-            'slug': 'pre-sediment-filter',
-            'name': 'Pre-Sediment Filter',
-            'cat': 'Pre-Filtration',
-            'photo': '20-inch whole-house sediment pre-filter',
-            'short': 'The first line of defence for everything downstream. Catches sand, silt, rust and grit before they reach your softener, RO or appliances.',
-            'who': 'Homes on well water, older infrastructure, or any system worth protecting.',
-            'bullets': [
-                '20 inch by 4.5 inch cartridge housing',
-                '15 GPM flow rate',
-                '10,000 gallon cartridge life',
-                'Removes sand, silt, rust and particulates at the main line',
-                'Protects softening resin, carbon beds and RO membranes from fouling',
-                'Simple cartridge change, no tools beyond a housing wrench'
-            ],
-            'long': [
-                'Sediment gets into residential water in ordinary ways — ageing municipal mains, a water main repair down the street, natural mineral deposits, or a well drawing through sandy ground. Once it is in the line it does not stay put.',
-                'Without a dedicated sediment filter, those particles accumulate inside filtration media and restrict flow. They cause premature wear on control valves, plumbing fixtures and appliances, and they foul the surface of an RO membrane, which is the most expensive component in the house to replace.',
-                'Installed at the main water entry point, this filter stops debris before it reaches anything else. Reduced fouling means better flow rates, fewer service calls and more consistent pressure throughout the house. It is a small component that quietly extends the life of every system behind it.'
-            ]
         }
+
     ]
 
 PRODUCT_CATS = [
         'Whole Home',
         'Well Water',
         'Softeners',
-        'Drinking Water',
-        'Pre-Filtration'
+        'Drinking Water'
     ]
 
 # ------------------------------------------- manufacturer-published specs
@@ -699,13 +678,6 @@ SPECS = {
             ('Targets', 'Sediment, chlorine, lead, fluoride, nitrates, dissolved solids'),
             ('Faucet', 'Brushed nickel, chrome, brushed gold, matte black or oil-rubbed bronze'),
             ('Manufacturer warranty', '1-year limited')
-        ],
-        'pre-sediment-filter': [
-            ('Product size', '20" x 4.5"'),
-            ('Flow rate', '15 GPM'),
-            ('Filter life', '10,000 gallons'),
-            ('Targets', 'Sand, silt, rust, particulates'),
-            ('Placement', 'Main water entry point, ahead of all other equipment')
         ]
     }
 
@@ -730,7 +702,6 @@ COMPARE_ROWS = [
 MAINTENANCE = [
         ('Salt refill', '1–2 bags every 4–6 weeks', 'You buy it — about $6–8 a bag', 'Any system with a softener'),
         ('Reverse osmosis filters', 'Every 12 months', '$149', 'HW800 AlkaPro, 5-Stage RO'),
-        ('Pre-sediment filter cartridge', 'Every 6 months', '$250', 'Pre-Sediment Filter'),
         ('Hydrogen peroxide', 'Every 3–8 weeks', '$75 per 5-gallon jug', 'Premium Well Water System'),
         ('Softening resin tank', 'Swap every 7–12 years', '', 'Any system with a softener'),
         ('Carbon tank', '10+ years', '', 'Dual-tank and carbon systems'),
@@ -750,7 +721,7 @@ CERTS = [
 # ---------------------------------------------------------------- FAQ
 FAQS = [
         ('How long does installation take?', 'Two to four hours for most systems. We schedule around you and leave the space cleaner than we found it. Same-week installation is usually available.'),
-        ('How often do filters need replacement?', 'Reverse osmosis filters run twelve months and the membrane two to three years. A pre-sediment cartridge is every six months. We send a reminder when yours are due, and we will change them for you if you would rather not — give us a call and we will get you on the schedule.'),
+        ('How often do filters need replacement?', 'Reverse osmosis filters run twelve months and the membrane two to three years. We send a reminder when yours are due, and we will change them for you if you would rather not — give us a call and we will get you on the schedule.'),
         ('What does the warranty cover?', "It is tiered. Tanks and dry parts are covered for life. The control valve, circuit board and filtration media are covered for five years. Labor from the original installation is covered for one year. Reverse osmosis systems carry a one-year warranty. We are local, so you are not waiting on a national dispatch queue when something needs attention — full terms are on our warranty page."),
         ('Do you price match?', "Yes. Find the same certified system quoted for less and we'll beat it. We buy direct from the manufacturer, so there's no distributor markup baked into our price."),
         ('Do I really need a water softener in Central Florida?', "Probably. The Floridan Aquifer runs through limestone, so most of our service area tests between 10 and 18 grains per gallon. Anything over 7 is hard enough to start costing you appliances. Whether it's right for your address is a five-minute conversation."),
