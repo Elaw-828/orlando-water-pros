@@ -105,6 +105,17 @@
         return d;
       }
 
+      /* A required field the browser rejects never reaches the submit handler —
+         it blocks the event first. Its tooltip is easy to miss, and the consent
+         checkbox is the one people skip, so say it in the status line too.
+         `invalid` doesn't bubble, hence the capture phase. */
+      form.addEventListener("invalid", function (e) {
+        var el = e.target;
+        say(el && el.name === "sms_consent"
+              ? "Please tick the consent box so we can contact you."
+              : "Please check the highlighted fields above.", "bad");
+      }, true);
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (!form.reportValidity()) return;
@@ -147,7 +158,12 @@
           if (/"status"\s*:\s*"Error/i.test(body)) throw new Error("rejected");
           form.reset();
           say("Thanks \u2014 we've got it. We'll call you back, usually the same business day.", "good");
-          if (btn) { btn.disabled = true; btn.textContent = "Sent"; }
+          if (btn) {
+            btn.disabled = true;
+            btn.textContent = "Sent";
+            /* Re-arm after a moment so a second enquiry from the same page works. */
+            setTimeout(function () { busy(false); }, 4000);
+          }
         }).catch(function () {
           busy(false);
           say("That didn't go through. Please call " + phone + " or email " + email + ".", "bad");
