@@ -5,8 +5,8 @@ from sitedata import (SITE, CITIES, PRODUCTS, FAQS, CERTS, WHY,
                       COMPARE_COLS, COMPARE_ROWS)
 from layout import head, header, footer, cta_band, quote_form, contact_panel, ICON
 
-FEATURED = ["complete-home-system", "city-water-dual-tank",
-            "premium-well-water-system", "hw800-alkapro"]
+FEATURED = ["softener-carbon-filtration", "city-water-dual-tank",
+            "well-water-dual-tank"]
 
 # Generated hero backdrop. Stands in until a real photo is dropped at
 # assets/img/hero.jpg and --hero-photo is set in style.css.
@@ -296,9 +296,9 @@ def build():
     <div class="section-head center">
       <span class="eyebrow">Our Solutions</span>
       <h2>The right system for your water</h2>
-      <p>City water and well water are different problems with different answers. These four cover most Central Florida homes.</p>
+      <p>City water and well water are different problems with different answers. These three cover most Central Florida homes.</p>
     </div>
-    <div class="grid g4">{featured}</div>
+    <div class="grid g3">{featured}</div>
     <div class="center mt-l"><a class="btn btn-navy" href="solutions.html">See All Solutions {ICON['arrow']}</a></div>
   </div>
 </section>

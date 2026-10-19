@@ -20,7 +20,7 @@ STALE = ["products.html", "gallery.html", "products", "solutions",
          "solutions/pre-sediment-filter.html"]
 
 DOMAIN = f"https://{SITE['domain']}"
-DEFAULT_OG_IMAGE = f"{DOMAIN}/assets/img/complete-home-system.webp"
+DEFAULT_OG_IMAGE = f"{DOMAIN}/assets/img/softener-carbon-filtration.webp"
 
 
 def _canonical_url(relpath):

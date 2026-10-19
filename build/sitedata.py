@@ -322,7 +322,7 @@ CITIES = [
             'county': 'Orange County',
             'hard': '12–18',
             'supply': 'City of Ocoee utility',
-            'note': "Ocoee shares West Orange County's harder supply. A softener paired with a whole-home carbon filter is the usual answer here.",
+            'note': "Ocoee shares West Orange County's harder supply. A softener paired with carbon filtration is the usual answer here.",
             'issues': [
                 'High hardness',
                 'Chlorine taste and odor',
@@ -396,54 +396,10 @@ CITIES = [
 # ---------------------------------------------------------------- products
 PRODUCTS = [
         {
-            'slug': 'complete-home-system',
-            'name': 'Complete Home System',
-            'cat': 'Whole Home',
-            'tag': 'Most Popular',
-            'img': 'complete-home-system.webp',
-            'photo': 'Complete home system with tankless RO',
-            'short': 'Whole-home softening and carbon filtration paired with the HW800 AlkaPro tankless RO — treated water at every tap, plus reverse osmosis at the kitchen sink.',
-            'who': 'City-water homes that want one system to handle hardness, chlorine and drinking water together.',
-            'bullets': [
-                '48,000-grain softening capacity in a single mixed-resin tank',
-                'Granular activated coconut shell carbon for chlorine and chloramine',
-                'HW800 AlkaPro 7-stage tankless reverse osmosis at the kitchen sink',
-                'Honest ProValve digital control with ceramic discs and 72-hour memory backup',
-                '28 GPM system flow — no pressure drop across the house',
-                'Upsized 64,000-grain configuration available for larger homes'
-            ],
-            'long': [
-                'This is the system most Central Florida homes end up with. A single mixed-resin tank handles hardness and chlorine at the point of entry, so every shower, tap and appliance in the house gets treated water. Under the kitchen sink, the HW800 AlkaPro adds seven stages of reverse osmosis for drinking and cooking.',
-                'The softening side runs 75 lbs of 10% crosslinked, USA-made resin with 15 lbs of coconut shell carbon and a polishing gravel bed. The resin resists chlorine and oxidation, which is what determines how long a softener actually lasts in chlorinated city water. The tank measures 12 inches across and 52 inches tall, with a 15-inch square brine tank alongside it.',
-                'Control is handled by the Honest ProValve — ceramic discs instead of rubber seals, a plain-language program interface, and long-term memory that keeps your settings through a power cut. Standard capacity is 48,000 grains; if your household is large or your water tests at the high end, we size up to the 64,000-grain configuration instead.'
-            ]
-        },
-        {
-            'slug': 'city-water-dual-tank',
-            'name': 'City Water Dual Tank',
-            'cat': 'Whole Home',
-            'img': 'city-water-dual-tank.webp',
-            'photo': 'Two-tank city water system',
-            'short': 'Two dedicated tanks for city water — one for filtration, one for softening. Each job gets its own media bed.',
-            'who': 'City-water homes that already have drinking water covered and want the strongest whole-home treatment.',
-            'bullets': [
-                'Separate carbon tank removes chlorine, chloramine and sediment',
-                'Separate softener tank removes calcium and magnesium hardness',
-                'Each media bed sized and serviced independently',
-                'WQA Gold Seal CG10 softening resin',
-                'Programmable digital control valve',
-                'No reverse osmosis included — pairs with either RO system'
-            ],
-            'long': [
-                'Splitting filtration and softening across two tanks means neither job is a compromise. The first tank is a dedicated carbon bed that strips chlorine, chloramine and sediment before the water reaches anything else. The second is a full softener that handles hardness on its own.',
-                'The practical advantage shows up over time. Chlorine is what degrades softening resin, so removing it upstream extends the life of the resin bed considerably. It also means each tank can be serviced on its own schedule rather than replacing a combined bed when only half of it is spent.',
-                'This is the configuration we recommend when a home is on city water, already has a drinking water system, and wants whole-home treatment that will still be performing well in a decade.'
-            ]
-        },
-        {
             'slug': 'softener-carbon-filtration',
             'name': 'Softener + Carbon Filtration',
             'cat': 'Whole Home',
+            'tag': 'Most Popular',
             'img': 'softener-carbon-filtration.webp',
             'photo': 'Single-tank softener with carbon',
             'short': 'One tank, two jobs. Softening resin and carbon in a single unit for the two most common city water problems.',
@@ -463,48 +419,25 @@ PRODUCTS = [
             ]
         },
         {
-            'slug': 'whole-home-carbon-filter',
-            'name': 'Whole Home Carbon Filter',
+            'slug': 'city-water-dual-tank',
+            'name': 'City Water Dual Tank',
             'cat': 'Whole Home',
-            'img': 'whole-home-carbon-filter.webp',
-            'photo': 'Standalone whole-home carbon filter',
-            'short': 'Carbon filtration on its own, for homes that already have soft water but still taste and smell the chlorine.',
-            'who': 'Homes with naturally soft water, or an existing softener, that need chlorine and chloramine gone.',
+            'img': 'city-water-dual-tank.webp',
+            'photo': 'Two-tank city water system',
+            'short': 'Two dedicated tanks for city water — one for filtration, one for softening. Each job gets its own media bed.',
+            'who': 'City-water homes that want the strongest whole-home treatment we install.',
             'bullets': [
-                'Granular activated coconut shell carbon',
-                'Removes chlorine, chloramine, taste and odor at every tap',
-                'Reduces sediment and particulates',
-                'No salt, no brine tank, no regeneration',
-                'Low-maintenance media with a long service life',
-                'Works as a standalone unit or ahead of an existing softener'
+                'Separate carbon tank removes chlorine, chloramine and sediment',
+                'Separate softener tank removes calcium and magnesium hardness',
+                'Each media bed sized and serviced independently',
+                'WQA Gold Seal CG10 softening resin',
+                'Programmable digital control valve',
+                'Most media volume of any system we install'
             ],
             'long': [
-                'Not every home needs softening. If your water is already soft — or you have a softener that works fine — but the shower still smells like a swimming pool, carbon filtration on its own is the right answer.',
-                'The bed is granular activated coconut shell carbon, which is the same medium in our combination systems. It pulls chlorine and chloramine out of the water along with the taste and odor they carry, and it captures sediment and particulates on the way through.',
-                'Installed ahead of an existing softener, it also does that softener a favor: chlorine is what breaks resin down over time, so removing it upstream buys you years of additional resin life.'
-            ]
-        },
-        {
-            'slug': 'premium-well-water-system',
-            'name': 'Premium Well Water System',
-            'cat': 'Well Water',
-            'tag': 'Iron & Sulfur',
-            'img': 'premium-well-water-system.webp',
-            'photo': 'Iron and sulfur removal system with peroxide injection',
-            'short': 'Iron staining and rotten-egg sulfur odor handled before the water reaches your house, with softening built in.',
-            'who': 'Private wells with orange staining, sulfur smell, or both.',
-            'bullets': [
-                'Hydrogen peroxide injection at the point of entry',
-                'Oxidizes iron, manganese and hydrogen sulfide so carbon can capture them',
-                'Granular activated catalytic coconut shell carbon bed',
-                '48,000-grain softening tank included',
-                'Backwash self-cleaning — no cartridges to swap',
-                '30 GPM valve flow, 27 GPM system flow'
-            ],
-            'long': [
-                'Well water in Lake, Volusia and rural Orange County commonly carries dissolved iron and hydrogen sulfide. Neither can be filtered out while it is dissolved, which is why simple cartridge filters fail at this. It has to be oxidized into a solid first.',
-                'This system injects hydrogen peroxide at the point of entry, where it converts dissolved iron and sulfur into particles the catalytic carbon bed can trap. The bed backwashes itself on a schedule, flushing what it caught down the drain. A holding tank keeps peroxide feeding steadily rather than in bursts.',
-                'Behind the iron and sulfur stages sits a full 48,000-grain softener on a 10-inch by 54-inch media tank, so hardness is handled in the same pass. The result is water that no longer stains fixtures orange or announces itself when you turn on the tap.'
+                'Splitting filtration and softening across two tanks means neither job is a compromise. The first tank is a dedicated carbon bed that strips chlorine, chloramine and sediment before the water reaches anything else. The second is a full softener that handles hardness on its own.',
+                'The practical advantage shows up over time. Chlorine is what degrades softening resin, so removing it upstream extends the life of the resin bed considerably. It also means each tank can be serviced on its own schedule rather than replacing a combined bed when only half of it is spent.',
+                'This is the configuration we recommend when a home is on city water and wants whole-home treatment that will still be performing well in a decade.'
             ]
         },
         {
@@ -524,77 +457,9 @@ PRODUCTS = [
                 'Digital control valve on each tank'
             ],
             'long': [
-                'Where a well has iron and hardness but not a significant sulfur problem, a dual-tank setup is usually the better fit than a full peroxide injection system. It costs less, takes up less space, and there is no chemical to keep topped up.',
+                'Where a well has iron and hardness but not a significant sulfur problem, a dual-tank setup is the right fit. It costs less than a chemical injection setup, takes up less space, and there is no chemical to keep topped up.',
                 'The first tank removes iron and sediment, protecting everything downstream from staining and abrasion. The second is a dedicated softener running WQA Gold Seal resin that handles hardness on its own bed and its own schedule.',
-                'If a lab panel comes back showing hydrogen sulfide as well, we will tell you plainly that this system is not the right one and point you at the peroxide injection setup instead. Sizing a well system off a guess is how people end up replacing equipment twice.'
-            ]
-        },
-        {
-            'slug': 'salt-free-conditioner',
-            'name': 'Salt-Free Conditioner',
-            'cat': 'Softeners',
-            'img': 'salt-free-conditioner.webp',
-            'photo': 'Compact salt-free conditioner',
-            'short': 'Scale protection with no salt, no drain, no power and nothing to refill. It conditions water rather than softening it.',
-            'who': 'Homes where salt storage or a drain connection is a problem, or anyone avoiding a sodium byproduct.',
-            'bullets': [
-                'No salt to buy, haul or store',
-                'No brine tank, no drain line, no electricity',
-                'Keeps calcium and magnesium from bonding as scale',
-                'Retains the beneficial minerals in your water',
-                'Compact — a fraction of the footprint of a tank-and-brine setup',
-                'Prevents scale rather than removing hardness — we will explain the difference'
-            ],
-            'long': [
-                'A salt-free conditioner changes the form of hardness minerals so they stay suspended in the water instead of bonding to pipe walls, heating elements and fixtures. That is genuine scale protection, delivered with no salt, no drain and no power.',
-                'What it will not do is remove hardness. Water leaving a conditioner still tests hard, because the calcium and magnesium are still in it. You will not get the slippery-soft shower or the improvement in soap lathering that a true ion-exchange softener gives you.',
-                'For some households that trade is clearly worth it — no bags of salt to carry, no brine discharge, no drain to plumb, and the minerals stay in the water. For others it is not what they were picturing. We would rather explain the difference before we install it than after.'
-            ]
-        },
-        {
-            'slug': 'hw800-alkapro',
-            'name': 'HW800 AlkaPro',
-            'cat': 'Drinking Water',
-            'tag': 'Flagship RO',
-            'img': 'hw800-alkapro.webp',
-            'photo': 'Tankless reverse osmosis unit under a kitchen sink',
-            'short': 'Seven-stage tankless reverse osmosis producing 800 gallons a day, finished with alkaline remineralization. No storage tank, no wait.',
-            'who': 'Anyone who wants the best drinking water we sell.',
-            'bullets': [
-                'Tankless — the space under your sink stays yours',
-                '800 gallons per day, on demand',
-                '0.0001 micron membrane rejects 95–99% of dissolved solids',
-                'Targets heavy metals, microplastics, PFAS and disinfection byproducts',
-                'Alkaline remineralization balances pH and restores taste',
-                '2:1 low drain ratio — far less wastewater than standard RO',
-                'Colour-matched faucet included, filters flagged when due'
-            ],
-            'long': [
-                'Traditional reverse osmosis stores treated water in a pressurized bladder tank that takes up most of the cabinet, and you draw it down faster than it refills. The HW800 makes water on demand instead, at 800 gallons per day, so the space under your sink stays yours and the glass fills at full flow.',
-                'Water passes through a 5-micron sediment pre-filter, then double NSF carbon blocks that absorb chloramine, THMs and TCE while preparing the water for the membrane. The membrane itself is an NSF thin film composite rated to 0.0001 microns, rejecting 95 to 99% of total dissolved solids along with heavy metals, microplastics and PFAS. Two in-line coconut shell carbon stages polish out dissolved gases and any remaining taste.',
-                'The seventh stage is what most people notice. An internal alkaline remineralizer puts back the trace minerals stripped out by the membrane and balances pH, so the water tastes like water rather than like nothing. The system also runs a 2:1 drain ratio, producing two cups of purified water for every one sent to drain — a meaningful improvement on older RO designs.'
-            ]
-        },
-        {
-            'slug': '5-stage-reverse-osmosis',
-            'name': '5-Stage Reverse Osmosis',
-            'cat': 'Drinking Water',
-            'img': '5-stage-reverse-osmosis.webp',
-            'photo': 'Five-stage RO system with storage tank',
-            'short': 'Proven under-sink reverse osmosis with its own faucet and storage tank. The most drinking-water quality per dollar we offer.',
-            'who': 'Households that want excellent drinking water at the lowest entry price.',
-            'bullets': [
-                'Five stages of sediment, carbon and membrane filtration',
-                'Removes up to 99% of contaminants including lead, chlorine, fluoride and nitrates',
-                'Dedicated faucet at the sink, five finishes to choose from',
-                'Pressurized steel storage tank with food-grade butyl bladder',
-                'Simple annual filter service',
-                'A design that has been around long enough to trust'
-            ],
-            'long': [
-                'Reverse osmosis pushes water through a semi-permeable membrane that rejects dissolved solids, then polishes what comes through with carbon. Nothing else you can install in a house treats drinking water this thoroughly.',
-                'This version stores its treated water in a pressurized tank, which is the trade-off against the tankless model: it needs cabinet space, and it costs less. The tank is a high-strength steel shell with a food-grade butyl bladder separating water from air, keeping the supply fresh and the pressure steady so the faucet delivers full flow every time.',
-                'Filters get changed annually. The membrane runs two to three years depending on what is coming into it — harder, higher-solids water works a membrane harder. We send a reminder when yours is due.'
+                'If a lab panel comes back showing significant hydrogen sulfide as well, we will tell you plainly that this system is not the right one and talk you through what is. Sizing a well system off a guess is how people end up replacing equipment twice.'
             ]
         }
 
@@ -602,82 +467,30 @@ PRODUCTS = [
 
 PRODUCT_CATS = [
         'Whole Home',
-        'Well Water',
-        'Softeners',
-        'Drinking Water'
+        'Well Water'
     ]
 
 # ------------------------------------------- manufacturer-published specs
 SPECS = {
-        'complete-home-system': [
-            ('Softening capacity', '48,000 grains (64,000 available)'),
-            ('Resin volume', '75 lbs, 10% crosslinked USA-made'),
-            ('Carbon volume', '15 lbs granular activated coconut shell'),
-            ('Media tank', '12" x 52"'),
-            ('Brine tank', '15" x 35" square'),
-            ('Valve / system flow', '28 GPM / 28 GPM'),
-            ('Bypass size', '1"'),
-            ('Drinking water', 'HW800 AlkaPro 7-stage tankless RO included')
-        ],
-        'city-water-dual-tank': [
-            ('Tanks', 'Two — dedicated carbon and dedicated softener'),
-            ('Media', 'CG10 softening resin, granular activated coconut shell carbon'),
-            ('Resin', 'WQA Gold Seal award-winning resin'),
-            ('Targets', 'Hardness, chlorine, chloramine, sediment'),
-            ('Bypass size', '1"')
-        ],
         'softener-carbon-filtration': [
             ('Tanks', 'Single mixed-media tank'),
             ('Media', 'High-capacity softening resin, coconut shell carbon, polishing gravel'),
             ('Targets', 'Hardness (calcium & magnesium), chlorine taste and odor'),
             ('Brine tank', '15" x 35" square')
         ],
-        'whole-home-carbon-filter': [
-            ('Tanks', 'Single tank'),
-            ('Media', 'Granular activated coconut shell carbon, polishing gravel'),
-            ('Targets', 'Chlorine, chloramine, sediment, taste and odor'),
-            ('Salt / drain', 'No salt or brine tank required')
-        ],
-        'premium-well-water-system': [
-            ('Configuration', 'Carbon filter tank, softener, peroxide injection panel and holding tank'),
-            ('Softening capacity', '48,000 grains'),
-            ('Resin volume', '1.5 cu ft'),
-            ('Media', 'Granular activated catalytic coconut shell carbon'),
-            ('Media tank', '10" x 54"'),
-            ('Brine tank', '15" x 35" square'),
-            ('Valve / system flow', '30 GPM / 27 GPM'),
-            ('Targets', 'Iron, manganese, hydrogen sulfide, hardness')
+        'city-water-dual-tank': [
+            ('Tanks', 'Two \u2014 dedicated carbon and dedicated softener'),
+            ('Media', 'CG10 softening resin, granular activated coconut shell carbon'),
+            ('Resin', 'WQA Gold Seal award-winning resin'),
+            ('Targets', 'Hardness, chlorine, chloramine, sediment'),
+            ('Bypass size', '1"')
         ],
         'well-water-dual-tank': [
-            ('Tanks', 'Two — iron/sediment removal and softening'),
+            ('Tanks', 'Two \u2014 iron/sediment removal and softening'),
             ('Media', 'CG10 softening resin, granular activated coconut shell carbon, Katalox Light'),
             ('Resin', 'WQA Gold Seal award-winning resin'),
             ('Targets', 'Iron, sediment, hardness'),
             ('Bypass size', '1"')
-        ],
-        'salt-free-conditioner': [
-            ('Tanks', 'Single tank'),
-            ('Salt / brine tank', 'None required'),
-            ('Drain connection', 'None required'),
-            ('Power', 'None required — no valve or electronics'),
-            ('Targets', 'Scale prevention (does not remove hardness)')
-        ],
-        'hw800-alkapro': [
-            ('Type', 'Tankless reverse osmosis'),
-            ('Production', '800 gallons per day'),
-            ('Filtration', '7 stages'),
-            ('Membrane', 'NSF thin film composite, 0.0001 micron, 95–99% rejection'),
-            ('Drain ratio', '2:1 — two cups pure per one to drain'),
-            ('Finish', 'Colour-matched faucet included'),
-            ('Manufacturer warranty', '1-year limited')
-        ],
-        '5-stage-reverse-osmosis': [
-            ('Type', 'Tank-style reverse osmosis'),
-            ('Filtration', '5 stages'),
-            ('Storage tank', 'Steel shell with food-grade butyl bladder'),
-            ('Targets', 'Sediment, chlorine, lead, fluoride, nitrates, dissolved solids'),
-            ('Faucet', 'Brushed nickel, chrome, brushed gold, matte black or oil-rubbed bronze'),
-            ('Manufacturer warranty', '1-year limited')
         ]
     }
 
@@ -700,12 +513,10 @@ COMPARE_ROWS = [
 
 # ---------------------------------------------------------------- maintenance
 MAINTENANCE = [
-        ('Salt refill', '1–2 bags every 4–6 weeks', 'You buy it — about $6–8 a bag', 'Any system with a softener'),
-        ('Reverse osmosis filters', 'Every 12 months', '$149', 'HW800 AlkaPro, 5-Stage RO'),
-        ('Hydrogen peroxide', 'Every 3–8 weeks', '$75 per 5-gallon jug', 'Premium Well Water System'),
-        ('Softening resin tank', 'Swap every 7–12 years', '', 'Any system with a softener'),
-        ('Carbon tank', '10+ years', '', 'Dual-tank and carbon systems'),
-        ('Salt-free conditioner tank', 'Swap about every 3 years', '', 'Salt-Free Conditioner')
+        ('Salt refill', '1–2 bags every 4–6 weeks', 'You buy it — about $6–8 a bag', 'Every system we install'),
+        ('Softening resin', 'Swap every 7–12 years', '', 'Every system we install'),
+        ('Carbon media', '10+ years', '', 'Every system we install'),
+        ('Backwash cycle', 'Automatic, set at install', 'No cost — no cartridges to swap', 'Every system we install')
     ]
 
 # ---------------------------------------------------------------- credentials
@@ -721,8 +532,8 @@ CERTS = [
 # ---------------------------------------------------------------- FAQ
 FAQS = [
         ('How long does installation take?', 'Two to four hours for most systems. We schedule around you and leave the space cleaner than we found it. Same-week installation is usually available.'),
-        ('How often do filters need replacement?', 'Reverse osmosis filters run twelve months and the membrane two to three years. We send a reminder when yours are due, and we will change them for you if you would rather not — give us a call and we will get you on the schedule.'),
-        ('What does the warranty cover?', "It is tiered. Tanks and dry parts are covered for life. The control valve, circuit board and filtration media are covered for five years. Labor from the original installation is covered for one year. Reverse osmosis systems carry a one-year warranty. We are local, so you are not waiting on a national dispatch queue when something needs attention — full terms are on our warranty page."),
+        ('How often do filters need replacement?', 'Our systems run on backwashing media beds rather than cartridges, so there is nothing to swap on a schedule. Softening resin lasts seven to twelve years and a carbon bed ten or more. Salt is the only regular consumable. We will tell you when anything is actually due.'),
+        ('What does the warranty cover?', "It is tiered. Tanks and dry parts are covered for life. The control valve, circuit board and filtration media are covered for five years. Labor from the original installation is covered for one year. We are local, so you are not waiting on a national dispatch queue when something needs attention — full terms are on our warranty page."),
         ('Do you price match?', "Yes. Find the same certified system quoted for less and we'll beat it. We buy direct from the manufacturer, so there's no distributor markup baked into our price."),
         ('Do I really need a water softener in Central Florida?', "Probably. The Floridan Aquifer runs through limestone, so most of our service area tests between 10 and 18 grains per gallon. Anything over 7 is hard enough to start costing you appliances. Whether it's right for your address is a five-minute conversation."),
         ('Can you work on a private well?', "Yes. Wells are a big part of what we do in Lake, Volusia and rural Orange County. Well water usually needs iron and sulfur treatment ahead of softening. Get a certified lab panel for bacteria and nitrate first — we'll tell you where."),
@@ -749,7 +560,6 @@ WARRANTY = {
         ('Control valve', 'Five years against defects in materials and workmanship.'),
         ('Circuit board', 'System electronics and control board — five years.'),
         ('Filtration media', 'Softening resin, carbon and other filtration media — five years.'),
-        ('Reverse osmosis systems', 'The HW800 AlkaPro and the 5-Stage Reverse Osmosis system — one year.'),
         ('Labor', 'Labor arising from the original installation — one year from the date of purchase.')
     ],
     'notes': [

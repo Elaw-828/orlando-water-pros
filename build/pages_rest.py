@@ -22,10 +22,10 @@ def solutions_index():
 </div>""")
     return head(
         "Our Solutions | Orlando Water Pros",
-        "Whole-home water softening and filtration, well water iron and sulfur systems, reverse osmosis drinking water and smart add-ons installed across Central Florida.",
+        "Whole-home water softening and carbon filtration plus well water iron and sediment systems, installed across Orlando and Central Florida.",
     ) + header("solutions") + page_hero(
         "Our Solutions",
-        "Whole-home treatment, well water systems, drinking water and add-ons. Which one you need depends on what's coming into your house.",
+        "Whole-home treatment for city water and complete systems for private wells. Which one you need depends on what's coming into your house.",
         '<a href="./">Home</a> / Our Solutions',
     ) + f"""<section class="section"><div class="wrap">{''.join(blocks)}</div></section>""" + cta_band(
         heading="Not sure which system is right for you?",
@@ -45,8 +45,7 @@ def solution_page(p):
         for q, a in FAQS[:4]
     )
     rows = [("Category", p["cat"])] + SPECS.get(p["slug"], [])
-    if p["slug"] not in ("hw800-alkapro", "5-stage-reverse-osmosis"):
-        rows.append(("Warranty", "Lifetime on tanks and dry parts; 5 years valve, board and media; 1 year labor"))
+    rows.append(("Warranty", "Lifetime on tanks and dry parts; 5 years valve, board and media; 1 year labor"))
     spec_rows = "".join(f'<tr><th scope="row">{k}</th><td>{v}</td></tr>' for k, v in rows)
     return head(
         f"{p['name']} | Orlando Water Pros",
@@ -296,7 +295,7 @@ def city_page(c):
     issues = "".join(f'<li><span class="tick">!</span><span>{x}</span></li>' for x in c["issues"])
     hi = int(c["hard"].split("–")[1])
     pct = min(100, int(hi / 25 * 100))
-    recs = [p for p in PRODUCTS if p["cat"] in ("Whole Home", "Well Water", "Drinking Water")][:3]
+    recs = [p for p in PRODUCTS if p["cat"] in ("Whole Home", "Well Water")][:3]
     cards = "".join(product_card(p, depth=1) for p in recs)
     nearby = "".join(
         f'<a class="chip" href="{x["slug"]}.html">{x["name"]}</a>'
