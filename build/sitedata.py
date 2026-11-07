@@ -398,6 +398,43 @@ CITIES = [
         }
     ]
 
+# Per-city extras. Every report URL is the utility's own page, checked Nov 2026.
+# geo is approximate city centre, used only to order "nearby areas"; never shown.
+# report_url None = no current report found online (Apopka, Nov 2026).
+CITY_LOCAL = {
+    'orlando': {'geo': (28.538, -81.379), 'report_by': 'Orlando Utilities Commission (OUC)',
+                'report_url': 'https://www.ouc.com/about-ouc/company-publications/water-quality-reports'},
+    'winter-park': {'geo': (28.600, -81.339), 'report_by': 'the City of Winter Park',
+                    'report_url': 'https://cityofwinterpark.org/departments/water-wastewater-utilities/water-treatment'},
+    'kissimmee': {'geo': (28.292, -81.408), 'report_by': 'Toho Water Authority',
+                  'report_url': 'https://www.tohowater.com/waterquality'},
+    'st-cloud': {'geo': (28.249, -81.281), 'report_by': 'Toho Water Authority',
+                 'report_url': 'https://www.tohowater.com/waterquality'},
+    'clermont': {'geo': (28.549, -81.773), 'report_by': 'the City of Clermont',
+                 'report_url': 'https://www.clermontfl.gov/Archive.aspx?AMID=37'},
+    'lake-mary': {'geo': (28.759, -81.318), 'report_by': 'the City of Lake Mary',
+                  'report_url': 'https://www.lakemaryfl.com/341/Water-Quality'},
+    'sanford': {'geo': (28.800, -81.273), 'report_by': 'the City of Sanford',
+                'report_url': 'https://sanfordfl.gov/wp-content/uploads/2026/04/City-of-Sanford-Annual-Water-Quality-Report-2026.pdf'},
+    'altamonte-springs': {'geo': (28.661, -81.366), 'report_by': 'the City of Altamonte Springs',
+                          'report_url': 'https://www.altamonte.org/1271/Water-Quality'},
+    'oviedo': {'geo': (28.670, -81.208), 'report_by': 'the City of Oviedo',
+               'report_url': 'https://cityofoviedo.net/1206/Water'},
+    'apopka': {'geo': (28.676, -81.512), 'report_by': 'the City of Apopka', 'report_url': None},
+    'winter-garden': {'geo': (28.565, -81.586), 'report_by': 'the City of Winter Garden',
+                      'report_url': 'https://wgfl.gov/454/Water-Quality-Report'},
+    'ocoee': {'geo': (28.569, -81.544), 'report_by': 'the City of Ocoee',
+              'report_url': 'https://www.ocoee.org/ccr'},
+    'windermere': {'geo': (28.496, -81.535), 'report_by': 'Orange County Utilities',
+                   'report_url': 'https://www.ocfl.net/WaterQuality',
+                   # Town of Windermere runs no water system of its own; its site
+                   # sends water questions to Orange County Utilities.
+                   'supply_answer': ("The Town of Windermere doesn't run its own water system. "
+                                     "Homes are either connected to Orange County Utilities or on a private well.")},
+    'deltona': {'geo': (28.900, -81.264), 'report_by': 'the City of Deltona',
+                'report_url': 'https://www.deltonafl.gov/DocumentCenter/View/1711'},
+}
+
 # ---------------------------------------------------------------- products
 PRODUCTS = [
         {

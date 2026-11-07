@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """Interior pages: solutions, about, contact, quote, service areas, resources, legal."""
 
-from sitedata import (SITE, CITIES, PRODUCTS, PRODUCT_CATS, FAQS, CERTS,
+import math
+
+from sitedata import (SITE, CITIES, CITY_LOCAL, PRODUCTS, PRODUCT_CATS, FAQS, CERTS,
                       WHY, WARRANTY, SPECS, MAINTENANCE)
 from layout import (head, header, footer, cta_band, quote_form, contact_panel,
                     page_hero, ICON)
@@ -299,19 +301,84 @@ def _city_title(name):
     return f"Water Softeners in {name}, FL | Orlando Water Pros"
 
 
+def _nearby(c, n=5):
+    la, lo = CITY_LOCAL[c["slug"]]["geo"]
+    k = math.cos(math.radians(la))
+
+    def dist(x):
+        a, b = CITY_LOCAL[x["slug"]]["geo"]
+        return (a - la) ** 2 + ((b - lo) * k) ** 2
+    return sorted((x for x in CITIES if x["slug"] != c["slug"]), key=dist)[:n]
+
+
+def _has_wells(c):
+    return "well" in c["supply"].lower() and "Aquifer wells" not in c["supply"]
+
+
+def _city_faqs(c):
+    """Two or three questions specific to this city, then two general ones
+    rotated by city so no two neighbouring pages carry the same set."""
+    loc, e, name = CITY_LOCAL[c["slug"]], c["ewg"], c["name"]
+    base = c["supply"].split(" & private wells")[0]
+    if base.startswith("City of"):
+        base = "the " + base
+    supply = loc.get("supply_answer") or (
+        f"Public water in {name} comes from {base}."
+        + (" Many homes outside the service area are on private wells." if _has_wells(c) else ""))
+    top = e["top"][0]
+    faqs = [
+        (f"Who supplies tap water in {name}?", supply),
+        (f"What did EWG find in {e['utility']} water?",
+         f"The Environmental Working Group's Tap Water Database lists {e['total']} contaminants detected in "
+         f"{e['utility']} water, {e['over']} of them above EWG's own health guidelines. Top of the list is "
+         f"{top[0]}, detected at {top[1]} against an EWG guideline of {top[2]}. EWG's guidelines are much "
+         f"stricter than federal legal limits, so a result above one is not by itself a violation."),
+    ]
+    if _has_wells(c):
+        faqs.append((f"I'm on a private well near {name}. Does that change things?",
+                     "Yes. A private well isn't covered by any utility's water report, and well water can carry "
+                     "iron, sulfur and sediment that city water doesn't. We start with a lab test of your well "
+                     "and size the system from the results."))
+    pool = [f for i, f in enumerate(FAQS) if i != 5 or not _has_wells(c)]
+    i = CITIES.index(c)
+    faqs += [pool[i % len(pool)], pool[(i + 3) % len(pool)]]
+    return faqs
+
+
+def _report_section(c):
+    loc = CITY_LOCAL[c["slug"]]
+    if loc["report_url"]:
+        tail = (f'For {c["name"]}, that report is published by {loc["report_by"]}.</p>\n'
+                f'    <a class="btn btn-outline" href="{loc["report_url"]}" target="_blank" rel="noopener">'
+                f'Read the official water quality report {ICON["arrow"]}</a>')
+    else:
+        tail = f'For {c["name"]}, ask {loc["report_by"]} for its current report.</p>'
+    return f"""
+<section class="section">
+  <div class="wrap wrap-narrow">
+    <h2>Your utility&rsquo;s own water report</h2>
+    <p>Every community water system has to publish an annual drinking water quality report, also called a
+    Consumer Confidence Report. It lists what was detected in the water and how each result compares to the
+    legal limit. {tail}
+  </div>
+</section>
+"""
+
+
 def city_page(c):
     issues = "".join(f'<li><span class="tick">!</span><span>{x}</span></li>' for x in c["issues"])
     hi = int(c["hard"].split("–")[1])
     pct = min(100, int(hi / 25 * 100))
     recs = [p for p in PRODUCTS if p["cat"] in ("Whole Home", "Well Water")][:3]
+    if _has_wells(c):
+        recs.sort(key=lambda p: p["cat"] != "Well Water")
     cards = "".join(product_card(p, depth=1) for p in recs)
     nearby = "".join(
-        f'<a class="chip" href="{x["slug"]}.html">{x["name"]}</a>'
-        for x in CITIES if x["slug"] != c["slug"]
-    )
+        f'<a class="chip" href="{x["slug"]}.html">{x["name"]}</a>' for x in _nearby(c)
+    ) + '<a class="chip" href="../service-areas.html">All service areas</a>'
     faqs = "".join(
         f'<details><summary>{q}</summary><div class="answer">{a}</div></details>'
-        for q, a in FAQS[:4]
+        for q, a in _city_faqs(c)
     )
     return head(
         _city_title(c['name']),
@@ -348,7 +415,7 @@ def city_page(c):
     </div>
   </div>
 </section>
-""" + ewg_section(c) + f"""
+""" + ewg_section(c) + _report_section(c) + f"""
 
 <section class="section section-alt">
   <div class="wrap">
@@ -360,14 +427,14 @@ def city_page(c):
 
 <section class="section">
   <div class="wrap wrap-narrow">
-    <div class="section-head center"><h2>Common questions</h2></div>
+    <div class="section-head center"><h2>{c['name']} water questions</h2></div>
     <div class="faq">{faqs}</div>
   </div>
 </section>
 
 <section class="section section-alt">
   <div class="wrap center">
-    <h2 style="font-size:1.4rem">We also serve</h2>
+    <h2 style="font-size:1.4rem">Nearby areas we serve</h2>
     <div class="chips mt-m" style="justify-content:center">{nearby}</div>
   </div>
 </section>
