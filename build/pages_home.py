@@ -251,7 +251,7 @@ def build():
       <span class="eyebrow" style="color:var(--aqua-500)">Orlando &amp; Central Florida</span>
       <h1>Water Filtration &amp; Softening in the Orlando Area</h1>
       <p class="hero-sub">Central Florida water is hard. Your house is paying for it.</p>
-      <p class="hero-lede">Homes across Orange, Seminole, Osceola, Lake and Volusia counties test between 10 and 18 grains per gallon. That's scale in your water heater, film on your shower door, and laundry that never comes out soft. We fix it, usually in a single afternoon.</p>
+      <p class="hero-lede">Most Central Florida water comes from the Floridan Aquifer, which runs through limestone, so it picks up calcium and magnesium on the way to your tap. That's scale in your water heater, film on your shower door, and laundry that never comes out soft. We fix it, usually in a single afternoon.</p>
       <div class="hero-badges">{hero_tiles}</div>
       <div class="btn-row">
         <a class="btn btn-primary" href="quote.html">Get a Free Quote</a>
