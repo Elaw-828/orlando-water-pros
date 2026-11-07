@@ -106,16 +106,18 @@ contaminants, not hardness. An audit in Oct 2026 found:
   The site currently says Orlando is 6–15. That contradicts the utility.
 - Every competitor hardness map is invented, because there's nothing to cite.
 
-Everett chose to leave the figures in place for now. **Treat them as known-bad.**
-Do not add new city figures, do not cite them as sourced, and do not build
-marketing claims on them. (`Claude outputs/hardness-audit.md` is referenced in
-older notes but no longer exists in the repo.)
-
-**Exceptions, fixed Nov 2026:** Orlando now shows OUC's published 7 gpg and Apopka
-the city's published 6–13 gpg. Both carry a `hard_src` in `CITY_LOCAL`
-(`sitedata.py`) and the page labels them "Published hardness". The other 12 cities
-remain unsourced "Typical hardness". OUC states it does **not** use chloramine;
-the old copy saying it did was wrong and has been removed.
+**Resolved Nov 2026:** the 12 unsourced ranges were **removed** from the data and
+the site, along with every comparative hardness claim in the city intros ("hardest
+water in Central Florida", "runs harder than Orlando", etc.). Only Orlando (OUC's
+published 7 gpg) and Apopka (the city's published 6–13 gpg) still have a `hard`
+value; both carry a `hard_src` in `CITY_LOCAL` (`sitedata.py`) and display as
+"Published hardness". Do not re-add a `hard` value without a primary source.
+Where there is no figure, pages offer a **free hardness test** ("ask when you call").
+Everett approved that offer in Nov 2026; if he stops offering it, remove the
+wording from `city_page()` and `water_table()`.
+OUC states it does **not** use chloramine; the old copy saying it did was wrong.
+(`Claude outputs/hardness-audit.md` is referenced in older notes but no longer
+exists in the repo.)
 
 `CITY_LOCAL` also holds each city's utility report link and a short `facts` list.
 Every fact is a restatement of the utility's own document, cited in `facts_src`.

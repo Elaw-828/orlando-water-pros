@@ -76,9 +76,8 @@ CITIES = [
             'slug': 'winter-park',
             'name': 'Winter Park',
             'county': 'Orange County',
-            'hard': '10–15',
             'supply': 'City of Winter Park utility',
-            'note': 'Winter Park runs hard, consistently. Older homes here often carry a decade of scale in the water heater before anyone installs treatment.',
+            'note': 'The City of Winter Park runs four interconnected water plants and treats with ozone and chlorine. Older homes here often carry years of scale in the water heater before anyone installs treatment.',
             'issues': [
                 'Hard water scale',
                 'Water heaters failing early',
@@ -101,11 +100,10 @@ CITIES = [
             'slug': 'kissimmee',
             'name': 'Kissimmee',
             'county': 'Osceola County',
-            'hard': '12–18',
             'supply': 'Toho Water Authority',
-            'note': 'Osceola runs harder than Orlando. Sulfur odor is a common complaint across the county, and it gets worse on private wells.',
+            'note': 'Toho Water Authority supplies Kissimmee and publishes separate water reports by service area. Sulfur odor is a common complaint across Osceola County, and it gets worse on private wells.',
             'issues': [
-                'High hardness',
+                'Scale on fixtures and appliances',
                 'Sulfur (rotten-egg) odor',
                 'Appliance scale'
             ],
@@ -125,11 +123,10 @@ CITIES = [
             'slug': 'st-cloud',
             'name': 'St. Cloud',
             'county': 'Osceola County',
-            'hard': '12–18',
             'supply': 'Toho Water Authority (runs the city system)',
-            'note': 'Same aquifer conditions as the rest of Osceola: hard water everywhere, plus a large number of homes on private wells fighting iron and sulfur.',
+            'note': "Toho Water Authority has run St. Cloud's water system since 2022. Outside the city system, a lot of homes are on private wells dealing with iron and sulfur.",
             'issues': [
-                'High hardness',
+                'Scale on fixtures and appliances',
                 'Iron staining on wells',
                 'Sulfur odor'
             ],
@@ -150,11 +147,10 @@ CITIES = [
             'slug': 'clermont',
             'name': 'Clermont',
             'county': 'Lake County',
-            'hard': '15–25',
             'supply': 'City of Clermont utility & private wells',
-            'note': 'Lake County has the hardest water in Central Florida, and Clermont sits at the top of the range. Most homes outside city limits are on wells.',
+            'note': "Clermont's water comes from eight city wells in the Floridan Aquifer, and the city treats it with chlorine only. Many homes outside city limits are on private wells.",
             'issues': [
-                'Very high hardness',
+                'Hard water scale',
                 'Iron and sulfur on wells',
                 'Fast scale buildup'
             ],
@@ -175,9 +171,8 @@ CITIES = [
             'slug': 'lake-mary',
             'name': 'Lake Mary',
             'county': 'Seminole County',
-            'hard': '10–16',
             'supply': 'City of Lake Mary utility',
-            'note': 'Seminole County runs hard across the board. Most Lake Mary homes want softening plus carbon filtration for taste.',
+            'note': 'Lake Mary draws from six wells in the upper Floridan Aquifer and treats with UV oxidation, carbon and chlorine. Most Lake Mary homeowners we talk to still want softening plus carbon filtration for taste.',
             'issues': [
                 'Hard water scale',
                 'Chlorine taste',
@@ -200,9 +195,8 @@ CITIES = [
             'slug': 'sanford',
             'name': 'Sanford',
             'county': 'Seminole County',
-            'hard': '10–16',
             'supply': 'City of Sanford utility',
-            'note': 'Sanford draws from the Floridan Aquifer and lands squarely in the hard range. Older parts of town report sulfur odor now and then.',
+            'note': 'Sanford draws from seventeen wells in the Floridan Aquifer and disinfects with chlorine. Older parts of town report sulfur odor now and then.',
             'issues': [
                 'Hard water scale',
                 'Occasional sulfur odor',
@@ -225,9 +219,8 @@ CITIES = [
             'slug': 'altamonte-springs',
             'name': 'Altamonte Springs',
             'county': 'Seminole County',
-            'hard': '10–16',
             'supply': 'City of Altamonte Springs utility',
-            'note': 'Standard Seminole County water. Hard enough that scale shows on the shower door and inside the water heater within a few years.',
+            'note': 'Altamonte Springs pumps from six wells in the Floridan Aquifer and aerates the water to strip out hydrogen sulfide before chlorinating it. Scale on shower doors and inside water heaters is the usual reason people call.',
             'issues': [
                 'Hard water scale',
                 'Soap scum',
@@ -250,9 +243,8 @@ CITIES = [
             'slug': 'oviedo',
             'name': 'Oviedo',
             'county': 'Seminole County',
-            'hard': '10–16',
             'supply': 'City of Oviedo utility',
-            'note': 'Typical Seminole hardness. Newer subdivisions come plumbed with a softener loop in the garage, which makes install day short.',
+            'note': 'Oviedo draws from ten wells and disinfects with chloramine rather than chlorine, which matters when choosing a carbon filter. Newer subdivisions come plumbed with a softener loop in the garage, which makes install day short.',
             'issues': [
                 'Hard water scale',
                 'Spotting on glassware',
@@ -279,7 +271,7 @@ CITIES = [
             'supply': 'City of Apopka utility & private wells',
             'note': "The City of Apopka puts its source water at 102 to 222 ppm of hardness, or 6 to 13 grains per gallon. The rural areas around it are dense with private wells carrying iron and hydrogen sulfide.",
             'issues': [
-                'High hardness',
+                'Scale on fixtures and appliances',
                 'Iron staining',
                 'Sulfur odor on wells'
             ],
@@ -300,11 +292,10 @@ CITIES = [
             'slug': 'winter-garden',
             'name': 'Winter Garden',
             'county': 'Orange County',
-            'hard': '12–18',
             'supply': 'City of Winter Garden & Orange County Utilities',
-            'note': 'West Orange County water sits on the harder end. Owners in the newer neighborhoods usually call after spotting scale on fixtures that are barely a year old.',
+            'note': 'Winter Garden pumps from six deep wells in the Floridan Aquifer, then aerates and chlorinates. Owners in the newer neighborhoods usually call after spotting scale on fixtures that are barely a year old.',
             'issues': [
-                'High hardness',
+                'Scale on fixtures and appliances',
                 'Scale on new fixtures',
                 'Appliance wear'
             ],
@@ -325,11 +316,10 @@ CITIES = [
             'slug': 'ocoee',
             'name': 'Ocoee',
             'county': 'Orange County',
-            'hard': '12–18',
             'supply': 'City of Ocoee utility',
-            'note': "Ocoee shares West Orange County's harder supply. A softener paired with carbon filtration is the usual answer here.",
+            'note': 'Ocoee draws from the Floridan Aquifer at depths of 340 to 1,450 feet and chlorinates its water. A softener paired with carbon filtration is the usual answer here.',
             'issues': [
-                'High hardness',
+                'Scale on fixtures and appliances',
                 'Chlorine taste and odor',
                 'Soap scum'
             ],
@@ -350,7 +340,6 @@ CITIES = [
             'slug': 'windermere',
             'name': 'Windermere',
             'county': 'Orange County',
-            'hard': '10–16',
             'supply': 'Orange County Utilities & private wells',
             'note': 'A mix of municipal service and private wells. The larger homes here need higher-capacity equipment to keep up with the fixture count.',
             'issues': [
@@ -375,13 +364,12 @@ CITIES = [
             'slug': 'deltona',
             'name': 'Deltona',
             'county': 'Volusia County',
-            'hard': '12–18',
             'supply': 'City of Deltona utility & private wells',
-            'note': "Deltona has more private wells than anywhere else we serve. That's where the iron staining and sulfur odor show up.",
+            'note': "Deltona disinfects with chloramine. Outside the city system, plenty of homes are on private wells, and that's where iron staining and sulfur odor show up.",
             'issues': [
                 'Iron staining',
                 'Sulfur odor',
-                'High hardness'
+                'Scale on fixtures and appliances'
             ],
             'ewg': {
                 'utility': 'Deltona Water',

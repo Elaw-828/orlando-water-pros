@@ -184,28 +184,22 @@ we list them as "varies" rather than guess — confirm current terms directly wi
 def water_table():
     rows = ""
     for c in CITIES:
-        lo = int(c["hard"].split("–")[0])
-        hi = int(c["hard"].split("–")[-1])
-        pct = min(100, int(hi / 25 * 100))
-        level = "Very hard" if lo >= 15 else ("Hard" if lo >= 10 else "Moderate–hard")
         rows += f"""<tr>
   <th scope="row"><a href="service-areas/{c['slug']}.html">{c['name']}</a><span class="row-sub">{c['county']}</span></th>
-  <td class="num">{c['hard']}<span class="unit">gpg</span></td>
-  <td class="hardcell"><span class="level">{level}</span><span class="bar"><i style="width:{pct}%"></i></span></td>
+  <td>{c['supply']}</td>
   <td class="issues">{' · '.join(c['issues'][:2])}</td>
 </tr>"""
     return f"""<div class="table-scroll">
   <table class="watertable">
     <thead><tr>
-      <th scope="col">City</th><th scope="col">Hardness</th>
-      <th scope="col">Level</th><th scope="col">What we see most</th>
+      <th scope="col">City</th><th scope="col">Water supply</th><th scope="col">What we see most</th>
     </tr></thead>
     <tbody>{rows}</tbody>
   </table>
 </div>
-<p class="table-note">Figures are typical published ranges for each area's supply, not a measurement of your address.
-Water differs between neighborhoods depending on which plant or well field serves you, and private wells vary property
-to property. Above 7 gpg is considered hard.</p>"""
+<p class="table-note">Many Central Florida utilities don't publish a hardness figure, and water differs between
+neighborhoods and from one private well to the next. Ask for a free hardness test when you call and you'll know
+where your house actually stands. Each city page links to that utility's own water quality report.</p>"""
 
 
 
@@ -323,7 +317,7 @@ def build():
     <div class="section-head">
       <span class="eyebrow">Water quality by city</span>
       <h2>What's in the water where you live</h2>
-      <p>Hardness changes across Central Florida, and it changes inside Orlando too, depending on which plant serves your street.</p>
+      <p>Each city is served by a different utility with its own wells and treatment. Pick yours for what that utility says about its water.</p>
     </div>
     {water_table()}
   </div>

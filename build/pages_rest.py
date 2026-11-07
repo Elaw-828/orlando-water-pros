@@ -231,7 +231,7 @@ def areas_index():
   <div class="card-body">
     <span class="card-tag">{c['county']}</span>
     <h3>{c['name']}</h3>
-    <p>Typical hardness {c['hard']} gpg · {c['supply']}</p>
+    <p>{f"Published hardness {c['hard']} gpg · " if c.get('hard') else ""}{c['supply']}</p>
     <div class="card-foot"><span class="card-price">Local water info</span>{ICON['arrow']}</div>
   </div>
 </a>""" for c in CITIES)
@@ -376,16 +376,24 @@ def _report_section(c):
 
 def city_page(c):
     issues = "".join(f'<li><span class="tick">!</span><span>{x}</span></li>' for x in c["issues"])
-    hi = int(c["hard"].split("–")[-1])
-    pct = min(100, int(hi / 25 * 100))
     hsrc = CITY_LOCAL[c["slug"]].get("hard_src")
-    hard_k = "Published hardness" if hsrc else "Typical hardness"
-    hard_d = (f'Published by <a href="{hsrc[1]}" target="_blank" rel="noopener">{hsrc[0]}</a>. '
-              if hsrc else "") + "Above 7 gpg is considered hard water."
-    hard_p = (f"The hardness figure here is the one {hsrc[0]} publishes for its source water. It's an average, "
-              "not a measurement of your house, and a private well can be very different from city water."
-              if hsrc else
-              "The hardness figures here are typical published ranges for the area's supply. They're a starting point, not a measurement of your house. Water changes between neighborhoods depending on which well field or plant serves you, and on a private well it changes from one property to the next.")
+    if hsrc:
+        pct = min(100, int(int(c["hard"].split("–")[-1]) / 25 * 100))
+        hard_stat = f"""<div class="stat"><div class="k">Published hardness</div>
+        <div class="v">{c['hard']} <span class="unit-lg">gpg</span></div>
+        <div class="d">Published by <a href="{hsrc[1]}" target="_blank" rel="noopener">{hsrc[0]}</a>. Above 7 gpg is considered hard water.</div>
+        <div class="bar"><i style="width:{pct}%"></i></div></div>"""
+        hero_hard = f" · Published hardness {c['hard']} grains per gallon"
+        hard_p = (f"The hardness figure here is the one {hsrc[0]} publishes for its source water. It's an average, "
+                  "not a measurement of your house, and a private well can be very different from city water.")
+    else:
+        hard_stat = f"""<div class="stat"><div class="k">Your hardness</div>
+        <div class="v" style="font-size:1.4rem">Free test</div>
+        <div class="d">We don&rsquo;t have a published hardness figure for {c['name']}&rsquo;s supply. Ask for a free hardness test when you call.</div></div>"""
+        hero_hard = ""
+        hard_p = (f"Many Central Florida utilities don't publish a hardness figure, so we don't put a number on "
+                  f"{c['name']}'s water. It also changes between neighborhoods and from one well to the next. "
+                  f"A quick test at your tap shows where your house actually stands, and we'll do it free.")
     recs = [p for p in PRODUCTS if p["cat"] in ("Whole Home", "Well Water")][:3]
     if _has_wells(c):
         recs.sort(key=lambda p: p["cat"] != "Well Water")
@@ -403,16 +411,13 @@ def city_page(c):
         depth=1,
     ) + header("areas", depth=1) + page_hero(
         f"Water filtration &amp; softening in {c['name']}, FL",
-        f"{c['county']} · {hard_k} {c['hard']} grains per gallon · Supply: {c['supply']}",
+        f"{c['county']}{hero_hard} · Supply: {c['supply']}",
         '<a href="../">Home</a> / <a href="../service-areas.html">Service Areas</a> / ' + c["name"],
     ) + f"""
 <section class="section">
   <div class="wrap">
     <div class="readout">
-      <div class="stat"><div class="k">{hard_k}</div>
-        <div class="v">{c['hard']} <span class="unit-lg">gpg</span></div>
-        <div class="d">{hard_d}</div>
-        <div class="bar"><i style="width:{pct}%"></i></div></div>
+      {hard_stat}
       <div class="stat"><div class="k">Water supply</div>
         <div class="v" style="font-size:1.15rem">{c['supply']}</div>
         <div class="d">{c['county']}</div></div>
