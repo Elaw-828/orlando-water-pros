@@ -54,8 +54,11 @@ cd build && python3 build.py
 
 ## 3. Shipping
 
-**Neither sandbox can reach github.com** (403 at the egress proxy). Claude can
-commit locally; **Everett runs the push.**
+From Everett's Windows machine (Claude Code desktop, working dir
+`C:\Users\evere\Documents\Website\hwcfl`) Claude **can push** — his GitHub
+credentials are set up there, and Vercel deploys within ~10 seconds.
+The cloud container and `device_bash` **cannot** reach github.com (403 at the
+egress proxy); from those, commit locally and Everett runs the push.
 
 Commit message is exactly:
 
