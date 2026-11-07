@@ -170,7 +170,7 @@ def audit():
             if "alt=" not in m.group(0):
                 warns.append(f"{rel}: <img> without alt")
         base = os.path.dirname(os.path.join(ROOT, rel))
-        for ref in set(re.findall(r'(?:href|src)="([^"#?:]+)"', html)):
+        for ref in set(re.findall(r'(?:href|src)="([^"#?:]+)[^"]*"', html)):
             if ref.startswith(("http", "//", "tel", "mailto")):
                 continue
             if not os.path.exists(os.path.normpath(os.path.join(base, ref))):

@@ -1,7 +1,23 @@
 # -*- coding: utf-8 -*-
 """Page chrome: <head>, top bar, header/nav, footer, and small components."""
 
+import hashlib
+import os
+
 from sitedata import SITE, CITIES, PRODUCTS
+
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+
+
+def _ver(relpath):
+    """Content hash for cache-busting; vercel.json caches css/js for a year."""
+    with open(os.path.join(_ROOT, relpath), "rb") as fh:
+        return hashlib.sha1(fh.read()).hexdigest()[:10]
+
+
+CSS_V = _ver("assets/css/style.css")
+JS_V = _ver("assets/js/main.js")
+FONTS = ("inter-latin-v20.woff2", "plus-jakarta-sans-latin-v12.woff2")
 
 # ---------------------------------------------------------------- inline icons
 ICON = {
@@ -69,10 +85,7 @@ def head(title, desc, depth=0, extra=""):
 <link rel="icon" href="{up}assets/img/logo/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="{up}assets/img/logo/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="{up}assets/img/logo/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{up}assets/css/style.css">
+{"".join(f'<link rel="preload" href="{up}assets/fonts/{f}" as="font" type="font/woff2" crossorigin>{chr(10)}' for f in FONTS)}<link rel="stylesheet" href="{up}assets/css/style.css?v={CSS_V}">
 {extra}</head>
 <body>
 """
@@ -210,7 +223,7 @@ def footer(depth=0):
   </div>
 </footer>
 
-<script src="{up}assets/js/main.js"></script>
+<script src="{up}assets/js/main.js?v={JS_V}"></script>
 {chat_widget()}</body>
 </html>
 """

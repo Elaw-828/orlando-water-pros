@@ -125,8 +125,11 @@ def product_media(p, depth=0, cls="card-media"):
     """Real product photo when we have one, labeled placeholder when we don't."""
     up = "../" * depth
     if p.get("img"):
+        # The detail-page photo is above the fold (the LCP image): load it eagerly.
+        load = ('fetchpriority="high"' if cls == "detail-media"
+                else 'loading="lazy" decoding="async"')
         return (f'<div class="{cls}"><img src="{up}assets/img/{p["img"]}" '
-                f'alt="{p["name"]}" loading="lazy" decoding="async"></div>')
+                f'alt="{p["name"]}" {load}></div>')
     return f'<div class="ph" data-label="{p["photo"]}"></div>'
 
 
