@@ -32,8 +32,10 @@ cd build && python3 build.py
 
 ### Environment facts that matter
 
-- **Python is NOT installed on Everett's Windows machine.** He cannot run the
-  build himself in cmd. Don't hand him a command that starts with `python`.
+- **Python 3.14 IS installed on Everett's Windows machine**, but `python` on PATH
+  resolves to the Microsoft Store stub. Call it by full path:
+  `C:\Users\evere\AppData\Local\Python\pythoncore-3.14-64\python.exe build.py`
+  (run from `build/`). Don't hand him a bare `python` command.
 - **Python 3.10 IS available in the `device_bash` VM**, which mounts the repo at
   `$HOME/mnt/Website/hwcfl`. Build there — it's far cheaper than rebuilding in the
   cloud container and shuttling files back.

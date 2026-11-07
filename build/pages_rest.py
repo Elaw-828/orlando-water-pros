@@ -21,8 +21,8 @@ def solutions_index():
   <div class="grid g3">{cards}</div>
 </div>""")
     return head(
-        "Our Solutions | Orlando Water Pros",
-        "Whole-home water softening and carbon filtration plus well water iron and sediment systems, installed across Orlando and Central Florida.",
+        "City & Well Water Treatment Systems | Orlando Water Pros",
+        "Compare our whole-home water softener and carbon filtration systems for city water, plus iron and sediment removal for wells. Installed across Central Florida.",
     ) + header("solutions") + page_hero(
         "Our Solutions",
         "Whole-home treatment for city water and complete systems for private wells. Which one you need depends on what's coming into your house.",
@@ -48,8 +48,8 @@ def solution_page(p):
     rows.append(("Warranty", "Lifetime on tanks and dry parts; 5 years valve, board and media; 1 year labor"))
     spec_rows = "".join(f'<tr><th scope="row">{k}</th><td>{v}</td></tr>' for k, v in rows)
     return head(
-        f"{p['name']} | Orlando Water Pros",
-        p["short"], depth=1,
+        f"{p['name']} Water System | Orlando Water Pros",
+        f"{p['short']} Installed across Central Florida.", depth=1,
     ) + header("solutions", depth=1) + page_hero(
         p["name"], p["short"],
         '<a href="../">Home</a> / <a href="../solutions.html">Our Solutions</a> / ' + p["name"],
@@ -135,8 +135,8 @@ def about():
       <span class="card-tag">Step {n+1}</span><h3 style="font-size:1.08rem">{t}</h3><p>{d}</p>
     </div></div>""" for n, (t, d) in enumerate(steps))
     return head(
-        "About | Orlando Water Pros",
-        "Locally owned water filtration and softening for Orlando and Central Florida. How we quote, install and service.",
+        "About Orlando Water Pros | Water Softening & Filtration",
+        "Locally owned water filtration and softening for Orlando and Central Florida. See how we quote, install and service every system we sell.",
     ) + header("about") + page_hero(
         "About Orlando Water Pros",
         "Water filtration and softening for Central Florida homes. Installed by our own team, backed by a written limited warranty.",
@@ -172,8 +172,8 @@ def about():
 # ------------------------------------------------------------------ quote
 def quote_page():
     return head(
-        "Get a Free Quote | Orlando Water Pros",
-        f"Request a free quote on water filtration or softening for your Central Florida home. Call {SITE['phone_display']}."
+        "Free Water Softener & Filtration Quote | Orlando Water Pros",
+        f"Get a free, flat-price quote on water filtration or softening for your Central Florida home. Call {SITE['phone_display']}."
         + (" Or send the form." if SITE.get("show_forms", True) else ""),
     ) + header("quote") + page_hero(
         "Get a free quote",
@@ -206,8 +206,8 @@ def quote_page():
 # ------------------------------------------------------------------ contact
 def contact():
     return head(
-        "Contact | Orlando Water Pros",
-        f"Contact Orlando Water Pros for water filtration and softening across Central Florida. Call {SITE['phone_display']} for a free quote.",
+        f"Contact Orlando Water Pros | {SITE['phone_display']}",
+        f"Call or email Orlando Water Pros about water filtration and softening across Central Florida. Call {SITE['phone_display']} for a free quote.",
     ) + header("contact") + page_hero(
         "Get in touch",
         "Serving Orange, Seminole, Osceola, Lake and Volusia counties. Same-day response on weekdays.",
@@ -234,8 +234,8 @@ def areas_index():
   </div>
 </a>""" for c in CITIES)
     return head(
-        "Service Areas | Orlando Water Pros",
-        "Water softening and filtration installation across Orange, Seminole, Osceola, Lake and Volusia counties in Central Florida.",
+        "Central Florida Service Areas | Orlando Water Pros",
+        "Water softening and filtration installation in Orlando, Winter Park, Kissimmee, Clermont and more across Orange, Seminole, Osceola, Lake and Volusia counties.",
     ) + header("areas") + page_hero(
         "Where we work",
         "We cover Orange, Seminole, Osceola, Lake and Volusia counties. Pick your city for local water conditions.",
@@ -291,6 +291,14 @@ def ewg_section(c, depth=1):
 """
 
 
+def _city_title(name):
+    for t in (f"Water Softener & Filtration in {name}, FL | Orlando Water Pros",
+              f"Water Softeners & Filters in {name}, FL | Orlando Water Pros"):
+        if len(t) <= 65:
+            return t
+    return f"Water Softeners in {name}, FL | Orlando Water Pros"
+
+
 def city_page(c):
     issues = "".join(f'<li><span class="tick">!</span><span>{x}</span></li>' for x in c["issues"])
     hi = int(c["hard"].split("–")[1])
@@ -306,8 +314,8 @@ def city_page(c):
         for q, a in FAQS[:4]
     )
     return head(
-        f"Water Softening & Filtration in {c['name']}, FL | Orlando Water Pros",
-        f"Water filtration and softening in {c['name']}, {c['county']}. Typical hardness {c['hard']} grains per gallon. Free quotes, professional installation.",
+        _city_title(c['name']),
+        f"Whole-home water softening and filtration for {c['name']} homes in {c['county']}. Free quote, flat installed price in writing. Call {SITE['phone_display']}.",
         depth=1,
     ) + header("areas", depth=1) + page_hero(
         f"Water filtration &amp; softening in {c['name']}, FL",
@@ -378,8 +386,8 @@ def warranty_page():
     )
     notes = "".join(f"<li>{n}</li>" for n in WARRANTY["notes"])
     return head(
-        "Warranty | Orlando Water Pros",
-        "Lifetime coverage on tanks and dry parts, five years on the control valve, board and media, one year of labor.",
+        "Warranty: Lifetime Tanks, 5-Year Valve | Orlando Water Pros",
+        "Our written limited warranty: lifetime coverage on tanks and dry parts, five years on the control valve, board and media, and one year of labor.",
     ) + header("") + page_hero(
         "Warranty",
         WARRANTY["intro"],
@@ -457,7 +465,8 @@ def legal_page(key):
     title, sub, paras = LEGAL[key]
     body = "".join(f"<p>{p}</p>" for p in paras)
     return head(
-        f"{title} | Orlando Water Pros", sub,
+        f"{title} | Orlando Water Pros",
+        f"{sub[:-1]} — Orlando Water Pros, water softening and filtration in Central Florida.",
     ) + header("") + page_hero(title, sub, '<a href="./">Home</a> / ' + title) + f"""
 <section class="section"><div class="wrap wrap-narrow">
   <div class="form-card article-body">{body}</div>

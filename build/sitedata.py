@@ -8,6 +8,11 @@ SITE = {
         'legal': 'Orlando Water Pros',
         'email': 'hello@orlandowaterpros.com',
         'hours': 'Mon–Fri 8am–6pm · Sat 9am–2pm',
+        # Same hours as above, structured for schema.org. Keep the two in sync.
+        'hours_spec': [
+            (['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], '08:00', '18:00'),
+            (['Saturday'], '09:00', '14:00'),
+        ],
         # Canonical host. The site is served at www; the apex redirects to it.
         # This must match the host that actually serves the pages, or every
         # canonical/og:url tag points somewhere else.

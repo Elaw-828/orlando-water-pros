@@ -236,8 +236,8 @@ def build():
     )
 
     return head(
-        "Water Filtration & Softening in the Orlando Area | Orlando Water Pros",
-        "Whole-home water filtration and softening for Orlando and Central Florida. Softer showers, spot-free glassware, better laundry and chlorine removal. Free quotes, professional installation, warranty in writing.",
+        "Whole-Home Water Softener & Filtration | Orlando Water Pros",
+        "Whole-home water softening and filtration across Central Florida. Softer showers, spot-free glassware, no chlorine taste. Free quote, flat price in writing.",
     ) + header("home") + f"""
 <section class="hero">
   {HERO_ART}

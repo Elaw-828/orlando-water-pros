@@ -56,11 +56,12 @@ def head(title, desc, depth=0, extra=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#1b3a6b">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Orlando Water Pros">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
@@ -209,18 +210,6 @@ def footer(depth=0):
   </div>
 </footer>
 
-<script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "{SITE['brand']}",
-  "description": "Water filtration and softening installation across Orange, Seminole, Osceola, Lake and Volusia counties in Central Florida.",
-  "url": "https://{SITE['domain']}/",
-  "email": "{SITE['email']}",
-  "areaServed": [{", ".join(f'{{"@type": "City", "name": "{c["name"]}"}}' for c in CITIES)}],
-  "priceRange": "$$"
-}}
-</script>
 <script src="{up}assets/js/main.js"></script>
 {chat_widget()}</body>
 </html>
