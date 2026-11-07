@@ -277,9 +277,8 @@ def ewg_section(c, depth=1):
     <div class="ewg-head">
       <div>
         <h2>What&rsquo;s in {c['name']}&rsquo;s tap water?</h2>
-        <p>{e['utility']} water meets all federal legal standards &mdash; but the Environmental Working Group
-        found <strong>{e['over']} contaminants</strong> above its own health guidelines, out of
-        {e['total']} detected.</p>
+        <p>For {e['utility']} water, the Environmental Working Group found <strong>{e['over']} contaminants</strong>
+        above its own health guidelines, out of {e['total']} detected.</p>
       </div>
       <a class="ewg-btn" href="{e['url']}" target="_blank" rel="noopener">View full EWG report {ICON['arrow']}</a>
     </div>
@@ -347,6 +346,16 @@ def _city_faqs(c):
 
 def _report_section(c):
     loc = CITY_LOCAL[c["slug"]]
+    facts = ""
+    if loc.get("facts"):
+        items = "".join(f'<li><span class="tick">✓</span><span>{f}</span></li>' for f in loc["facts"])
+        label, url = loc["facts_src"]
+        facts = (f'<h3 class="mt-m">{c["name"]} water at a glance</h3>\n'
+                 f'    <ul class="symptom-list on-light">{items}</ul>\n'
+                 f'    <p class="muted" style="font-size:.88rem">Source: '
+                 f'<a href="{url}" target="_blank" rel="noopener">{label}</a></p>\n    <p>')
+    else:
+        facts = "<p>"
     if loc["report_url"]:
         tail = (f'For {c["name"]}, that report is published by {loc["report_by"]}.</p>\n'
                 f'    <a class="btn btn-outline" href="{loc["report_url"]}" target="_blank" rel="noopener">'
@@ -356,8 +365,8 @@ def _report_section(c):
     return f"""
 <section class="section">
   <div class="wrap wrap-narrow">
-    <h2>Your utility&rsquo;s own water report</h2>
-    <p>Every community water system has to publish an annual drinking water quality report, also called a
+    <h2>What {loc['report_by'].removeprefix('the ')} says about its water</h2>
+    {facts}Every community water system has to publish an annual drinking water quality report, also called a
     Consumer Confidence Report. It lists what was detected in the water and how each result compares to the
     legal limit. {tail}
   </div>
@@ -367,8 +376,16 @@ def _report_section(c):
 
 def city_page(c):
     issues = "".join(f'<li><span class="tick">!</span><span>{x}</span></li>' for x in c["issues"])
-    hi = int(c["hard"].split("–")[1])
+    hi = int(c["hard"].split("–")[-1])
     pct = min(100, int(hi / 25 * 100))
+    hsrc = CITY_LOCAL[c["slug"]].get("hard_src")
+    hard_k = "Published hardness" if hsrc else "Typical hardness"
+    hard_d = (f'Published by <a href="{hsrc[1]}" target="_blank" rel="noopener">{hsrc[0]}</a>. '
+              if hsrc else "") + "Above 7 gpg is considered hard water."
+    hard_p = (f"The hardness figure here is the one {hsrc[0]} publishes for its source water. It's an average, "
+              "not a measurement of your house, and a private well can be very different from city water."
+              if hsrc else
+              "The hardness figures here are typical published ranges for the area's supply. They're a starting point, not a measurement of your house. Water changes between neighborhoods depending on which well field or plant serves you, and on a private well it changes from one property to the next.")
     recs = [p for p in PRODUCTS if p["cat"] in ("Whole Home", "Well Water")][:3]
     if _has_wells(c):
         recs.sort(key=lambda p: p["cat"] != "Well Water")
@@ -386,15 +403,15 @@ def city_page(c):
         depth=1,
     ) + header("areas", depth=1) + page_hero(
         f"Water filtration &amp; softening in {c['name']}, FL",
-        f"{c['county']} · Typical hardness {c['hard']} grains per gallon · Supply: {c['supply']}",
+        f"{c['county']} · {hard_k} {c['hard']} grains per gallon · Supply: {c['supply']}",
         '<a href="../">Home</a> / <a href="../service-areas.html">Service Areas</a> / ' + c["name"],
     ) + f"""
 <section class="section">
   <div class="wrap">
     <div class="readout">
-      <div class="stat"><div class="k">Typical hardness</div>
+      <div class="stat"><div class="k">{hard_k}</div>
         <div class="v">{c['hard']} <span class="unit-lg">gpg</span></div>
-        <div class="d">Above 7 gpg is considered hard water.</div>
+        <div class="d">{hard_d}</div>
         <div class="bar"><i style="width:{pct}%"></i></div></div>
       <div class="stat"><div class="k">Water supply</div>
         <div class="v" style="font-size:1.15rem">{c['supply']}</div>
@@ -406,7 +423,7 @@ def city_page(c):
       <div>
         <h2>What {c['name']} homeowners are dealing with</h2>
         <p class="lede">{c['note']}</p>
-        <p>The hardness figures here are typical published ranges for the area's supply. They're a starting point, not a measurement of your house. Water changes between neighborhoods depending on which well field or plant serves you, and on a private well it changes from one property to the next.</p>
+        <p>{hard_p}</p>
         <div class="btn-row mt-m">
           <a class="btn btn-primary" href="../quote.html">Get a Free Quote in {c['name']}</a>
           <a class="btn btn-outline" href="tel:{SITE['phone_href']}">{ICON['phone']} {SITE['phone_display']}</a>

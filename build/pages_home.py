@@ -185,7 +185,7 @@ def water_table():
     rows = ""
     for c in CITIES:
         lo = int(c["hard"].split("–")[0])
-        hi = int(c["hard"].split("–")[1])
+        hi = int(c["hard"].split("–")[-1])
         pct = min(100, int(hi / 25 * 100))
         level = "Very hard" if lo >= 15 else ("Hard" if lo >= 10 else "Moderate–hard")
         rows += f"""<tr>

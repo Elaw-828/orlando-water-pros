@@ -353,6 +353,7 @@ p:last-child { margin-bottom: 0; }
 .symptom-card h3 { color: #fff; font-size: 1.06rem; margin-bottom: 16px; }
 .symptom-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .symptom-list li { display: flex; gap: 12px; align-items: flex-start; font-size: .95rem; color: #d5e2f3; }
+.stat .symptom-list li, .symptom-list.on-light li { color: var(--ink-soft); }
 .symptom-list .tick {
   flex: 0 0 22px; width: 22px; height: 22px; border-radius: 50%;
   background: rgba(22,166,201,.18); color: var(--aqua-500);

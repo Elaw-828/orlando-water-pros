@@ -51,13 +51,13 @@ CITIES = [
             'slug': 'orlando',
             'name': 'Orlando',
             'county': 'Orange County',
-            'hard': '6–15',
-            'supply': 'OUC (Floridan Aquifer wells)',
-            'note': 'Orlando pulls from the Floridan Aquifer and disinfects with chloramine. Hardness swings by plant, so one neighborhood tests moderate while the next one over tests genuinely hard.',
+            'hard': '7',
+            'supply': 'OUC (Lower Floridan Aquifer)',
+            'note': "OUC draws Orlando's water from the Lower Floridan Aquifer and treats it with ozone, which lets it use less chlorine. It doesn't use chloramine. OUC's published average hardness is 7 grains per gallon (129 ppm), right on the line where water counts as hard.",
             'issues': [
-                'Chloramine taste and odor',
+                'Chlorine taste and odor',
                 'Scale on fixtures and glassware',
-                'Hardness that changes block to block'
+                'Spotting on dishes and shower doors'
             ],
             'ewg': {
                 'utility': 'Orlando Utilities Commission',
@@ -126,7 +126,7 @@ CITIES = [
             'name': 'St. Cloud',
             'county': 'Osceola County',
             'hard': '12–18',
-            'supply': 'City of St. Cloud utility',
+            'supply': 'Toho Water Authority (runs the city system)',
             'note': 'Same aquifer conditions as the rest of Osceola: hard water everywhere, plus a large number of homes on private wells fighting iron and sulfur.',
             'issues': [
                 'High hardness',
@@ -275,9 +275,9 @@ CITIES = [
             'slug': 'apopka',
             'name': 'Apopka',
             'county': 'Orange County',
-            'hard': '12–18',
+            'hard': '6–13',
             'supply': 'City of Apopka utility & private wells',
-            'note': 'Apopka runs harder than central Orlando. The rural areas around it are dense with private wells carrying iron and hydrogen sulfide.',
+            'note': "The City of Apopka puts its source water at 102 to 222 ppm of hardness, or 6 to 13 grains per gallon. The rural areas around it are dense with private wells carrying iron and hydrogen sulfide.",
             'issues': [
                 'High hardness',
                 'Iron staining',
@@ -398,41 +398,166 @@ CITIES = [
         }
     ]
 
-# Per-city extras. Every report URL is the utility's own page, checked Nov 2026.
-# geo is approximate city centre, used only to order "nearby areas"; never shown.
-# report_url None = no current report found online (Apopka, Nov 2026).
+# Per-city extras, all checked against the utility's own documents in Nov 2026.
+#   geo        approximate city centre, used only to order "nearby areas"; never shown
+#   report_url the utility's water quality report page (None = none found online)
+#   facts      plain restatements of the utility's own wording, from facts_src.
+#              Never add a fact here without a primary source in facts_src.
+#   hard_src   set only where the hardness figure itself is published by the
+#              utility; every other city's 'hard' range is UNSOURCED (see CLAUDE.md)
 CITY_LOCAL = {
-    'orlando': {'geo': (28.538, -81.379), 'report_by': 'Orlando Utilities Commission (OUC)',
-                'report_url': 'https://www.ouc.com/about-ouc/company-publications/water-quality-reports'},
-    'winter-park': {'geo': (28.600, -81.339), 'report_by': 'the City of Winter Park',
-                    'report_url': 'https://cityofwinterpark.org/departments/water-wastewater-utilities/water-treatment'},
-    'kissimmee': {'geo': (28.292, -81.408), 'report_by': 'Toho Water Authority',
-                  'report_url': 'https://www.tohowater.com/waterquality'},
-    'st-cloud': {'geo': (28.249, -81.281), 'report_by': 'Toho Water Authority',
-                 'report_url': 'https://www.tohowater.com/waterquality'},
-    'clermont': {'geo': (28.549, -81.773), 'report_by': 'the City of Clermont',
-                 'report_url': 'https://www.clermontfl.gov/Archive.aspx?AMID=37'},
-    'lake-mary': {'geo': (28.759, -81.318), 'report_by': 'the City of Lake Mary',
-                  'report_url': 'https://www.lakemaryfl.com/341/Water-Quality'},
-    'sanford': {'geo': (28.800, -81.273), 'report_by': 'the City of Sanford',
-                'report_url': 'https://sanfordfl.gov/wp-content/uploads/2026/04/City-of-Sanford-Annual-Water-Quality-Report-2026.pdf'},
-    'altamonte-springs': {'geo': (28.661, -81.366), 'report_by': 'the City of Altamonte Springs',
-                          'report_url': 'https://www.altamonte.org/1271/Water-Quality'},
-    'oviedo': {'geo': (28.670, -81.208), 'report_by': 'the City of Oviedo',
-               'report_url': 'https://cityofoviedo.net/1206/Water'},
-    'apopka': {'geo': (28.676, -81.512), 'report_by': 'the City of Apopka', 'report_url': None},
-    'winter-garden': {'geo': (28.565, -81.586), 'report_by': 'the City of Winter Garden',
-                      'report_url': 'https://wgfl.gov/454/Water-Quality-Report'},
-    'ocoee': {'geo': (28.569, -81.544), 'report_by': 'the City of Ocoee',
-              'report_url': 'https://www.ocoee.org/ccr'},
-    'windermere': {'geo': (28.496, -81.535), 'report_by': 'Orange County Utilities',
-                   'report_url': 'https://www.ocfl.net/WaterQuality',
-                   # Town of Windermere runs no water system of its own; its site
-                   # sends water questions to Orange County Utilities.
-                   'supply_answer': ("The Town of Windermere doesn't run its own water system. "
-                                     "Homes are either connected to Orange County Utilities or on a private well.")},
-    'deltona': {'geo': (28.900, -81.264), 'report_by': 'the City of Deltona',
-                'report_url': 'https://www.deltonafl.gov/DocumentCenter/View/1711'},
+    'orlando': {
+        'geo': (28.538, -81.379), 'report_by': 'Orlando Utilities Commission (OUC)',
+        'report_url': 'https://www.ouc.com/about-ouc/company-publications/water-quality-reports',
+        'hard_src': ('OUC', 'https://www.ouc.com/environment-community/high-quality-water-ouc'),
+        'facts': [
+            "Water comes from the Lower Floridan Aquifer.",
+            "OUC uses ozone treatment to remove tastes and odors, which lets it use less chlorine.",
+            "Chlorine averages 1.0 ppm. OUC does not use chloramine.",
+            "Average hardness is 129 ppm, or 7 grains per gallon.",
+        ],
+        'facts_src': ('OUC water services page', 'https://www.ouc.com/environment-community/high-quality-water-ouc'),
+    },
+    'winter-park': {
+        'geo': (28.600, -81.339), 'report_by': 'the City of Winter Park',
+        'report_url': 'https://cityofwinterpark.org/departments/water-wastewater-utilities/water-treatment',
+        'facts': [
+            "Drinking water comes from four interconnected water plants.",
+            "Treatment includes chlorination, ozonation, and sodium hydroxide for corrosion control.",
+        ],
+        'facts_src': ('City of Winter Park water treatment page',
+                      'https://cityofwinterpark.org/departments/water-wastewater-utilities/water-treatment'),
+    },
+    'kissimmee': {
+        'geo': (28.292, -81.408), 'report_by': 'Toho Water Authority',
+        'report_url': 'https://www.tohowater.com/waterquality',
+        'facts': [
+            "Toho publishes separate water quality reports for five service areas: Central, Eastern, "
+            "Southern, St. Cloud and Western. Check which one covers your address.",
+        ],
+        'facts_src': ('Toho Water Authority water quality page', 'https://www.tohowater.com/waterquality'),
+    },
+    'st-cloud': {
+        'geo': (28.249, -81.281), 'report_by': 'Toho Water Authority',
+        'report_url': 'https://www.tohowater.com/waterquality',
+        'facts': [
+            "Toho Water Authority took over management and operation of St. Cloud's water utility in "
+            "October 2022. The agreement was not a sale of the utility.",
+            "Toho publishes a dedicated St. Cloud water quality report.",
+        ],
+        'facts_src': ('Around Osceola, Feb 2022',
+                      'https://www.aroundosceola.com/news/toho-water-assume-management-st-cloud-water-utility'),
+    },
+    'clermont': {
+        'geo': (28.549, -81.773), 'report_by': 'the City of Clermont',
+        'report_url': 'https://www.clermontfl.gov/Archive.aspx?AMID=37',
+        'facts': [
+            "Water comes from the Floridan Aquifer through eight city wells with a combined capacity of "
+            "12 million gallons per day.",
+            "The city describes its groundwater as typically high quality, needing only chlorine disinfection.",
+        ],
+        'facts_src': ('City of Clermont water page', 'https://www.clermontfl.gov/201/Water-Wastewater'),
+    },
+    'lake-mary': {
+        'geo': (28.759, -81.318), 'report_by': 'the City of Lake Mary',
+        'report_url': 'https://www.lakemaryfl.com/341/Water-Quality',
+        'facts': [
+            "Six groundwater wells draw from the upper Floridan Aquifer.",
+            "Treatment includes an ultraviolet advanced oxidation process, granular activated carbon and "
+            "chlorination.",
+            "The city's lead service line inventory found no lead service lines.",
+        ],
+        'facts_src': ('Lake Mary 2025 water quality report', 'https://www.lakemaryfl.com/342/2025-Water-Quality-Report'),
+    },
+    'sanford': {
+        'geo': (28.800, -81.273), 'report_by': 'the City of Sanford',
+        'report_url': 'https://sanfordfl.gov/wp-content/uploads/2026/04/City-of-Sanford-Annual-Water-Quality-Report-2026.pdf',
+        'facts': [
+            "Seventeen groundwater wells draw from the Floridan Aquifer: thirteen supply the Main Water Plant "
+            "and four the Auxiliary Water Plant.",
+            "Water is chlorinated for disinfection, and polyphosphate is added for corrosion control.",
+        ],
+        'facts_src': ('Sanford water quality report (2025 data)',
+                      'https://sanfordfl.gov/wp-content/uploads/2026/04/City-of-Sanford-Annual-Water-Quality-Report-2026.pdf'),
+    },
+    'altamonte-springs': {
+        'geo': (28.661, -81.366), 'report_by': 'the City of Altamonte Springs',
+        'report_url': 'https://www.altamonte.org/1271/Water-Quality',
+        'facts': [
+            "Water is groundwater from the Floridan Aquifer, pumped from six city wells.",
+            "Treatment includes tray aeration to remove hydrogen sulfide, chlorination for disinfection, and "
+            "orthophosphate for corrosion control.",
+        ],
+        'facts_src': ('Altamonte Springs water quality report (2025 data)',
+                      'https://www.altamonte.org/DocumentCenter/View/10009/2024-Annual-Drinking-Water-Quality-Report'),
+    },
+    'oviedo': {
+        'geo': (28.670, -81.208), 'report_by': 'the City of Oviedo',
+        'report_url': 'https://cityofoviedo.net/1206/Water',
+        'facts': [
+            "Ten wells draw from the Floridan Aquifer.",
+            "Treatment is forced-draft aeration and chloramine disinfection.",
+            "Testing showed no detectable quantities of any of the 29 PFAS compounds tested.",
+        ],
+        'facts_src': ('Oviedo 2024 drinking water quality report',
+                      'https://cityofoviedo.net/DocumentCenter/View/9020/2024-Water-Quality-Drinking-Report'),
+    },
+    'apopka': {
+        'geo': (28.676, -81.512), 'report_by': 'the City of Apopka', 'report_url': None,
+        'hard_src': ('City of Apopka', 'https://www.apopka.net/Faq.aspx?QID=158'),
+        'facts': [
+            "The city puts its source water at 102 to 222 ppm of hardness, which it equates to 6 to 13 "
+            "grains per gallon.",
+        ],
+        'facts_src': ('City of Apopka water FAQ', 'https://www.apopka.net/Faq.aspx?QID=158'),
+    },
+    'winter-garden': {
+        'geo': (28.565, -81.586), 'report_by': 'the City of Winter Garden',
+        'report_url': 'https://wgfl.gov/454/Water-Quality-Report',
+        'facts': [
+            "Six deep wells draw from the Floridan Aquifer.",
+            "Treatment is aeration and disinfection with sodium hypochlorite (chlorine).",
+        ],
+        'facts_src': ('Winter Garden 2024 water quality report',
+                      'https://www.cwgdn.com/DocumentCenter/View/7004/Water-Quality-Report-2024'),
+    },
+    'ocoee': {
+        'geo': (28.569, -81.544), 'report_by': 'the City of Ocoee',
+        'report_url': 'https://www.ocoee.org/ccr',
+        'facts': [
+            "Groundwater is drawn from the Floridan Aquifer at depths of 340 to 1,450 feet.",
+            "Water is chlorinated for disinfection.",
+            "The Forest Lake Estates service area gets its water from Orange County Utilities.",
+            "The city's 2024 service line inventory found no lead service lines.",
+        ],
+        'facts_src': ('Ocoee 2024 water quality report', 'https://www.ocoee.org/Archive.aspx?ADID=1789'),
+    },
+    'windermere': {
+        'geo': (28.496, -81.535), 'report_by': 'Orange County Utilities',
+        'report_url': 'https://www.ocfl.net/WaterQuality',
+        # Town of Windermere runs no water system of its own; its site
+        # sends water questions to Orange County Utilities.
+        'supply_answer': ("The Town of Windermere doesn't run its own water system. "
+                          "Homes are either connected to Orange County Utilities or on a private well."),
+        'facts': [
+            "Orange County Utilities draws from the Floridan Aquifer.",
+            "The county says its groundwater needs little treatment beyond disinfection and aeration to "
+            "remove naturally present hydrogen sulfide.",
+            "Its service line inventory found no lead service lines.",
+        ],
+        'facts_src': ('Orange County Utilities 2025 drinking water report',
+                      'https://www.ocfl.net/Portals/0/Library/Water-Garbage-Recycle/docs/AnnualDrinkingWaterReport2025-OCU.pdf'),
+    },
+    'deltona': {
+        'geo': (28.900, -81.264), 'report_by': 'the City of Deltona',
+        'report_url': 'https://www.deltonafl.gov/DocumentCenter/View/1711',
+        'facts': [
+            "Water is groundwater from the Floridan Aquifer.",
+            "Treatment includes aeration, chloramine disinfection (chlorine plus ammonia), and a "
+            "phosphate-based corrosion control chemical.",
+        ],
+        'facts_src': ('Deltona 2024 water quality report', 'https://www.deltonafl.gov/DocumentCenter/View/1711'),
+    },
 }
 
 # ---------------------------------------------------------------- products

@@ -108,8 +108,19 @@ contaminants, not hardness. An audit in Oct 2026 found:
 
 Everett chose to leave the figures in place for now. **Treat them as known-bad.**
 Do not add new city figures, do not cite them as sourced, and do not build
-marketing claims on them. Full audit with every source URL and the utility phone
-numbers: `Claude outputs/hardness-audit.md`.
+marketing claims on them. (`Claude outputs/hardness-audit.md` is referenced in
+older notes but no longer exists in the repo.)
+
+**Exceptions, fixed Nov 2026:** Orlando now shows OUC's published 7 gpg and Apopka
+the city's published 6–13 gpg. Both carry a `hard_src` in `CITY_LOCAL`
+(`sitedata.py`) and the page labels them "Published hardness". The other 12 cities
+remain unsourced "Typical hardness". OUC states it does **not** use chloramine;
+the old copy saying it did was wrong and has been removed.
+
+`CITY_LOCAL` also holds each city's utility report link and a short `facts` list.
+Every fact is a restatement of the utility's own document, cited in `facts_src`.
+Utility PDFs often come back unreadable through WebFetch; extract them with
+`pypdf` in a throwaway venv and quote the extracted text, never a summary.
 
 The general rule this came from: **never publish a figure without a primary source
 and never describe a number as sourced when it isn't.**
@@ -207,8 +218,13 @@ not Orlando Water Pros'. Don't copy them across without substantiation.
 - Quote form live, but confirm the GHL workflow is published and field-mapped.
 - No real reviews yet — that section was removed rather than filled with fakes.
 - Permit requirements unconfirmed with Orange/Seminole/Osceola/Lake/Volusia counties.
-- Windermere's water provider is unverified; the site claims Orange County
-  Utilities, and OCU doesn't list Windermere in three years of reports.
+- Windermere: resolved Nov 2026. The town runs no water system of its own; its
+  site sends water questions to Orange County Utilities, and homes are on OCU or
+  private wells.
+- St. Cloud: Toho Water Authority has run the city's water utility since Oct 2022
+  (management agreement, not a sale). The site now says so.
 - Apopka: a local outlet reported in Aug 2026 that the state is investigating 11
   possible water system violations. Unverified against FDEP. Check before naming
-  Apopka in paid advertising.
+  Apopka in paid advertising. The site no longer claims any utility "meets all
+  federal legal standards". Don't reinstate that line. Apopka also has no water
+  quality report online (Nov 2026), and apopka.net was returning SSL errors.
