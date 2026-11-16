@@ -40,6 +40,13 @@ SITE = {
         # sms_consent, page and submitted_at.
         # While this is empty the form falls back to opening the visitor's
         # mail app pre-filled, so no lead is silently dropped.
+        # --- Meta (Facebook) pixel ---------------------------------------
+        # Dataset ID from Events Manager. Empty string = pixel off everywhere.
+        # The Lead event fires in assets/js/main.js, behind the response-body
+        # check - NOT on r.ok, because GHL returns HTTP 200 with
+        # {"status":"Error"} when it rejects a payload.
+        'meta_pixel_id': '959504583649425',
+
         'form_endpoint': 'https://services.leadconnectorhq.com/hooks/f3sx3bB5dnapd0kKjANK/webhook-trigger/6a3ad9d3-8d9f-4158-b56b-f11429b34aa8'
     }
 

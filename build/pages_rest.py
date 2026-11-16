@@ -527,7 +527,7 @@ LEGAL = {
         "<strong>Your choices.</strong> You can ask us to delete the information you've submitted, or to stop contacting you, at any time by emailing us at "
         f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>, or by calling "
         f"<a href=\"tel:{SITE['phone_href']}\">{SITE['phone_display']}</a>. To stop text messages specifically, reply STOP to any message you receive from us. We'll honor that request except where we need to keep limited records for legal or warranty purposes.",
-        "<strong>Cookies and analytics.</strong> This site does not use advertising cookies or tracking pixels. If that changes in the future, this policy will be updated to disclose it.",
+        "<strong>Cookies and advertising.</strong> This site uses the Meta (Facebook) pixel so we can measure whether our advertising works. It records that a page was viewed, and whether a quote form was successfully submitted, along with your IP address, browser information and cookies Meta sets in your browser. The contents of the form are not sent to Meta \u2014 your name, phone number and message are not passed on. You can opt out of this kind of ad measurement in your Meta ad preferences at <a href=\"https://www.facebook.com/adpreferences\" rel=\"nofollow noopener\">facebook.com/adpreferences</a>, or by blocking third-party cookies in your browser.",
         "<strong>Contact.</strong> Questions about this policy can be sent to "
         f"<a href=\"mailto:{SITE['email']}\">{SITE['email']}</a>.",
     ]),

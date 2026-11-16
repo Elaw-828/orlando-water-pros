@@ -160,6 +160,11 @@
           return r.text().catch(function () { return ""; });
         }).then(function (body) {
           if (/"status"\s*:\s*"Error/i.test(body)) throw new Error("rejected");
+          /* Meta Lead event. Deliberately here and not on r.ok: GHL answers 200
+             with {"status":"Error"} when it rejects a payload, so firing earlier
+             would report leads that never reached the CRM and train the ad
+             algorithm on conversions that did not happen. */
+          if (window.fbq) { fbq("track", "Lead"); }
           form.reset();
           say("Thanks \u2014 we've got it. We'll call you back, usually the same business day.", "good");
           if (btn) {
