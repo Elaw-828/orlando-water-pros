@@ -83,6 +83,11 @@ src="https://www.facebook.com/tr?id=__PIXEL_ID__&ev=PageView&noscript=1"
 """
 
 
+def _meta_domain_verification():
+    tok = SITE.get("meta_domain_verification", "")
+    return f'<meta name="facebook-domain-verification" content="{tok}">\n' if tok else ""
+
+
 def _meta_pixel():
     pid = SITE.get("meta_pixel_id", "")
     return _META_PIXEL_TPL.replace("__PIXEL_ID__", pid) if pid else ""
@@ -99,6 +104,7 @@ def head(title, desc, depth=0, extra=""):
 <meta name="description" content="{desc}">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#1b3a6b">
+{_meta_domain_verification()}
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">

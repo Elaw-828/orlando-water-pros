@@ -40,6 +40,12 @@ SITE = {
         # sms_consent, page and submitted_at.
         # While this is empty the form falls back to opening the visitor's
         # mail app pre-filled, so no lead is silently dropped.
+        # --- Meta domain verification ------------------------------------
+        # Token from Business Settings -> Brand safety -> Domains.
+        # Must be server-rendered inside <head>; Meta's check fails if the tag
+        # is injected by JavaScript or sits outside <head>.
+        'meta_domain_verification': '7anu296j2mccz2wyb3fwifhdgpbtna',
+
         # --- Meta (Facebook) pixel ---------------------------------------
         # Dataset ID from Events Manager. Empty string = pixel off everywhere.
         # The Lead event fires in assets/js/main.js, behind the response-body
